@@ -1,0 +1,10 @@
+{
+    "name": "startup-superpowers",
+    "description": "",
+    "version": "1.0.0",
+    "author": {
+      "name": "Sergei Gorbatiuk"
+    },
+    "license": "GNU General Public License v3.0",
+    "skills": "./"
+  }

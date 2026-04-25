@@ -1,0 +1,137 @@
+# Initialization
+
+This reference file guides the first-time project setup — collecting the founder's idea, scaffolding the `startup/` workspace, and running the idea elaboration conversation.
+
+It is loaded by the `whats-next` skill when no `startup/` directory exists. It is **not** a skill and should not be invoked independently.
+
+---
+
+## Context
+
+You have determined that `startup/core.md` does not exist — this is a new project.
+
+## Goal
+
+Set up the `startup/` workspace, capture the founder's idea, and guide them through idea elaboration so the core project definition is established.
+
+---
+
+## Conversational discipline
+
+These rules apply throughout the elaboration conversation, regardless of B2B or B2C.
+
+**Ask exactly one question at a time. Always.**
+
+Do not stack questions. Do not ask a question and then add a follow-up in the same message. Do not list "a few things to think about." One question. Wait. Then respond. This is not a stylistic preference — it's how the conversation stays focused and how the founder actually thinks, rather than pattern-matches to what they think you want to hear.
+
+**Tone — channel excitement into precision, not away from it.**
+
+This conversation can feel like an interrogation if you're not careful. The founder just shared their idea — they're excited. Your job is to channel that excitement into precision, not dampen it.
+
+- **Frame precision as a superpower, not a chore.** "The sharper we get this, the easier everything downstream becomes — you'll know exactly who to target, what to research, and what to build first."
+- **When pushing back on vague answers, explain the cost of vagueness.** Don't just say "that's too broad" — say why: "If we leave this vague, we'll struggle to find the right people to interview later, and competitor research will be unfocused."
+- **Celebrate specificity when you see it.** "That's a really crisp description — I can already picture the person who'd use this."
+- **Normalize iteration.** "None of this is set in stone — we can always sharpen it later as you learn more. Right now we're going for 'good enough to act on.'"
+
+**Depth:** Have at least 2–3 meaningful exchanges per dimension before proposing definitions. The conversation itself helps the founder think. Rushing to fill fields produces shallow answers that mislead everything downstream.
+
+---
+
+## How to run the conversation
+
+### Step 1 — Check for existing project
+
+Read the workspace for a `startup/core.md` file.
+
+- **If it exists:** tell the founder their project is already initialized. Read the project name from the `name` field in the frontmatter. Explain that if they want to explore a new idea, the easiest way is to create a new folder and start from there — this avoids mixing contexts.
+- **If it doesn't exist:** proceed to Step 2.
+
+### Step 2 — Ask what they're building
+
+Ask the founder:
+
+> "Tell me about your idea — what are you building and who is it for?"
+
+Wait for their response. Store as `seed_description`.
+
+### Step 3 — Suggest a project name
+
+Read the `seed_description` and generate 2–3 short, catchy working titles that capture the idea's essence (e.g., for "an app that helps dog walkers find clients" → "DogWalk", "WalkFinder", "PawConnect").
+
+Present them as a structured question with an extra option to type their own:
+
+> "Let's give your project a working name — you can always change it later."
+>
+> 1. **{suggestion_1}**
+> 2. **{suggestion_2}**
+> 3. **{suggestion_3}**
+> 4. **Something else** — type your own
+
+Use `AskUserQuestion` with these options. If they pick "Something else", ask them to type a name.
+
+Store the result as `project_name`.
+
+### Step 4 — Run the init script
+
+Execute the scaffolding script:
+
+```bash
+npx tsx .claude/skills/whats-next/scripts/init-project.ts \
+  --name "<project_name>" \
+  --description "<seed_description>"
+```
+
+This creates:
+- `startup/core.md` — project definition with seed description and empty `## Core` section
+- `startup/AGENTS.md` — ambient context for the agent
+- `startup/plan.md` — initial plan with "Define your idea" as the first step
+- `startup/hypotheses/` — empty directory for future hypothesis files
+- `startup/competitors/` — empty directory for future competitor files
+- `CLAUDE.md` — appended with a reference to `startup/AGENTS.md`
+
+If the script fails, handle the error and inform the founder.
+
+### Step 5 — Classify the idea and load the elaboration reference
+
+Read the `seed_description` and classify the idea:
+
+**Customer type:**
+
+| Signal in description | Type |
+|---|---|
+| Companies, enterprises, teams, organizations, SaaS-for-business, B2B explicitly | `b2b` |
+| Consumers, individuals, personal use, general public, B2C explicitly | `b2c` |
+| Ambiguous, very short, or mixed signals | Ask the founder |
+
+**If ambiguous on customer type**, ask using a structured question:
+
+1. **Businesses** (B2B) — selling to companies, teams, or organizations
+2. **Consumers** (B2C) — selling to individual people
+3. **Not sure yet** — still figuring this out
+
+**Load the appropriate reference file:**
+
+| Customer type | Reference file |
+|---|---|
+| B2C or not sure | `.claude/skills/whats-next/references/b2c-painkiller.md` |
+| B2B | `.claude/skills/whats-next/references/b2b-painkiller.md` |
+
+Read the reference file and follow the instructions within it. Pass `seed_description` and `project_name` as context so the conversation doesn't start cold.
+
+### Step 6 — Create the first plan
+
+After idea elaboration is complete (core.md has been written with at least Audience/ICP and Problem), propose the first real plan. At this point you have all the context — you just ran the elaboration conversation and the artifact directories are empty. No need to dispatch the advisor subagent for this.
+
+Read `startup/core.md` and `startup/plan.md`. Based on what you know about the idea, propose a short plan for the next milestone — typically 2–3 concrete steps. Apply lean startup thinking: what would most reduce the founder's risk right now? For most ideas that means some combination of understanding the competitive landscape and surfacing the key assumptions as testable hypotheses, but use your judgment — not every idea follows the same sequence.
+
+Present the proposed plan to the founder conversationally, get confirmation, and update `startup/plan.md` with the Current Focus, Steps, and a Log entry explaining your reasoning.
+
+---
+
+## Completion criteria
+
+- `startup/core.md` exists with `version` and `name` in frontmatter, a `## Seed Description` section, and at least **Audience** (or **ICP**) and **Problem** under `## Core`
+- `startup/AGENTS.md` exists
+- `startup/plan.md` exists with a substantive plan (not just the initial scaffold)
+- `CLAUDE.md` references `startup/AGENTS.md`
+
