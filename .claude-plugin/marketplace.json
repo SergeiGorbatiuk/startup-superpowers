@@ -3,6 +3,7 @@
     "owner": {
       "name": "Sergei Gorbatiuk"
     },
+    "repository": "https://github.com/SergeiGorbatiuk/startup-superpowers",
     "plugins": [
       {
         "name": "startup-superpowers",
