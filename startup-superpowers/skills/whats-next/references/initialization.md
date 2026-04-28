@@ -126,6 +126,8 @@ Read `startup/core.md` and `startup/plan.md`. Based on what you know about the i
 
 Present the proposed plan to the founder conversationally, get confirmation, and update `startup/plan.md` with the Current Focus, Steps, and a Log entry explaining your reasoning.
 
+The scaffold created a "Define your idea" step that is now complete — mark it `[x]` in the Steps list before adding the new steps.
+
 ---
 
 ## Completion criteria

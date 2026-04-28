@@ -106,12 +106,16 @@ The reference file's instructions take over for the artifact walk-through. Retur
 
 **Step 4 — Update the plan:**
 
-On user confirmation, update `startup/plan.md`:
+After presenting the recommendations, tell the founder specifically what you're writing — then write it. Don't ask for blanket permission; state the update and do it. For example: "Updating the plan: marking [step] done, setting focus to [X], adding two new steps. Writing now." Then write the file.
+
+Only pause for explicit confirmation if the advisor recommended removing existing steps or the direction change is significant enough that the founder might want to redirect first.
+
+Update `startup/plan.md`:
 - Check off completed steps (change `- [ ]` to `- [x]`)
 - Update the `## Current Focus` section
 - Add new steps to the `## Steps` section
-- Remove steps if recommended
+- Remove steps only if the advisor explicitly recommended it and you've surfaced this to the founder
 - Append the log entry under `## Log` with a `### {YYYY-MM-DD}` heading
 - Update `last_assessed` in frontmatter to today's date
 
-Read `plan.md` before writing. Propose the specific changes before saving.
+Read `plan.md` before writing.

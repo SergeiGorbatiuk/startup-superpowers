@@ -2,6 +2,7 @@
 name: web-researcher
 description: General-purpose web research agent. Dispatched by the main agent to research a specific topic — competitor discovery, market analysis, source validation, or any information-gathering task. Returns a structured, source-cited summary. Use when the main agent needs to delegate a focused research task to avoid context bloat.
 tools: Read, WebSearch, WebFetch
+model: haiku
 ---
 
 # Web Researcher

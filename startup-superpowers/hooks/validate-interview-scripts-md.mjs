@@ -138,8 +138,12 @@ for (const section of REQUIRED_SECTIONS) {
 // ---------- output nudges --------------------------------------------------
 
 if (nudges.length > 0) {
-  console.error(`Conventions check for ${filePath}:`);
-  for (const n of nudges) console.error(`  - ${n}`);
+  console.log(JSON.stringify({
+    hookSpecificOutput: {
+      hookEventName: "PostToolUse",
+      additionalContext: `Conventions check for ${filePath}:\n` + nudges.map(n => `  - ${n}`).join("\n"),
+    },
+  }));
 }
 
 process.exit(0);
