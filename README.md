@@ -6,10 +6,19 @@ A local-first ideas validation and exploration set of plugin for Claude Code tha
 
 ### 1. Install the marketplace (only done once)
 
-
+**For Claude Code CLI:**
 ```
 /plugin marketplace add SergeiGorbatiuk/startup-superpowers
 ```
+
+**For Claude desktop app:**
+
+1. Open the `Code` tab
+2. Find the "+" icon by the chat input, and go to "Plugins" -> "Manage Plugins"
+3. Under "Personal Plugins" section click "+" (Add plugin) -> "Create Plugin" -> "Add Marketpalce"
+4. In the URL field, paste `SergeiGorbatiuk/startup-superpowers`, then "Sync"
+
+On cerain app versions, the interface does not clearly indicate success or failure of this operation. To verify, again click "+" under "Personal Plugins", then "Browse plugins". You should be able to see "startup-superpowers" in the "Code" tab of the Direcotry window.
 
 
 ### 2. Create a workspace folder
@@ -24,16 +33,27 @@ cd my-new-idea
 
 ### 3. Activate the plugin for the project
 
+**For Claude Code CLI:**
 ```
 /plugin install startup-superpowers@startup-superpowers
 ```
 It is recommended to activte plugin for this given project (local scope)
+
+**For Claude desktop app:**
+
+1. In the `Code` tab of the app, find the "+" icon by the chat input, go to "Plugins" -> "Add plugin"
+2. Navigate to "Code" tab of the newly opened window, there you should find "Startup superpowers" plugin in the respective tab (yeah, they love tabs). If you can't find the plugin, come back to step 1 and verify the marketplace installation
+3. Click on the "+" sign to install plugin globally, or click on the card, and in the dropdown install menu choose "Intall for this project" (recommended)
+
+
 
 ### 4. Kickstart the work
 
 Run `/whats-next` in Claude Code. On first run the agent will ask about your idea and set everything up. After that, `/whats-next` is your home base — run it any time you want to know where your project stands and what to focus on next.
 
 ## Usage
+
+> If you are using Claude desktop app, only work in the Code tab of the app
 
 ### Pro tips
 
@@ -44,7 +64,7 @@ Run `/whats-next` in Claude Code. On first run the agent will ask about your ide
 
 
 
-### What the advisor can help with
+### What the plugin can help with
 
 | Skill | What it does |
 |---|---|
