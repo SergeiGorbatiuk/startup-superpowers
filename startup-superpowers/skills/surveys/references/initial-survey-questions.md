@@ -97,7 +97,7 @@ Wait. Capture both the distribution plan and the respondent value prop. These go
 
 Based on the number of hypotheses selected and the distribution channel (cold vs. warm), announce the question budget before drafting:
 
-> "Given [N] hypotheses and a [cold/warm] audience, let's aim for [X] questions total — enough to get signal on each hypothesis plus one open-ended close. I'll draft them one at a time."
+> "Given [N] hypotheses and a [cold/warm] audience, let's aim for [X] questions total — one per hypothesis, plus possibly one more at the end. I'll draft them one at a time."
 
 The founder can override the budget. Then begin Step 5.
 
@@ -105,7 +105,18 @@ The founder can override the budget. Then begin Step 5.
 
 ### Step 5 — Draft questions one at a time
 
-For each hypothesis selected, draft one question. Present it like this:
+For each hypothesis selected, draft one question. Before presenting it, silently run this self-check:
+
+**Bias check (do not skip):**
+- Does the question wording imply a "correct" or expected answer? (e.g., "If you've ever skipped X…" implies skipping is wrong)
+- Does any option hint at your solution or frame the problem in a way that telegraphs what you expect to hear?
+- Could a respondent feel embarrassed or judged by their honest answer? (social desirability bias)
+- Is there an "and" in the question? If so, split it.
+- Is the question asking about future intent rather than past behavior? If so, rewrite to be behavioral.
+
+If any of these fire, rewrite until they don't. The founder should not have to catch this — the agent should.
+
+Present each question like this:
 
 > **Draft question [N]:** [question text]
 > *Type: [multiple choice / rating scale 1–5 / open-ended]*
@@ -124,14 +135,19 @@ Wait for feedback. Revise once if needed, then move to the next hypothesis.
 **Question type guidance:**
 - Use **multiple choice** for categorical hypotheses ("which of these do you currently use?")
 - Use **rating scale (1–5 or 1–7)** for magnitude hypotheses ("how much does this frustrate you?")
-- Use **open-ended** sparingly — one at the end maximum, unless the hypothesis is exploratory
 - Avoid **yes/no** for the core hypothesis questions — they collapse nuance; use a scale or multiple choice instead
+- Use **open-ended** carefully — see guidance below before proposing one
 
-After all hypothesis questions are drafted, propose one open-ended closing question:
+After all hypothesis questions are drafted, evaluate whether an open-ended closing question is worth it. Consider:
 
-> "Is there anything about [topic] that matters to you that we didn't ask about?"
+- **Worth it when:** the hypothesis set is exploratory, important segments may be missing from the options, or the founder genuinely doesn't know what they don't know yet
+- **Not worth it when:** the audience is cold and completion rate is a concern, the hypotheses are specific enough that closed questions cover the space, or the founder already has qualitative signal from interviews
 
-Ask whether they'd like to include it.
+Present the tradeoff explicitly and let the founder decide:
+
+> "One option is to close with an open-ended question — something like 'Is there anything about [topic] we didn't ask?' Open-ended questions catch unexpected signal you didn't anticipate, but they also add friction and some respondents will skip or drop off. [Given your cold/warm audience and X existing questions], I'd [recommend / suggest skipping] one here. What do you think?"
+
+Do not propose the open-ended question as the default — earn it by making the case.
 
 ---
 

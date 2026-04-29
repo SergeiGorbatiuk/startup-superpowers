@@ -42,14 +42,14 @@ If not configured, stop here and provide setup instructions:
 
 1. **Get an API key:**
    - Log into your Tally account at [tally.so](https://tally.so)
-   - Go to **Settings → Integrations → API**
-   - Generate a bearer token
+   - Go to **Settings → API Keys**
+   - Create a new API key and copy it
 
 2. **Add the Tally MCP to Claude Code:**
    ```bash
-   claude mcp add --transport http tally https://api.tally.so/mcp
+   claude mcp add --transport http tally https://api.tally.so/mcp --header "Authorization: Bearer YOUR_API_KEY"
    ```
-   When prompted, authenticate with your Tally bearer token.
+   Replace `YOUR_API_KEY` with the key you just copied.
 
 3. **Verify it's connected:**
    ```bash
@@ -57,9 +57,13 @@ If not configured, stop here and provide setup instructions:
    ```
    You should see `tally` in the list.
 
+> **Note:** Tally's UI and API change occasionally. If these steps don't match what you see or something isn't working, let me know and I'll look up the current instructions.
+
 Once you've done this, come back and I'll create the survey.
 
 ---
+
+If the founder says the steps didn't work or something looks different in the Tally UI, do a web search for current Tally MCP or API setup instructions before retrying — Tally's UI and API surface change and the instructions here may be stale.
 
 If configured, proceed to Step 2.
 
