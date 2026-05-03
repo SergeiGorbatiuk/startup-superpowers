@@ -1,6 +1,6 @@
 # Startup Superpowers
 
-A local-first ideas validation and exploration set of plugin for Claude Code that guides and helps builders with the most crucial stages necessary for creating something people want: competitors, hypotheses, interviews, surveys, and MVP design. 
+A local-first ideas validation and exploration plugin for Claude Code that guides and helps builders with the most crucial stages necessary for creating something people want: competitors, hypotheses, interviews, surveys, and MVP design. 
 
 ## Getting started
 
