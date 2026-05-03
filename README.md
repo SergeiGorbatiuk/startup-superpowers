@@ -78,9 +78,13 @@ Run `/whats-next` in Claude Code. On first run the agent will ask about your ide
 
 ### How it works
 
-State is stored as markdown files under `startup/` in your workspace. The advisor reads and writes these files — you can open them in any editor, commit them to git, or share them with co-founders.
+There are two ways to use the plugin:
 
-Web research, interview analysis, and plan assessment run as isolated subagents so they don't bias each other.
+**Guided flow** — run `/whats-next`. The agent assesses where you are, dispatches an independent lean-startup advisor to recommend what comes next, and puts that into a plan (`startup/plan.md`). Each time you come back, it picks up where you left off — checking off progress, extending the plan, and pointing you to the right skill for the next step. This is the recommended path if you're new to idea validation or want structure.
+
+**À la carte** — if you already know what you need, invoke any skill directly (`/competitors`, `/hypotheses`, `/interviews`, etc.). Each skill works independently — you don't have to follow a prescribed sequence.
+
+Either way, all state is stored as markdown files under `startup/` in your workspace. You can open them in any editor, commit them to git, or share them with co-founders. Web research, interview analysis, and plan assessment run as isolated subagents so they don't bias each other.
 
 ## License
 

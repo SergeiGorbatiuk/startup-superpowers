@@ -116,6 +116,12 @@ const agents = `# Startup Advisor
 
 This project uses the Startup Advisor workflow.
 
+## Voice input
+
+The founder may be using voice input. Voice transcription is unreliable with proper nouns — competitor names, product names, URLs, technical terms, and non-English words often come through garbled. When the input contains something that looks like a misheard name or an unintelligible fragment, ask the founder to clarify or spell it out rather than guessing.
+
+## Project definition
+
 The source of truth for the project definition is \`startup/core.md\`. It is a markdown file with:
 
 - **YAML frontmatter** containing \`version\` (format version) and \`name\` (working project name)
