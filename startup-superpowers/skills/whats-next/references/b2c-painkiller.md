@@ -82,7 +82,7 @@ Once you have a solid understanding of at least audience and problem (solution a
 3. **Ask for confirmation** — "Does this capture it accurately? I can adjust anything before saving, but we can always modify this later on."
 4. **On confirmation**, read `startup/core.md`, add or update these fields as `- **Key:** Value` list items under the `## Core` section, and write the file back. Leave the frontmatter and `## Seed Description` untouched.
 5. **Produce the pitch mirror.** Read the `## Core` fields you just saved. Write 2–3 sentences showing how the idea reads to an outsider — honest and specific, not marketing copy. Then read `startup/core.md` again and append a `## How It Reads` section after `## Core`, write the file back.
-6. **Deliver the exit handoff** — one observation specific to this idea, plus a forward-looking sentence:
+6. **Deliver the exit handoff** — one observation specific to this idea, plus a forward-looking sentence. An example:
 
    > "You now have a clear picture of your idea from the outside — [one specific observation, e.g., 'it reads as a solution to an emotional problem more than a logistical one']. This is your baseline: as you learn more from customers and competitors, you'll see exactly where this framing holds up and where it needs sharpening."
 

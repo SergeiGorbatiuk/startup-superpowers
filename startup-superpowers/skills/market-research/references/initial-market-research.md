@@ -237,7 +237,7 @@ source_skill: market-research
 ```
 
 3. **Save to `startup/market-brief.md`**, overwriting if it exists.
-4. **Deliver the exit handoff** — one specific observation from the findings, plus a forward-looking sentence:
+4. **Deliver the exit handoff** — one specific observation from the findings, plus a forward-looking sentence. An example:
 
    > "You now have a market brief — [specific observation drawn from the research, e.g., 'the market is real and growing, but pricing is all over the place, which is actually an opportunity to stand out']. [One forward sentence: e.g., 'This gives you a grounded answer to the market size question, and the buying behavior findings go straight into your interview script.']"
 

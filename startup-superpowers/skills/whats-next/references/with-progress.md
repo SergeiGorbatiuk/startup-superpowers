@@ -177,7 +177,16 @@ Assess the founder's actual state from what you've read and what came out of the
 
 **Set Current Focus** to the real next milestone — not "define your idea."
 
-**Propose next steps** based on what's missing: hypotheses, interview analysis, more competitor discovery, market research, MVP design — whatever lean startup thinking suggests should come next given what they've already done.
+**Propose next steps** — scope the plan to the next 1–2 milestones, not the entire journey. A founder who sees 2–3 clear steps feels momentum; a founder who sees 8 steps feels overwhelmed. Future reassessments will extend the plan when the time comes.
+
+Apply lean startup thinking to decide what comes next. The core question: **what would most reduce the founder's risk right now?** Use this progression as a guide (not a rigid sequence — adapt to what's already been done):
+
+1. **Competitive landscape** — who else is solving this, how does the founder differentiate? If competitors are unknown, this is usually the first gap to fill.
+2. **Hypotheses** — are the key assumptions surfaced as testable statements? Formalizing hypotheses gives interviews a clear focus — each conversation tests something specific instead of being open-ended.
+3. **Customer discovery** — has the founder talked to potential customers? Even 3–4 short conversations tend to reveal something surprising. If interviews happened but aren't analyzed, analysis is the next step.
+4. **Synthesis** — what was learned, does the direction hold?
+
+Skip steps the founder has clearly completed. If they've already done customer interviews, don't suggest "discover competitors" as the next step just because it's earlier in the progression — meet them where they are.
 
 Present the proposed plan conversationally, get the founder's confirmation, and write `startup/plan.md`. Read the file before writing.
 
