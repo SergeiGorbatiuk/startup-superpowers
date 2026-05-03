@@ -29,9 +29,9 @@ Do not stack questions. Do not ask a question and then add a follow-up in the sa
 
 ### Step 1 — Frame it
 
-Briefly frame why market research helps at this stage:
+Frame the conversation with its concrete output before asking anything:
 
-> "Before diving into interviews or building anything, it helps to get a rough picture of the market — whether it's a real category, how buyers in this space typically make decisions, and what they expect to pay. This context sharpens your interview questions and gives you a grounded answer when someone asks 'how big is this?'"
+> "We're building your market brief — a one-page picture of the market you're entering that you could show to an advisor or investor. By the end, you'll have a grounded answer when someone asks 'how big is this?' and a clear picture of how buyers in this space think and decide. Before we search, there are a few things I want to understand."
 
 Then move directly into Step 2 — don't ask if they want to do this.
 
@@ -204,9 +204,49 @@ status: draft
 
 ---
 
+## Step 6 — Produce the market brief
+
+After `startup/market-research.md` is written:
+
+1. **Read `startup/market-research.md`.**
+2. **Write a condensed one-page summary** — plain language, no jargon, something the founder could show an advisor. Cover: is this a real market, who's in it, what they typically pay, and the one or two strongest tailwinds. Draw from the actual findings — no generic filler.
+
+```markdown
+---
+date: {today}
+source_skill: market-research
+---
+
+# Market Brief — {Project Name}
+
+## The Market
+
+{2–3 sentences: is this a real, named category? any size or growth signal found?}
+
+## Who's In It
+
+{1–2 sentences on the buyer segments — who feels this problem most acutely.}
+
+## What They Pay
+
+{1–2 sentences on pricing norms found — model and range.}
+
+## Tailwinds
+
+{The 1–2 most concrete trends making this a good time to be in this space.}
+```
+
+3. **Save to `startup/market-brief.md`**, overwriting if it exists.
+4. **Deliver the exit handoff** — one specific observation from the findings, plus a forward-looking sentence:
+
+   > "You now have a market brief — [specific observation drawn from the research, e.g., 'the market is real and growing, but pricing is all over the place, which is actually an opportunity to stand out']. [One forward sentence: e.g., 'This gives you a grounded answer to the market size question, and the buying behavior findings go straight into your interview script.']"
+
+---
+
 ## Completion criteria
 
 - `startup/market-research.md` written with at least Market Overview, Buying Behavior, and Pricing Landscape sections populated (the others can be brief if research was thin)
+- `startup/market-brief.md` written as a condensed one-pager
 - Raw research saved to `startup/research/`
 - The founder has seen and reacted to the findings
 
@@ -214,7 +254,7 @@ status: draft
 
 ## What comes next
 
-After saving, connect the findings forward:
+After the exit handoff, connect the findings forward:
 
 - **Pricing findings → willingness-to-pay hypotheses** — if pricing signals emerged, they're direct inputs to `#willingness_to_pay` hypotheses
 - **Buyer behavior → interview script** — how buyers discover and evaluate solutions shapes what to ask in interviews

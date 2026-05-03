@@ -18,7 +18,7 @@ Set up the `startup/` workspace, capture the founder's idea, and guide them thro
 
 ## Conversational discipline
 
-These rules apply throughout the elaboration conversation, regardless of B2B or B2C.
+These rules apply throughout the tier 1 elaboration conversation.
 
 **Ask exactly one question at a time. Always.**
 
@@ -46,7 +46,32 @@ Read the workspace for a `startup/core.md` file.
 - **If it exists:** tell the founder their project is already initialized. Read the project name from the `name` field in the frontmatter. Explain that if they want to explore a new idea, the easiest way is to create a new folder and start from there — this avoids mixing contexts.
 - **If it doesn't exist:** proceed to Step 2.
 
-### Step 2 — Ask what they're building
+### Step 2 — Ask how far along they are
+
+Ask the founder:
+
+> "Before we dive in — where are you with this idea?
+> 1. It's in my head, I haven't done much yet
+> 2. I've put something together — a landing page, pitch, or one-pager
+> 3. I've done customer discovery or built something (interviews, a prototype, paying users)"
+
+Use `AskUserQuestion` with these three options.
+
+**If they pick option 1:** continue to the Tier 1 flow below.
+
+**If they pick option 2 or 3:** load the materials-based onboarding workflow:
+
+```
+.claude/skills/whats-next/references/with-progress.md
+```
+
+Pass the tier (2 or 3) as context. The reference file's instructions take over from this point — do not continue with the Tier 1 steps below.
+
+---
+
+## Tier 1 flow — idea in their head
+
+### Step 3 — Ask what they're building
 
 Ask the founder:
 
@@ -54,7 +79,7 @@ Ask the founder:
 
 Wait for their response. Store as `seed_description`.
 
-### Step 3 — Suggest a project name
+### Step 4 — Suggest a project name
 
 Read the `seed_description` and generate 2–3 short, catchy working titles that capture the idea's essence (e.g., for "an app that helps dog walkers find clients" → "DogWalk", "WalkFinder", "PawConnect").
 
@@ -71,7 +96,7 @@ Use `AskUserQuestion` with these options. If they pick "Something else", ask the
 
 Store the result as `project_name`.
 
-### Step 4 — Run the init script
+### Step 5 — Run the init script
 
 Execute the scaffolding script:
 
@@ -91,7 +116,7 @@ This creates:
 
 If the script fails, handle the error and inform the founder.
 
-### Step 5 — Classify the idea and load the elaboration reference
+### Step 6 — Classify the idea and load the elaboration reference
 
 Read the `seed_description` and classify the idea:
 
@@ -118,7 +143,7 @@ Read the `seed_description` and classify the idea:
 
 Read the reference file and follow the instructions within it. Pass `seed_description` and `project_name` as context so the conversation doesn't start cold.
 
-### Step 6 — Create the first plan
+### Step 7 — Create the first plan
 
 After idea elaboration is complete (core.md has been written with at least Audience/ICP and Problem), propose the first real plan. At this point you have all the context — you just ran the elaboration conversation and the artifact directories are empty. No need to dispatch the advisor subagent for this.
 
@@ -136,4 +161,3 @@ The scaffold created a "Define your idea" step that is now complete — mark it 
 - `startup/AGENTS.md` exists
 - `startup/plan.md` exists with a substantive plan (not just the initial scaffold)
 - `CLAUDE.md` references `startup/AGENTS.md`
-

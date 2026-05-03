@@ -25,7 +25,27 @@ mkdir -p startup/competitors
 
 ## When competitors already exist
 
-Load and understand them for context. Infer intent from the conversation — don't mechanically ask "what do you want to do?" If the founder is:
+Load and understand them for context.
+
+**Before inferring intent — check for thin files.**
+
+A file is thin if any of these are true:
+- The `## Description` body contains `*To be filled in.*` or is a single short sentence with no real substance
+- The file is missing a `## Core Features` section entirely
+- The file is missing a `## Notes` section AND the description is thin
+
+If any thin files are found, surface this before doing anything else:
+
+> "I see {N} competitor(s) that haven't been fully researched yet: {names}. Want me to fill those out before we continue?"
+
+- **Yes** → dispatch a single `web-researcher` call covering all thin files (same focused prompt as discovery.md Path A — ask for description, core features, and differentiation notes for each). Save raw output to `startup/research/{YYYY-MM-DD}-{slug}-research.md` for each, or one combined file if multiple. Write the filled content back to each competitor file. Then proceed with whatever the founder originally asked.
+- **No** → proceed directly with whatever the founder originally asked.
+
+If all existing files are properly filled out, skip this check silently and proceed.
+
+---
+
+Infer intent from the conversation — don't mechanically ask "what do you want to do?" If the founder is:
 
 - **Asking about a specific competitor** — load that file, discuss, help update it
 - **Adding a new competitor** — help create a new file following the conventions below

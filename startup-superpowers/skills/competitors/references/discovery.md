@@ -25,7 +25,7 @@ Discover or refresh the competitive landscape through structured web research an
 **If competitors already exist:** skip the framing. Instead, briefly orient the founder:
 - Note what's already saved (N direct, N indirect) and name them
 - Frame this as looking for what's missing, what's changed, or what's emerged since the last look
-- Carry the existing competitor list into the scout brief so the agent doesn't resurface what's already known
+- Carry the existing competitor list into the research brief so the agent doesn't resurface what's already known
 
 Then proceed directly to Step 1.
 
@@ -35,7 +35,11 @@ Then proceed directly to Step 1.
 
 *(First-time discovery only — skip if competitors already exist)*
 
-Before diving into questions, briefly frame why competitor discovery is a good thing:
+Before diving into questions, frame the concrete output they'll walk away with:
+
+> "We're building your competitive landscape map — a clear picture of who's already in this space, what they cover, and where your idea fits. By the end, you'll have something you can use to sharpen your pitch and shape your first customer conversations. Before we search, there are a few things I want to understand."
+
+Then briefly frame why finding competitors is a good thing:
 
 - **Competitors are validation.** If other people are building solutions for this problem, it confirms the problem is real and worth solving. An empty competitive landscape is often a warning sign, not an opportunity.
 - **Understanding alternatives sharpens your pitch.** Once you know what's out there, you can articulate exactly why your approach is different — to customers, investors, and yourself.
@@ -55,16 +59,23 @@ Do not stack questions. Do not ask a question and then add a follow-up in the sa
 
 ## How to run the conversation
 
-Discovery happens in two phases: a lightweight scout to make sure we're looking in the right direction, then an optional deeper dive. This prevents wasting tokens on a broad search that turns out to be off-target.
-
 ### Step 1 — Build the research brief (one question at a time)
 
 Establish three things before dispatching any research. Ask them sequentially — one at a time, wait for the answer before asking the next.
 
-**Question 1:** Known competitors
+**Question 1:** Known or new competitors
+
+*First-time discovery:*
 > "Are there any competitors you're already aware of? Names, URLs, or even vague references — anything helps."
 
-If they have none, that's fine. Note it.
+*Reassessment (competitors already exist):*
+> "Have you come across any new competitors since we last looked?"
+
+**If they name competitors** — note them. These become the input for **Path A** below.
+
+**If they have none / nothing new:**
+- First-time → proceed with **Path B** (scout).
+- Reassessment → skip Path B and Path A entirely. Go straight to **Step 4** (expansion) — the scout would just resurface already-documented players, so go straight to the deeper search for what's new or emerged.
 
 **Question 2:** Focus areas
 > "Are there specific aspects you want us to focus on — certain pricing models, integrations, target market segments, or features? Or should we keep the search broad for now?"
@@ -72,17 +83,109 @@ If they have none, that's fine. Note it.
 **Question 3:** Hard exclusions
 > "Anything we should definitely exclude — certain company types, geographies, price points, or categories that aren't relevant?"
 
-Once you have all three answers, confirm the brief back in a single compact summary:
+---
 
-> "Got it. I'll do a quick scout first — find the top 2–3 direct and 2–3 indirect competitors so we can make sure we're looking in the right direction. Then we can go deeper if needed."
+### Path A — Research what you know
+
+*Take this path when the founder named competitors in Question 1.*
+
+The founder already has a map. Don't run a scout that will resurface the same names. Instead, research what they know, fill it out properly, and then offer to expand.
+
+**Confirm the approach:**
+
+> "I'll research {those competitors} first, fill out their profiles, then we can decide if we want to look for more."
+
+**Create any missing stubs:**
+
+For each named competitor not already in `startup/competitors/`, create a stub file now (slug the name, set `type: direct` as default, use the URL if provided):
+
+```markdown
+---
+type: direct
+url: {url or "unknown"}
+---
+
+# {Name}
+
+## Description
+
+*To be filled in.*
+```
+
+**Dispatch the research as a background task:**
+
+Send a single **background** Task call to the `web-researcher` agent so the conversation can continue while the search runs:
+
+```
+Research the following competitors for this project. For each, find their website, what they do, who they target, their key features, and how they compare to the project below.
+
+## Project context
+Name: {name}
+Description: {seed_description}
+{core fields from ## Core: audience/ICP, problem, solution, geography — include whatever is filled in core.md}
+
+## Competitors to research
+{list each named competitor with name and URL if known}
+
+## Already documented (do not resurface)
+{list any existing competitor files not in the research list, or "none"}
+
+## Research brief
+- Focus areas: {focus areas from Question 2, or "broad"}
+- Hard exclusions: {exclusions from Question 3, or "none"}
+
+For each competitor, return: name, URL, type (direct/indirect), a 2–3 sentence description, 3–5 key features, and differentiation notes relative to the project. Follow your standard output format.
+```
+
+**While the search runs — keep the conversation going:**
+
+Don't wait in silence. Read the conversation so far and pick up a natural thread — something the founder mentioned about their vision, a feature they're excited about, a problem they kept coming back to. Continue that thread.
+
+If there's no clear thread to pull, ask:
+
+> "While we wait — what do you think makes your approach different from what's out there?"
+
+Keep it to 1–2 exchanges. What the founder says here is useful: it'll inform the `## Notes` section of each competitor file, capturing their differentiation angle before the research anchors their thinking.
+
+When the search result arrives, acknowledge it and move on to saving and reviewing.
+
+**Save and present results:**
+
+Save the raw output to `startup/research/{YYYY-MM-DD}-competitive-landscape-known.md`:
+
+```markdown
+---
+date: {today}
+topic: Known competitors research — {project name}
+source_skill: competitors
+---
+
+# Research: Known competitors — {project name}
+
+{Full web-researcher output}
+```
+
+Present the results as a compact summary — one sentence per competitor. Then ask:
+
+> "Does this look right? Any of these mischaracterized, or any corrections to make?"
+
+Apply any corrections. Then **write the competitor files** for this set (follow Step 6 format below), updating any stubs created above.
+
+**Then proceed to Step 4 (expansion offer).**
 
 ---
 
-### Step 2 — Phase 1: Scout (lightweight)
+### Path B — Scout the landscape
 
-Dispatch **a single** Task call to the `web-researcher` agent. Use a `fast` model to keep this lightweight.
+*Take this path when the founder said they don't know any competitors.*
 
-**Scout agent prompt:**
+**Confirm the brief:**
+
+> "Got it. I'll do a quick scout first — find the top 2–3 direct and 2–3 indirect competitors so we can make sure we're looking in the right direction. Then we can go deeper if needed."
+
+**Dispatch the scout as a background task:**
+
+Send a single **background** Task call to the `web-researcher` agent so the conversation can continue while the search runs. Use a `fast` model to keep this lightweight.
 
 ```
 You are doing a QUICK SCOUT of the competitive landscape for the following project.
@@ -99,7 +202,6 @@ Find the TOP 2–3 DIRECT competitors and TOP 2–3 INDIRECT competitors. Focus 
 - Indirect: adjacent tools, different-approach-same-outcome products, or partial substitutes
 
 ## Research brief
-- Known competitors to include/expand on: {list or "none provided"}
 - Already documented (do not resurface): {list existing competitor names, or "none"}
 - Focus areas: {focus areas or "broad"}
 - Hard exclusions: {exclusions or "none"}
@@ -107,11 +209,17 @@ Find the TOP 2–3 DIRECT competitors and TOP 2–3 INDIRECT competitors. Focus 
 IMPORTANT: Keep this focused. Return at most 3 direct + 3 indirect competitors. Stick to Tier 1 and Tier 2 sources — skip community/industry deep dives for now. Return a structured list following your output format.
 ```
 
----
+**While the search runs — keep the conversation going:**
 
-### Step 3 — Save scout research and review with the founder
+Don't wait in silence. Read the conversation so far and pick up a natural thread. If there's no clear thread, ask:
 
-Save the raw web-researcher output to `startup/research/{YYYY-MM-DD}-competitive-landscape-scout.md` before presenting to the founder:
+> "While we wait — what do you think makes your approach different from what's out there?"
+
+Keep it to 1–2 exchanges. What the founder says will inform the `## Notes` section of each competitor file. When the search result arrives, acknowledge it and move to the review.
+
+**Save scout research and review with the founder:**
+
+Save the raw output to `startup/research/{YYYY-MM-DD}-competitive-landscape-scout.md`:
 
 ```markdown
 ---
@@ -125,7 +233,7 @@ source_skill: competitors
 {Full web-researcher output}
 ```
 
-Then present the scout results as a compact summary:
+Present as a compact summary:
 
 > **Direct competitors (N):** [Name 1], [Name 2], ...
 > **Indirect competitors (N):** [Name 1], [Name 2], ...
@@ -136,13 +244,15 @@ Then ask:
 
 > "Does this look like the right landscape? Any of these off-base, or any obvious gaps — companies you expected to see?"
 
-If the founder flags issues, adjust the brief and re-scout. The goal is to confirm we're searching in the right direction before investing in a deeper pass.
+If the founder flags issues, adjust the brief and re-scout. Once confirmed, **save the scout results** (follow Step 6 format below).
+
+**Then proceed to Step 4 (expansion offer).**
 
 ---
 
-### Step 4 — Phase 2: Expand (optional)
+### Step 4 — Expand (optional)
 
-Once the founder confirms the scout is on track, **save the scout results first** (follow the file-writing format in Step 6 below). Then offer to expand:
+Once the founder has confirmed the initial results (from either path), offer to go deeper:
 
 > "I've saved those {N} competitors. Want me to do a deeper search for up to 5 more? This takes a bit more time and tokens — or we can stop here and come back to it later."
 
@@ -169,9 +279,7 @@ Find UP TO 5 additional competitors (mix of direct and indirect) that were NOT a
 IMPORTANT: Do NOT repeat competitors already listed above. Return at most 5 new findings. Return a structured list following your output format.
 ```
 
-### Step 5 — Save expansion research and review results
-
-Save the raw expansion findings to `startup/research/{YYYY-MM-DD}-competitive-landscape-expansion.md`:
+Save the raw findings to `startup/research/{YYYY-MM-DD}-competitive-landscape-expansion.md`:
 
 ```markdown
 ---
@@ -185,13 +293,13 @@ source_skill: competitors
 {Full web-researcher output}
 ```
 
-Then present the new findings the same way as the scout. Ask the founder to confirm which to keep. If they flag more gaps, dispatch targeted follow-ups — but default to wrapping up. The goal is a useful landscape, not an exhaustive one.
+Present the new findings the same way as before. Ask the founder to confirm which to keep. If they flag more gaps, dispatch targeted follow-ups — but default to wrapping up. The goal is a useful landscape, not an exhaustive one.
 
 ---
 
-### Step 6 — Write the files
+### Step 5 — Write the files
 
-For each kept competitor:
+For each kept competitor (from either path):
 
 1. **Derive the slug:** lowercase the name, replace spaces and non-alphanumeric characters with hyphens, collapse multiple hyphens. Examples: "Notion AI" -> `notion-ai`, "G2.com" -> `g2-com`.
 
@@ -222,23 +330,52 @@ url: https://example.com
 
 Use `type: direct` or `type: indirect` in the frontmatter. The `url` is the competitor's main website.
 
+If a stub file already exists for this competitor, **overwrite it** with the full researched content — don't create a duplicate.
+
+---
+
+## Step 6 — Produce the competitive landscape map
+
+After all competitor files are written and the founder has confirmed the set:
+
+1. **Read all files** in `startup/competitors/` (skip any with `status: archived`).
+2. **Build the map** — a markdown table followed by a positioning paragraph:
+
+```markdown
+---
+date: {today}
+source_skill: competitors
+---
+
+# Competitive Landscape — {Project Name}
+
+| Competitor | Type | What they do | What they miss | URL |
+|---|---|---|---|---|
+| {Name} | direct | {one sentence} | {one sentence} | {url} |
+| {Name} | indirect | {one sentence} | {one sentence} | {url} |
+
+## Positioning
+
+{2–3 sentences: what the market currently serves well, what gap exists, where the founder's idea fits in that gap. Drawn from the actual competitor files — not a template.}
+```
+
+3. **Save to `startup/competitive-landscape.md`**, overwriting if it already exists.
+4. **Deliver the exit handoff** — one specific observation from the actual content, plus a forward-looking sentence:
+
+   > "You now have a competitive landscape map — [specific observation, e.g., 'everyone in this space targets enterprises, and nobody is serving the self-serve segment you're going after']. Your customer conversations can now include 'have you tried X?' questions, and you have a concrete differentiation point to articulate."
+
 ---
 
 ## Completion criteria
 
 - Competitor files written to `startup/competitors/`
 - The founder has reviewed and confirmed the set
+- `startup/competitive-landscape.md` written with table + positioning paragraph
 
 ---
 
 ## What comes next
 
-Briefly confirm how many competitors were saved and what type (e.g., "Saved 4 competitors — 2 direct, 2 indirect.").
-
-Give the founder a sense of progress and connect this work forward:
-- Now they have a map of the landscape — they can speak clearly about how their approach differs when talking to potential customers or investors
-- Competitor awareness strengthens interview conversations: the founder can probe whether people have tried these alternatives and what was missing
-
-Then mention natural next steps without pushing:
-- **Competitive positioning** — how the project differentiates from what was found
-- **Hypothesis exploration** — if not done yet
+After the exit handoff, mention natural next steps without pushing:
+- **Hypothesis exploration** — if not done yet, the landscape informs the key assumptions worth testing
+- **Interview scripts** — competitor awareness shapes what to ask customers ("have you tried X? what was missing?")

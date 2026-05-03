@@ -27,7 +27,11 @@ This is the most foundational piece of context. Everything downstream — compet
 
 ## How to run the conversation
 
-**Opening:** Briefly acknowledge the seed description and project name. Explain in one sentence that this conversation is about nailing down who the product is for, what problem they face, and how it solves it. Then ask your first question.
+**Opening:** Briefly acknowledge the seed description and project name. Then frame the conversation with its concrete output:
+
+> "Let's build a clear picture of your idea — by the end, we'll have something that shows how it reads to someone who doesn't know it yet. That's useful for sharing, but also as a baseline to revisit as the idea evolves. Before we dig in, there are a few things I want to understand."
+
+Then ask your first question.
 
 **Style:**
 - Be concise and direct
@@ -77,12 +81,17 @@ Once you have a solid understanding of at least audience and problem (solution a
 
 3. **Ask for confirmation** — "Does this capture it accurately? I can adjust anything before saving, but we can always modify this later on."
 4. **On confirmation**, read `startup/core.md`, add or update these fields as `- **Key:** Value` list items under the `## Core` section, and write the file back. Leave the frontmatter and `## Seed Description` untouched.
+5. **Produce the pitch mirror.** Read the `## Core` fields you just saved. Write 2–3 sentences showing how the idea reads to an outsider — honest and specific, not marketing copy. Then read `startup/core.md` again and append a `## How It Reads` section after `## Core`, write the file back.
+6. **Deliver the exit handoff** — one observation specific to this idea, plus a forward-looking sentence:
+
+   > "You now have a clear picture of your idea from the outside — [one specific observation, e.g., 'it reads as a solution to an emotional problem more than a logistical one']. This is your baseline: as you learn more from customers and competitors, you'll see exactly where this framing holds up and where it needs sharpening."
 
 ---
 
 ## Completion criteria
 
 - `startup/core.md` has **Audience** and **Problem** entries under `## Core`
+- `startup/core.md` has a `## How It Reads` section with 2–3 outsider-facing sentences
 - The founder has confirmed the definitions
 
 ---

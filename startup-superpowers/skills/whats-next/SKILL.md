@@ -21,7 +21,11 @@ The project hasn't been initialized yet. Load the initialization workflow:
 .claude/skills/whats-next/references/initialization.md
 ```
 
-The reference file's instructions take over from this point.
+The reference file's instructions take over from this point. For founders who already have materials or progress, `initialization.md` will route to:
+
+```
+.claude/skills/whats-next/references/with-progress.md
+```
 
 ---
 

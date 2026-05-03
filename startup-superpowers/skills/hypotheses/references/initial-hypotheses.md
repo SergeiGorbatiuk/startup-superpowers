@@ -27,9 +27,11 @@ Do not stack questions. Do not ask a question and then add a follow-up in the sa
 
 ## How to run the conversation
 
-**Opening:** Acknowledge the idea from `core.md` briefly. Frame why hypotheses matter in terms the founder cares about — connect it to their concrete benefit, not abstract methodology:
+**Opening:** Acknowledge the idea from `core.md` briefly. Frame the conversation with its concrete output — what the founder will have by the end and why it's useful:
 
-> "Every startup is built on assumptions — and the tricky part is you often don't notice you're making them. Let's pull them out into the open. These become the backbone of your validation: they'll shape your interview questions, help you know what to listen for, and some of them are foundations for features — they'll shape what you actually build first."
+> "Let's surface the bets your idea is riding on. Once we have them, you'll know what to ask in customer conversations, what to build first in your prototype or MVP, and what to instrument to measure — the right approach depends on the type of bet. Before we dig in, there are a few things I want to understand."
+
+Then transition directly into your first observation. Do not just ask the founder what their assumptions are — most people freeze when asked "what's your biggest assumption?" Instead, **you** do the pattern-recognition work and probe their reaction.
 
 Then transition directly into your first observation (see Step 1 below). Do not just ask the user what the assumptions are — most people freeze when asked "what's your biggest assumption?" Instead, **you** do the pattern-recognition work and probe the user's reaction.
 
@@ -180,9 +182,20 @@ status: untested
 
    - Tag is one of: `#problem`, `#solution`, `#willingness_to_pay`, `#urgency`, `#other`
    - Choose the tag that best fits what the hypothesis is testing
+   - In the `## Notes` section, include a validation approach based on the tag:
+     - `#problem` → "Best tested through customer conversations before building. What to ask: [specific angle drawn from this hypothesis]."
+     - `#solution` → "Can be validated through a lightweight prototype or early feature with analytics. What to measure: [specific metric drawn from this hypothesis]."
+     - `#willingness_to_pay` → "Best tested through both conversation (pricing questions) and a lightweight gate — a landing page, waitlist, or paywall. What to watch for: [specific signal drawn from this hypothesis]."
+     - `#urgency` → "Hardest to validate directly — look for behavioral signals in interviews: what people have already tried, how much they've spent, whether they've sought workarounds. What to probe: [specific angle drawn from this hypothesis]."
    - Do **not** set `last_assessed` on first write. That field is added by the first assessment (dispatched via the `hypotheses` skill), not on creation — it always means "evaluated against evidence," never "first written."
 
-4. **Confirm:** "Saved {N} hypotheses to `startup/hypotheses/`."
+4. **Deliver the exit handoff.** After confirming the save, present the full set conversationally — each bet in one line with its type and validation path:
+
+   > "Here are the bets you're making: [list each hypothesis as one line, naming its type and the right way to test it]. The [type] ones are best tested through [method] — those shape your first customer conversations. The [type] ones are worth building toward — those shape what your MVP tests and what you instrument."
+
+   Then call out the highest-stakes bet (most consequential if wrong):
+
+   > "Of these, [specific hypothesis] is the one most worth testing first — if it's wrong, the whole approach shifts."
 
 ---
 
