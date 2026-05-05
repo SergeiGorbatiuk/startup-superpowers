@@ -96,9 +96,13 @@ Use `AskUserQuestion` with these options. If they pick "Something else", ask the
 
 Store the result as `project_name`.
 
-### Step 5 — Run the init script
+### Step 5 — Set up the workspace
 
-Execute the scaffolding script:
+Tell the founder what is about to happen — no need to wait for confirmation, just set the context before the terminal output appears:
+
+> "I'll set up your project workspace now. This creates a `startup/` folder with your project definition (`core.md`), a roadmap file (`plan.md`), always-on context for me across sessions (`AGENTS.md`), and folders for competitors, hypotheses, and research."
+
+**STOP — run the init script now. Do not ask any questions. Do not engage with the idea further. Run the script, then continue to Step 6.**
 
 ```bash
 npx tsx .claude/skills/whats-next/scripts/init-project.ts \

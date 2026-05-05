@@ -44,17 +44,24 @@ if (!args.name) {
 const targetDir = resolve(args.dir || process.cwd());
 const root = join(targetDir, "startup");
 
-if (existsSync(root)) {
-  console.error(
-    `Error: ${root} already exists. Remove it first or use a different directory.`
-  );
-  process.exit(1);
-}
-
 mkdirSync(root, { recursive: true });
 mkdirSync(join(root, "hypotheses"), { recursive: true });
 mkdirSync(join(root, "competitors"), { recursive: true });
 mkdirSync(join(root, "research"), { recursive: true });
+
+const created: string[] = [];
+const skipped: string[] = [];
+
+function writeIfMissing(filePath: string, content: string, label: string): void {
+  if (existsSync(filePath)) {
+    console.log(`  [skip] ${label} already exists`);
+    skipped.push(label);
+  } else {
+    writeFileSync(filePath, content);
+    console.log(`  [create] ${label}`);
+    created.push(label);
+  }
+}
 
 // ---------------------------------------------------------------------------
 // core.md — the single source of truth for the project definition
@@ -76,7 +83,7 @@ ${seedDescription}
 ## Core
 `;
 
-writeFileSync(join(root, "core.md"), coreMd);
+writeIfMissing(join(root, "core.md"), coreMd, "core.md");
 
 // ---------------------------------------------------------------------------
 // plan.md — cumulative plan tracking current focus and next steps
@@ -106,7 +113,7 @@ Define your idea — who it's for, what problem it solves, and how.
 Project initialized. Starting with idea definition.
 `;
 
-writeFileSync(join(root, "plan.md"), planMd);
+writeIfMissing(join(root, "plan.md"), planMd, "plan.md");
 
 // ---------------------------------------------------------------------------
 // AGENTS.md — ambient context loaded via CLAUDE.md reference
@@ -159,7 +166,7 @@ A \`web-researcher\` subagent is available for any research task that goes beyon
 Research summaries from web-researcher runs are saved to \`startup/research/\` as dated \`.md\` files. This preserves expensive research for future reference. The calling skill is responsible for writing the file after getting the agent's output.
 `;
 
-writeFileSync(join(root, "AGENTS.md"), agents);
+writeIfMissing(join(root, "AGENTS.md"), agents, "AGENTS.md");
 
 // ---------------------------------------------------------------------------
 // Add reference to project's CLAUDE.md
@@ -186,11 +193,8 @@ if (existsSync(claudeMdPath)) {
 // Done
 // ---------------------------------------------------------------------------
 
-console.log(`✓ startup/ initialized for "${args.name}"`);
-console.log(`  ${root}/`);
-console.log(`  ├── core.md`);
-console.log(`  ├── plan.md`);
-console.log(`  ├── AGENTS.md`);
-console.log(`  ├── hypotheses/`);
-console.log(`  ├── competitors/`);
-console.log(`  └── research/`);
+console.log(
+  `\n✓ Scaffold complete for "${args.name}": ${created.length} created, ${skipped.length} skipped.`
+);
+if (created.length > 0) console.log(`  Created: ${created.join(", ")}`);
+if (skipped.length > 0) console.log(`  Skipped: ${skipped.join(", ")}`);
