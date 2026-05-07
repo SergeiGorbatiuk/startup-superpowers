@@ -42,8 +42,8 @@ startup-superpowers/
 │   ├── lean-startup-advisor.md           # Bias-isolated project assessment agent
 │   ├── interview-analyst.md              # Bias-isolated interview transcript analysis agent
 │   └── hypotheses-manager.md             # Bias-isolated hypothesis state assessment agent
-├── hooks/
-│   ├── hooks.json                        # Hook registrations (PostToolUse on Edit/Write)
+├── hooks/                                # Hook registrations live inline in .claude-plugin/plugin.json
+│   ├── auto-approve-startup.mjs          # PreToolUse: pre-approves Read/Write/Edit on paths under startup/
 │   ├── validate-core-md.mjs              # PostToolUse: checks startup/core.md conventions
 │   ├── validate-competitors-md.mjs       # PostToolUse: checks competitor .md file conventions
 │   ├── validate-hypotheses-md.mjs        # PostToolUse: checks hypothesis .md file conventions
@@ -592,7 +592,16 @@ A bias-isolated assessment agent dispatched by the `whats-next` skill to evaluat
 
 ## Hooks
 
-Hooks are registered in `startup-superpowers/hooks/hooks.json` (the plugin's hook manifest), all PostToolUse only:
+Hooks are registered in `startup-superpowers/.claude-plugin/plugin.json` (inline in the plugin manifest):
+
+**PreToolUse:**
+
+| Hook | Trigger | What it does |
+|---|---|---|
+| *(inline)* | PreToolUse on WebSearch/WebFetch | Emits `permissionDecision: "allow"` to pre-approve these tools for subagents (e.g. `web-researcher`), which cannot interactively prompt for permission |
+| `auto-approve-startup.mjs` | PreToolUse on Read/Write/Edit | Reads `tool_input.file_path` and emits `permissionDecision: "allow"` only when the path is within `startup/`. Allows subagents (e.g. `interview-analyst`) to write to plugin-managed state without manual approval. Falls through silently for any other path. |
+
+**PostToolUse:**
 
 | Hook | Trigger | What it checks |
 |---|---|---|
@@ -604,7 +613,7 @@ Hooks are registered in `startup-superpowers/hooks/hooks.json` (the plugin's hoo
 | `validate-surveys-md.mjs` | PostToolUse on Edit/Write | `startup/surveys/*.md` files have frontmatter with `status` (draft/ready/active/closed/archived), `mode` (questions-only/tally), and `date_created`; have an H1 heading; have a `## Questions` section |
 | `validate-mvp-plan-md.mjs` | PostToolUse on Edit/Write | `startup/mvp-plan.md` has frontmatter with `status` (designing/ready/live/measuring/validated/archived) and `version`; has an H1 heading; has a `## Success Criteria` section |
 
-Hook pattern: read from stdin as JSON, extract `tool_input.file_path`, ignore unrelated files (exit 0), check conventions, output nudge messages to stderr but **always exit 0** — never block writes. No external dependencies — plain Node ESM.
+PostToolUse hook pattern: read from stdin as JSON, extract `tool_input.file_path`, ignore unrelated files (exit 0), check conventions, output nudge messages to stderr but **always exit 0** — never block writes. No external dependencies — plain Node ESM.
 
 ---
 
