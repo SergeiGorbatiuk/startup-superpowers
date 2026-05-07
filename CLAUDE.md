@@ -55,7 +55,7 @@ startup-superpowers/
     ├── whats-next/
     │   ├── SKILL.md                      # Layer 1: project direction + plan management
     │   ├── scripts/
-    │   │   └── init-project.ts          # Scaffolds startup/ on first run
+    │   │   └── init-project.ts          # Legacy scaffold script (no longer used — initialization.md writes files directly)
     │   └── references/
     │       ├── initialization.md         # Layer 2: first-time project setup (routes to with-progress.md for tiers 2/3)
     │       ├── with-progress.md         # Layer 2: materials-based onboarding for founders with existing progress
@@ -217,7 +217,7 @@ Owns the founder's journey from day zero onward. The skill (Layer 1) is a thin r
 - **Pivot detected** — when the advisor's assessment includes an Artifact Relevance section (foundational core.md fields changed), routes to the `pivot-impact` reference (Layer 2) for an artifact-by-artifact walk-through before updating the plan
 - **Plan missing** — creates a blank plan, then dispatches the subagent
 
-The initialization workflow, idea elaboration references (B2C/B2B), pivot impact workflow, and the scaffolding script all live under `skills/whats-next/`.
+The initialization workflow, idea elaboration references (B2C/B2B), and pivot impact workflow all live under `skills/whats-next/`. The `scripts/init-project.ts` file remains but is no longer used — `initialization.md` writes the scaffold files directly.
 
 ---
 
