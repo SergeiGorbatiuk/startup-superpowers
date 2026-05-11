@@ -48,17 +48,6 @@ try {
 
 const nudges = [];
 
-// Safety net: if AGENTS.md is missing the workspace was never scaffolded.
-// Nudge the agent to run the init script before writing anything to core.md.
-const agentsPath = filePath.replace(/core\.md$/, "AGENTS.md");
-if (!existsSync(agentsPath)) {
-  nudges.push(
-    "startup/AGENTS.md is missing — the workspace hasn't been scaffolded yet. " +
-      "Run the init script before writing to startup/core.md: " +
-      "`npx tsx .claude/skills/whats-next/scripts/init-project.ts --name \"<name>\" --description \"<desc>\"`"
-  );
-}
-
 // ---------- check frontmatter ----------------------------------------------
 
 const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);

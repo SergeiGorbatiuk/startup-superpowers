@@ -195,7 +195,5 @@ Present the proposed plan conversationally, get the founder's confirmation, and 
 ## Completion criteria
 
 - `startup/core.md` exists with `version` and `name` in frontmatter, a `## Seed Description` section, and at least **Audience** (or **ICP**) and **Problem** under `## Core`
-- `startup/AGENTS.md` exists
 - `startup/plan.md` exists with a plan that reflects the founder's actual state (pre-checked steps, appropriate Current Focus)
-- `CLAUDE.md` references `startup/AGENTS.md`
 - (Tier 3) Any competitors the founder named exist as stub files in `startup/competitors/`
