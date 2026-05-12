@@ -7,7 +7,10 @@
     "plugins": [
       {
         "name": "startup-superpowers",
-        "source": "./",
+        "source": {
+          "source": "github",
+          "repo": "SergeiGorbatiuk/startup-superpowers"
+        },
         "description": "A local-first startup advisor that guides founders through idea idea validation, competitors research, hypotheses generation, MVP/prototype design, and more."
       }
     ]
