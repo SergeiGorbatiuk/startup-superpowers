@@ -2,12 +2,15 @@
 /**
  * auto-approve-startup.mjs — PreToolUse hook for files under `startup/`.
  *
- * Pre-approves Read/Write/Edit operations on any file within the project's
- * `startup/` directory, so that subagents (which cannot interactively prompt
- * for permission) can operate on plugin-managed state without manual approval.
+ * Pre-approves file operations on any path within the project's `startup/`
+ * directory, so subagents (which cannot interactively prompt for permission)
+ * can operate on plugin-managed state without manual approval.
  *
- * Emits `permissionDecision: "allow"` only for paths within `startup/`.
- * Falls through silently (exit 0, no output) for any other path.
+ * Cross-harness: emits both Claude Code's `hookSpecificOutput.permissionDecision`
+ * and Cursor's top-level `permission` field. Each harness reads what it
+ * recognises and ignores the rest.
+ *
+ * Falls through silently (exit 0, no output) for any path outside `startup/`.
  *
  * No runtime dependencies. Plain Node ESM.
  */
@@ -38,6 +41,7 @@ console.log(
       permissionDecision: "allow",
       permissionDecisionReason: "Plugin-managed file under startup/",
     },
+    permission: "allow",
   })
 );
 

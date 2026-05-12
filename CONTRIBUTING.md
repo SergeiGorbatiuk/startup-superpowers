@@ -3,11 +3,13 @@
 
 ## Project layout
 
-The plugin source lives under [startup-superpowers/](startup-superpowers/). The founder-facing runtime state (`startup/`) is created inside the target project, not here.
+The repo root is the plugin. The founder-facing runtime state (`startup/`) is created inside the target project, not here.
 
 ```
-startup-superpowers/
-├── .claude-plugin/plugin.json   # Manifest + hook registrations
+./
+├── .claude-plugin/
+│   ├── plugin.json              # Manifest + hook registrations
+│   └── marketplace.json         # Single-plugin marketplace (source: ./)
 ├── agents/                      # Bias-isolated subagents (web-researcher, advisor, ...)
 ├── hooks/                       # PreToolUse / PostToolUse hooks
 └── skills/<skill-name>/
@@ -35,7 +37,7 @@ Skills are organized in three layers so context loads only when needed:
 
 ## Adding a new skill
 
-1. Create `startup-superpowers/skills/<your-skill>/SKILL.md` with YAML frontmatter (`name`, `description`). The description is what triggers activation — make it specific.
+1. Create `skills/<your-skill>/SKILL.md` with YAML frontmatter (`name`, `description`). The description is what triggers activation — make it specific.
 2. If the skill has a first-time workflow or a heavy branch, put it in `references/<workflow>.md` and have `SKILL.md` route to it conditionally.
 3. Define the artifact format: where files live under `startup/`, what frontmatter they carry, what sections are required.
 4. Add a hook to validate the artifact format (see below).
@@ -43,7 +45,7 @@ Skills are organized in three layers so context loads only when needed:
 
 ## Adding or modifying a subagent
 
-Subagents (e.g. `web-researcher`, `interview-analyst`) live in `startup-superpowers/agents/`. Use them when:
+Subagents (e.g. `web-researcher`, `interview-analyst`) live in `agents/`. Use them when:
 
 - The work needs **bias isolation** from the main conversation (assessment, analysis).
 - The work is **heavy** and would otherwise blow up the main context window (web research).
@@ -54,12 +56,12 @@ Subagents receive their tools via frontmatter. If a subagent needs to write unde
 
 Hooks enforce a **predictable project structure**. The plugin is a collection of skills written and extended over time, and every skill assumes that artifacts created by other skills follow the documented conventions (frontmatter keys, required sections, slug rules). Without enforcement, drift is inevitable and downstream skills break in subtle ways.
 
-There are two kinds of hooks, both registered inline in [startup-superpowers/.claude-plugin/plugin.json](startup-superpowers/.claude-plugin/plugin.json):
+There are two kinds of hooks, both registered in [hooks/hooks.json](hooks/hooks.json) (and mirrored in [hooks/hooks-cursor.json](hooks/hooks-cursor.json) for Cursor):
 
 ### PreToolUse hooks — permissions
 
 - **Inline WebSearch/WebFetch allow** — subagents can't prompt interactively, so these tools are pre-approved for them.
-- **[auto-approve-startup.mjs](startup-superpowers/hooks/auto-approve-startup.mjs)** — pre-approves `Read`/`Write`/`Edit` on paths inside `startup/`. Lets subagents (e.g. `interview-analyst`) write plugin-managed state without manual approval. Falls through silently for any other path.
+- **[auto-approve-startup.mjs](hooks/auto-approve-startup.mjs)** — pre-approves `Read`/`Write`/`Edit` on paths inside `startup/`. Lets subagents (e.g. `interview-analyst`) write plugin-managed state without manual approval. Falls through silently for any other path.
 
 ### PostToolUse hooks — convention validation
 
@@ -70,7 +72,7 @@ One `validate-*.mjs` hook per artifact type. Each one:
 3. Checks frontmatter, headings, and required sections against the documented format.
 4. Writes advisory messages to stderr **but always exits 0** — hooks nudge, they never block writes.
 
-This means new skills can rely on `startup/competitors/*.md`, `startup/hypotheses/*.md`, etc. having a known shape, and a contributor adding a new artifact type can immediately get convention enforcement by dropping in a new `validate-<thing>.mjs` and registering it in `plugin.json`.
+This means new skills can rely on `startup/competitors/*.md`, `startup/hypotheses/*.md`, etc. having a known shape, and a contributor adding a new artifact type can immediately get convention enforcement by dropping in a new `validate-<thing>.mjs` and registering it in `hooks/hooks.json` (plus `hooks/hooks-cursor.json` for Cursor parity).
 
 ### Writing a new validation hook
 
@@ -80,7 +82,7 @@ This means new skills can rely on `startup/competitors/*.md`, `startup/hypothese
 - Check what you care about; write friendly nudges to stderr.
 - Always exit 0.
 
-Pattern-match an existing hook like [validate-hypotheses-md.mjs](startup-superpowers/hooks/validate-hypotheses-md.mjs) and adapt.
+Pattern-match an existing hook like [validate-hypotheses-md.mjs](hooks/validate-hypotheses-md.mjs) and adapt.
 
 ## Key conventions to preserve
 

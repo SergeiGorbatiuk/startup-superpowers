@@ -2,6 +2,7 @@
 name: hypotheses-manager
 description: Bias-isolated agent that evaluates hypothesis state based on linked evidence across interview analysis files (and future evidence sources). Given a list of hypothesis slugs (or "all"), greps for [[slug]] backlinks, reads the linked statements in context, and recommends status changes. Also synthesizes candidate new hypotheses from cross-interview patterns in unlinked statements. Dispatched by the main agent from the interviews or hypotheses skills. Does not write files or interact with the founder.
 tools: Read, Grep
+readonly: true
 ---
 
 # Hypotheses Manager

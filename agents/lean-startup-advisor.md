@@ -2,6 +2,7 @@
 name: lean-startup-advisor
 description: Bias-isolated assessment agent that evaluates a startup project's current state against lean startup methodology and recommends plan updates. Dispatched by the whats-next skill — not invoked directly by the founder. Returns structured recommendations as text; does not write files or interact with the user.
 tools: Read
+readonly: true
 ---
 
 # Lean Startup Advisor

@@ -10,7 +10,7 @@ A local-first startup advisor that guides founders through idea validation using
 - Skills load only when relevant (progressive disclosure)
 - One question at a time in all conversational flows
 - Hooks nudge on convention violations but never block writes
-- This is distributed as a Claude Code plugin. The plugin lives in `startup-superpowers/` (with `.claude-plugin/plugin.json` as the manifest); skills, agents, and hooks are all namespaced under it. Founder-facing runtime state (`startup/`) lives in the target project's root.
+- This is distributed as a Claude Code plugin. The repo root *is* the plugin (with `.claude-plugin/plugin.json` as the manifest and `.claude-plugin/marketplace.json` for the single-plugin marketplace). Skills, agents, and hooks live directly at repo root. Founder-facing runtime state (`startup/`) lives in the target project's root.
 
 ---
 
@@ -30,19 +30,20 @@ Layer 0 describes **what** things are and loads via skill activation — no proj
 
 ## Repository layout
 
-The plugin source lives under `startup-superpowers/`. The target project — where a founder actually works — only ever contains the `startup/` state directory; the plugin itself is loaded by Claude Code from wherever it's installed.
+The repo root is the plugin. The target project — where a founder actually works — only ever contains the `startup/` state directory; the plugin itself is loaded by Claude Code from wherever it's installed.
 
-**Plugin (this repo — `startup-superpowers/`):**
+**Plugin (this repo):**
 ```
-startup-superpowers/
+./
 ├── .claude-plugin/
-│   └── plugin.json                       # Plugin manifest (name, version, skills entrypoint)
+│   ├── plugin.json                       # Plugin manifest (name, version, skills entrypoint, hook registrations)
+│   └── marketplace.json                  # Marketplace listing (single-plugin marketplace, source: ./)
 ├── agents/
 │   ├── web-researcher.md                 # Generic research subagent definition
 │   ├── lean-startup-advisor.md           # Bias-isolated project assessment agent
 │   ├── interview-analyst.md              # Bias-isolated interview transcript analysis agent
 │   └── hypotheses-manager.md             # Bias-isolated hypothesis state assessment agent
-├── hooks/                                # Hook registrations live inline in .claude-plugin/plugin.json
+├── hooks/                                # Hook scripts + hooks.json (Claude Code) and hooks-cursor.json (Cursor)
 │   ├── auto-approve-startup.mjs          # PreToolUse: pre-approves Read/Write/Edit on paths under startup/
 │   ├── validate-core-md.mjs              # PostToolUse: checks startup/core.md conventions
 │   ├── validate-competitors-md.mjs       # PostToolUse: checks competitor .md file conventions
@@ -154,7 +155,7 @@ A PostToolUse hook (`validate-core-md.mjs`) checks that conventions are followed
 
 ## Always-on knowledge — the `using-startup-superpowers` skill
 
-Plugin-wide ground rules live in `startup-superpowers/skills/using-startup-superpowers/SKILL.md` as a Layer 0 skill. Its description triggers on any conversation about a startup idea, product validation, founder strategy, or work inside a `startup/` workspace, so it loads alongside the relevant Layer 1 skill on every founder-facing turn. The skill body covers:
+Plugin-wide ground rules live in `skills/using-startup-superpowers/SKILL.md` as a Layer 0 skill. Its description triggers on any conversation about a startup idea, product validation, founder strategy, or work inside a `startup/` workspace, so it loads alongside the relevant Layer 1 skill on every founder-facing turn. The skill body covers:
 
 - Voice-input handling (transcription unreliable with proper nouns)
 - The source of truth for the project definition (`core.md`) and how to update it
@@ -598,7 +599,7 @@ A bias-isolated assessment agent dispatched by the `whats-next` skill to evaluat
 
 ## Hooks
 
-Hooks are registered in `startup-superpowers/.claude-plugin/plugin.json` (inline in the plugin manifest):
+Hooks are registered in `hooks/hooks.json` (referenced from `.claude-plugin/plugin.json` via the `hooks` field). The Cursor variant lives at `hooks/hooks-cursor.json`.
 
 **PreToolUse:**
 
