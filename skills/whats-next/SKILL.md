@@ -9,7 +9,7 @@ Orient the user on where their project stands and what to focus on next. Most of
 
 ## Before you start
 
-Check if `startup/core.md` exists.
+Check whether `./startup/core.md` exists in the current working directory. Use a relative path. Do not list parent directories or absolute paths — the project is always the current working directory.
 
 ---
 

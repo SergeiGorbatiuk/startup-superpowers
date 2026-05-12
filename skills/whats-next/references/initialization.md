@@ -41,7 +41,7 @@ This conversation can feel like an interrogation if you're not careful. The foun
 
 ### Step 1 — Check for existing project
 
-Read the workspace for a `startup/core.md` file.
+Check for `./startup/core.md` in the current working directory. Use the relative path `startup/core.md`. **Do not list parent directories, absolute paths, or anything outside the current project** — the founder's project is always the current working directory, and exploring above it is both unnecessary and a privacy concern.
 
 - **If it exists:** tell the founder their project is already initialized. Read the project name from the `name` field in the frontmatter. Explain that if they want to explore a new idea, the easiest way is to create a new folder and start from there — this avoids mixing contexts.
 - **If it doesn't exist:** proceed to Step 2.
