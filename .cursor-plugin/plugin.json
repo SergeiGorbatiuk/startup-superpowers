@@ -1,0 +1,15 @@
+{
+  "name": "startup-superpowers",
+  "displayName": "Startup Superpowers",
+  "description": "Local-first startup advisor: idea validation, competitor research, hypothesis generation, MVP design",
+  "version": "1.0.7",
+  "author": {
+    "name": "Sergei Gorbatiuk"
+  },
+  "homepage": "https://github.com/SergeiGorbatiuk/startup-superpowers",
+  "repository": "https://github.com/SergeiGorbatiuk/startup-superpowers",
+  "license": "GPL-3.0",
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "hooks": "./hooks/hooks-cursor.json"
+}
