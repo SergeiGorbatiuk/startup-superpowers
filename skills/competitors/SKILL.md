@@ -38,7 +38,7 @@ If any thin files are found, surface this before doing anything else:
 
 > "I see {N} competitor(s) that haven't been fully researched yet: {names}. Want me to fill those out before we continue?"
 
-- **Yes** → dispatch a single `web-researcher` call covering all thin files (same focused prompt as discovery.md Path A — ask for description, core features, and differentiation notes for each). Save raw output to `startup/research/{YYYY-MM-DD}-{slug}-research.md` for each, or one combined file if multiple. Write the filled content back to each competitor file. Then proceed with whatever the founder originally asked.
+- **Yes** → dispatch a single `web-researcher` call covering all thin files (same focused prompt as discovery.md Path A). The `web-researcher` agent is generic, so include the **Competitor output format** spec from `references/discovery.md` in the dispatch prompt (the per-competitor fields + direct/indirect + maturity), asking for description, core features, and differentiation notes for each. Save raw output to `startup/research/{YYYY-MM-DD}-{slug}-research.md` for each, or one combined file if multiple. Write the filled content back to each competitor file. Then proceed with whatever the founder originally asked.
 - **No** → proceed directly with whatever the founder originally asked.
 
 If all existing files are properly filled out, skip this check silently and proceed.
@@ -51,7 +51,7 @@ Infer intent from the conversation — don't mechanically ask "what do you want 
 - **Adding a new competitor** — help create a new file following the conventions below
 - **Updating an existing competitor** — read the file, propose changes, get confirmation, write it back
 - **Asking about the landscape broadly** — summarize what exists, grouped by type (direct/indirect), with key differentiators
-- **Wanting deeper research on a specific competitor** — dispatch the `web-researcher` agent with a focused prompt about that competitor, update the file with findings, and save the full web-researcher output to `startup/research/{YYYY-MM-DD}-{competitor-slug}-research.md` with frontmatter `date`, `topic`, and `source_skill: competitors`
+- **Wanting deeper research on a specific competitor** — dispatch the `web-researcher` agent with a focused prompt about that competitor (the agent is generic, so include the **Competitor output format** spec from `references/discovery.md` in the prompt), update the file with findings, and save the full web-researcher output to `startup/research/{YYYY-MM-DD}-{competitor-slug}-research.md` with frontmatter `date`, `topic`, and `source_skill: competitors`
 - **Wanting to know what users think of a competitor** — when the founder asks specifically about user feedback / reviews / what people love or complain about (for one competitor or the whole set), load `references/user-feedback.md` and follow it. It mines review sites and communities and writes a `## What Users Say` section into each competitor file.
 - **Archiving** — when a competitor is no longer relevant (e.g., after a pivot to a different market), set `status: archived` and add `archived_reason` to frontmatter with a one-line explanation. Archived competitors stay in place and can be restored by removing the status or setting it to `active`
 

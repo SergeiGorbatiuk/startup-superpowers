@@ -57,6 +57,33 @@ Do not stack questions. Do not ask a question and then add a follow-up in the sa
 
 ---
 
+## Competitor output format
+
+The `web-researcher` agent is generic — it does not assume a competitor shape. **Every competitor dispatch below must include this output spec in its prompt**, so the agent returns the fields the competitor files need:
+
+```
+For each competitor, return:
+### [Company Name]
+- **URL:** https://...
+- **Type:** direct / indirect
+- **Maturity:** incumbent / scaleup / startup / unknown
+- **Description:** One sentence on what they do and who they target.
+- **Key Features:** 2–4 bullet points of notable capabilities
+- **Differentiation note:** How they compare to our project — what overlaps, and where gaps exist.
+- **Sources:** [source 1](url), [source 2](url)
+- **Confidence:** High / Medium / Low (High = multiple independent sources; Low = single source, flag it)
+
+End with a brief coverage summary: what you searched, any gaps, and whether you hit the exclusion criteria.
+```
+
+**Direct vs indirect** (include this guidance in the dispatch when relevant):
+- **Direct:** Solves the same core problem for the same audience. A founder would evaluate these head-to-head.
+- **Indirect:** Adjacent tool that could be adapted, or solves a related problem. Customers might consider these as partial substitutes or complements.
+
+The briefs below reference this spec. Where a brief says "use the competitor output format above," include the block verbatim in the dispatch prompt (along with the maturity classification instructions in each brief).
+
+---
+
 ## How to run the conversation
 
 ### Step 1 — Build the research brief (one question at a time)
@@ -134,15 +161,15 @@ Description: {seed_description}
 - Focus areas: {focus areas from Question 2, or "broad"}
 - Hard exclusions: {exclusions from Question 3, or "none"}
 
-For each competitor, return: name, URL, type (direct/indirect), a 2–3 sentence description, 3–5 key features, and differentiation notes relative to the project. Follow your standard output format.
-
-Also classify each competitor's maturity as one of:
+Return results using the competitor output format below (include it in the dispatch). Classify each competitor's maturity using these tiers:
 - incumbent — established/large: significant funding or revenue, large headcount, long in market, recognized brand
 - scaleup — growing fast: Series A+ funding, moderate headcount, a few years in market
 - startup — early: pre-seed/seed or bootstrapped, small team, recently launched
 - unknown — signals insufficient to classify confidently
 
-Base it on funding stage, founding year, headcount, and market presence (Crunchbase, LinkedIn, YC, press). Return a `maturity` field per competitor.
+Base maturity on funding stage, founding year, headcount, and market presence (Crunchbase, LinkedIn, YC, press).
+
+{include the "Competitor output format" spec from this reference here, verbatim}
 ```
 
 **While the search runs — keep the conversation going:**
@@ -214,9 +241,11 @@ Find the TOP 2–3 DIRECT competitors and TOP 2–3 INDIRECT competitors. Focus 
 - Focus areas: {focus areas or "broad"}
 - Hard exclusions: {exclusions or "none"}
 
-For each competitor, also classify maturity as one of: incumbent (established/large — significant funding/revenue, large team, long in market), scaleup (growing — Series A+, moderate team, a few years in), startup (early — pre-seed/seed or bootstrapped, small team, recently launched), or unknown (signals insufficient). Base it on funding stage, founding year, headcount, and market presence. Return a `maturity` field per competitor.
+For each competitor, also classify maturity as one of: incumbent (established/large — significant funding/revenue, large team, long in market), scaleup (growing — Series A+, moderate team, a few years in), startup (early — pre-seed/seed or bootstrapped, small team, recently launched), or unknown (signals insufficient). Base it on funding stage, founding year, headcount, and market presence.
 
-IMPORTANT: Keep this focused. Return at most 3 direct + 3 indirect competitors. Stick to Tier 1 and Tier 2 sources — skip community/industry deep dives for now. Return a structured list following your output format.
+IMPORTANT: Keep this focused. Return at most 3 direct + 3 indirect competitors. Stick to Tier 1 and Tier 2 sources — skip community/industry deep dives for now. Return results using the competitor output format below.
+
+{include the "Competitor output format" spec from this reference here, verbatim}
 ```
 
 **While the search runs — keep the conversation going:**
@@ -286,9 +315,11 @@ Find UP TO 5 additional competitors (mix of direct and indirect) that were NOT a
 - Focus areas: {focus areas or "broad"}
 - Hard exclusions: {exclusions or "none"}
 
-For each competitor, also classify maturity as one of: incumbent (established/large — significant funding/revenue, large team, long in market), scaleup (growing — Series A+, moderate team, a few years in), startup (early — pre-seed/seed or bootstrapped, small team, recently launched), or unknown (signals insufficient). Base it on funding stage, founding year, headcount, and market presence. Return a `maturity` field per competitor.
+For each competitor, also classify maturity as one of: incumbent (established/large — significant funding/revenue, large team, long in market), scaleup (growing — Series A+, moderate team, a few years in), startup (early — pre-seed/seed or bootstrapped, small team, recently launched), or unknown (signals insufficient). Base it on funding stage, founding year, headcount, and market presence.
 
-IMPORTANT: Do NOT repeat competitors already listed above. Return at most 5 new findings. Return a structured list following your output format.
+IMPORTANT: Do NOT repeat competitors already listed above. Return at most 5 new findings. Return results using the competitor output format below.
+
+{include the "Competitor output format" spec from this reference here, verbatim}
 ```
 
 Save the raw findings to `startup/research/{YYYY-MM-DD}-competitive-landscape-expansion.md`:

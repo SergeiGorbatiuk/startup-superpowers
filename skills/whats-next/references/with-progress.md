@@ -143,7 +143,7 @@ Then ask (one question):
 
 > "Want me to run a search to fill these out and potentially find more competitors you might not know about yet?"
 
-- **If yes:** dispatch the `web-researcher` agent using the same approach as the competitors/discovery workflow. Save research output to `startup/research/`. Save filled competitor files to `startup/competitors/`.
+- **If yes:** dispatch the `web-researcher` agent using the same approach as the competitors/discovery workflow. The agent is generic, so include the **Competitor output format** spec from `competitors/references/discovery.md` in the dispatch prompt (per-competitor fields + direct/indirect + maturity) — don't assume the agent supplies a competitor shape. Save research output to `startup/research/`. Save filled competitor files to `startup/competitors/`.
 - **If no:** leave the stubs for the founder to fill in later.
 
 ---
