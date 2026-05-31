@@ -135,6 +135,14 @@ Description: {seed_description}
 - Hard exclusions: {exclusions from Question 3, or "none"}
 
 For each competitor, return: name, URL, type (direct/indirect), a 2–3 sentence description, 3–5 key features, and differentiation notes relative to the project. Follow your standard output format.
+
+Also classify each competitor's maturity as one of:
+- incumbent — established/large: significant funding or revenue, large headcount, long in market, recognized brand
+- scaleup — growing fast: Series A+ funding, moderate headcount, a few years in market
+- startup — early: pre-seed/seed or bootstrapped, small team, recently launched
+- unknown — signals insufficient to classify confidently
+
+Base it on funding stage, founding year, headcount, and market presence (Crunchbase, LinkedIn, YC, press). Return a `maturity` field per competitor.
 ```
 
 **While the search runs — keep the conversation going:**
@@ -206,6 +214,8 @@ Find the TOP 2–3 DIRECT competitors and TOP 2–3 INDIRECT competitors. Focus 
 - Focus areas: {focus areas or "broad"}
 - Hard exclusions: {exclusions or "none"}
 
+For each competitor, also classify maturity as one of: incumbent (established/large — significant funding/revenue, large team, long in market), scaleup (growing — Series A+, moderate team, a few years in), startup (early — pre-seed/seed or bootstrapped, small team, recently launched), or unknown (signals insufficient). Base it on funding stage, founding year, headcount, and market presence. Return a `maturity` field per competitor.
+
 IMPORTANT: Keep this focused. Return at most 3 direct + 3 indirect competitors. Stick to Tier 1 and Tier 2 sources — skip community/industry deep dives for now. Return a structured list following your output format.
 ```
 
@@ -276,6 +286,8 @@ Find UP TO 5 additional competitors (mix of direct and indirect) that were NOT a
 - Focus areas: {focus areas or "broad"}
 - Hard exclusions: {exclusions or "none"}
 
+For each competitor, also classify maturity as one of: incumbent (established/large — significant funding/revenue, large team, long in market), scaleup (growing — Series A+, moderate team, a few years in), startup (early — pre-seed/seed or bootstrapped, small team, recently launched), or unknown (signals insufficient). Base it on funding stage, founding year, headcount, and market presence. Return a `maturity` field per competitor.
+
 IMPORTANT: Do NOT repeat competitors already listed above. Return at most 5 new findings. Return a structured list following your output format.
 ```
 
@@ -309,6 +321,7 @@ For each kept competitor (from either path):
 ---
 type: direct
 url: https://example.com
+maturity: incumbent
 ---
 
 # {Name}
@@ -328,7 +341,7 @@ url: https://example.com
 {How they compare to the project: overlaps, gaps, differentiation angle. Include founder comments if any were made during review.}
 ```
 
-Use `type: direct` or `type: indirect` in the frontmatter. The `url` is the competitor's main website.
+Use `type: direct` or `type: indirect` in the frontmatter. The `url` is the competitor's main website. Set `maturity` to the value the agent returned (`incumbent`, `scaleup`, `startup`, or `unknown`) — omit the field or use `unknown` when the agent couldn't classify it confidently.
 
 If a stub file already exists for this competitor, **overwrite it** with the full researched content — don't create a duplicate.
 
@@ -349,10 +362,10 @@ source_skill: competitors
 
 # Competitive Landscape — {Project Name}
 
-| Competitor | Type | What they do | What they miss | URL |
-|---|---|---|---|---|
-| {Name} | direct | {one sentence} | {one sentence} | {url} |
-| {Name} | indirect | {one sentence} | {one sentence} | {url} |
+| Competitor | Type | Maturity | What they do | What they miss | URL |
+|---|---|---|---|---|---|
+| {Name} | direct | incumbent | {one sentence} | {one sentence} | {url} |
+| {Name} | indirect | startup | {one sentence} | {one sentence} | {url} |
 
 ## Positioning
 
@@ -363,6 +376,12 @@ source_skill: competitors
 4. **Deliver the exit handoff** — one specific observation from the actual content, plus a forward-looking sentence:
 
    > "You now have a competitive landscape map — [specific observation, e.g., 'everyone in this space targets enterprises, and nobody is serving the self-serve segment you're going after']. Your customer conversations can now include 'have you tried X?' questions, and you have a concrete differentiation point to articulate."
+
+5. **Offer the user-feedback pass (opt-in).** Once the landscape is confirmed, offer to mine what real users say about these competitors:
+
+   > "Want me to mine what real users say about these {N} competitors? I'll scan review sites and community threads and pull out what users love, complain about, and wish existed — per competitor. It's more time- and token-intensive than this scan, but it's strong fuel for positioning and interview prompts. Or we can skip it and come back later."
+
+   If the founder accepts, load `references/user-feedback.md` and follow it for the confirmed set. If they skip, leave it as a natural next step they can return to.
 
 ---
 
@@ -377,5 +396,6 @@ source_skill: competitors
 ## What comes next
 
 After the exit handoff, mention natural next steps without pushing:
+- **User-feedback mining** — if the founder skipped the opt-in pass above, it stays available: mine review sites and communities for what users love, complain about, and wish existed per competitor (`references/user-feedback.md`)
 - **Hypothesis exploration** — if not done yet, the landscape informs the key assumptions worth testing
 - **Interview scripts** — competitor awareness shapes what to ask customers ("have you tried X? what was missing?")

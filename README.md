@@ -157,7 +157,7 @@ When in doubt, run `/whats-next` and let the planner pick.
 | Skill | What it does | When to use |
 |---|---|---|
 | `/whats-next` | Orients you on the project, manages next steps, detects pivots | Start of every session, after finishing any milestone, when you feel lost |
-| `/competitors` | Discovers, classifies (direct/indirect), and tracks competitors | Early in validation, or after a pivot to re-map the landscape |
+| `/competitors` | Discovers, classifies (direct/indirect, incumbent/scaleup/startup), and tracks competitors — and mines real user feedback (what users love, complain about, and wish existed) | Early in validation, or after a pivot to re-map the landscape |
 | `/market-research` | Researches market size, customer segments, buying behaviour, pricing, trends | Before committing to a segment, or to sanity-check the opportunity |
 | `/hypotheses` | Captures and tracks testable assumptions (problem, solution, willingness to pay, urgency), and turns each into a concrete next validation action | Before any interview, or whenever you catch yourself saying "I think users will..." |
 | `/interviews` | Drafts customer-discovery scripts and analyses transcripts against your hypotheses — surfacing what changed and the next move | Drafting a script for a new segment, or right after an interview |
@@ -179,6 +179,10 @@ Every artifact is plain markdown in `startup/`. No accounts, no SaaS, no lock-in
 ### Bias-isolated subagents
 
 Interview analysis, hypothesis state assessment, and plan recommendations each run in their own subagent. They read the files and reason from evidence — they can't be swayed by an enthusiastic pitch you just made in the main chat.
+
+### Competitor intelligence, not just a list
+
+`/competitors` doesn't just name who else is out there — it tells you whether each one is a funded incumbent or an early startup, and (on request) mines real user feedback from review sites and communities: what users love, what they complain about, and what they wish existed. You end up with populated profiles and concrete gaps to aim at, not a folder of links.
 
 ### Pivot detection
 

@@ -8,7 +8,11 @@
  *
  *   1. YAML frontmatter exists with `type` and `url`
  *   2. `type` is "direct" or "indirect"
- *   3. An H1 heading exists (the competitor's name)
+ *   3. `maturity`, if present, is "incumbent", "scaleup", "startup", or "unknown"
+ *   4. An H1 heading exists (the competitor's name)
+ *   5. A `## What Users Say` section, if present, only uses recognized H3
+ *      subsections (What Users Love / Complaints / Unmet Needs / Misc).
+ *      Missing subsections are fine — only unrecognized ones are nudged.
  *
  * All checks are advisory — the hook always exits 0. Convention
  * violations are reported to stderr so Claude sees them as gentle
@@ -88,6 +92,15 @@ if (!fmMatch) {
       `Frontmatter has status: "${kvPairs.status}". Expected "active" or "archived" (or omit for active).`
     );
   }
+
+  if (
+    kvPairs.maturity &&
+    !["incumbent", "scaleup", "startup", "unknown"].includes(kvPairs.maturity)
+  ) {
+    nudges.push(
+      `Frontmatter has maturity: "${kvPairs.maturity}". Expected "incumbent", "scaleup", "startup", or "unknown" (the field is optional — omit it when unclear).`
+    );
+  }
 }
 
 // ---------- check H1 heading -----------------------------------------------
@@ -98,6 +111,39 @@ if (!h1Match) {
   nudges.push(
     "No H1 heading found. The competitor's name should appear as a `# Name` heading."
   );
+}
+
+// ---------- check "What Users Say" subsections (if section present) --------
+
+const RECOGNIZED_FEEDBACK_SUBSECTIONS = [
+  "What Users Love",
+  "Complaints",
+  "Unmet Needs",
+  "Misc",
+];
+
+const wusMatch = content.match(/^##\s+What Users Say\s*$/m);
+
+if (wusMatch) {
+  // Slice from the section heading to the next H2 (or end of file).
+  const afterWus = content.slice(wusMatch.index + wusMatch[0].length);
+  const nextH2 = afterWus.search(/^##\s+/m);
+  const sectionBody = nextH2 === -1 ? afterWus : afterWus.slice(0, nextH2);
+
+  // Collect H3 subsection headings within the section.
+  const subHeadings = [...sectionBody.matchAll(/^###\s+(.+?)\s*$/gm)].map((m) =>
+    m[1].trim()
+  );
+
+  for (const heading of subHeadings) {
+    if (!RECOGNIZED_FEEDBACK_SUBSECTIONS.includes(heading)) {
+      nudges.push(
+        `"## What Users Say" has an unrecognized subsection "### ${heading}". ` +
+          "Expected one of: What Users Love, Complaints, Unmet Needs, Misc. " +
+          "(None are required — only include the buckets that have content.)"
+      );
+    }
+  }
 }
 
 // ---------- output nudges --------------------------------------------------
