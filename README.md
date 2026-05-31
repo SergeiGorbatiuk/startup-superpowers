@@ -176,6 +176,10 @@ Concrete things this plugin does that off-the-shelf chatbots don't:
 
 Every artifact is plain markdown in `startup/`. No accounts, no SaaS, no lock-in. Commit it, share it, open it in Obsidian, grep it from the terminal. Your validation work is yours.
 
+### Honest, optional feedback
+
+No telemetry, ever — the plugin doesn't phone home. At a few big milestones the agent may offer an optional, anonymous feedback link, and that's the whole mechanism. Nothing is sent unless you choose to fill it in, and a single "stop asking" turns the offers off for good.
+
 ### Bias-isolated subagents
 
 Interview analysis, hypothesis state assessment, and plan recommendations each run in their own subagent. They read the files and reason from evidence — they can't be swayed by an enthusiastic pitch you just made in the main chat.

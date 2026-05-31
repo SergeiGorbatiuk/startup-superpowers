@@ -414,6 +414,8 @@ source_skill: competitors
 
    If the founder accepts, load `references/user-feedback.md` and follow it for the confirmed set. If they skip, leave it as a natural next step they can return to.
 
+6. **Invite feedback (first time only).** The founder has just received their competitive landscape — a high-value moment. As the final beat of the close, follow the Layer 0 *Feedback invites* protocol for stage `competitors-done`: read `startup/.superpowers/feedback.md`, and unless the founder opted out, the tag is already recorded, or `FORM_ID` is still the placeholder, emit the invite tying it to the landscape they just got, then append the ledger line. If the user-feedback pass in item 5 is running, deliver this after that exchange settles so it remains the last beat.
+
 ---
 
 ## Completion criteria

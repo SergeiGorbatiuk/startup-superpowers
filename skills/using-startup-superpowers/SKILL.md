@@ -50,3 +50,46 @@ When the founder mentions a competitor or asks about the competitive landscape, 
 A `web-researcher` subagent is available for any research task that goes beyond a quick search — competitive landscape discovery, problem space validation, market signals, community discussion. Use it when the founder asks to research something or when research would meaningfully sharpen an assumption or decision.
 
 Research summaries from web-researcher runs are saved to `startup/research/` as dated `.md` files. This preserves expensive research for future reference. The calling skill is responsible for writing the file after getting the agent's output.
+
+## Feedback invites
+
+At a few high-value milestones, offer the founder an optional, anonymous feedback link. This is the plugin's only feedback mechanism — there is **no telemetry and nothing is ever sent automatically**. Everything here is advisory and founder-driven.
+
+**The ledger.** Invite state lives in `startup/.superpowers/feedback.md`, created lazily on the first invite:
+
+```markdown
+---
+opted_out: false
+---
+# Feedback invites (managed by Startup Superpowers — safe to delete)
+
+- competitors-done — invited 2026-05-31
+```
+
+- `opted_out: true` → never invite for any milestone again.
+- Each `{stage-tag} — invited {YYYY-MM-DD}` line means that milestone was already offered. One invite per stage tag, ever — the "first time only" behavior falls out of this; no counting needed.
+
+**Before inviting** at any milestone, read `startup/.superpowers/feedback.md` (if it doesn't exist, treat it as "nothing invited, not opted out"). Stay silent if it shows `opted_out: true` or already lists the stage tag. Otherwise emit the invite, then append the `{stage-tag} — invited {today}` line, creating the file and `startup/.superpowers/` folder if absent.
+
+**Milestones and stage tags** — each owned by the skill that produces the artifact:
+
+| Stage tag | Fires when |
+|---|---|
+| `competitors-done` | first `startup/competitive-landscape.md` written |
+| `first-interview-analyzed` | first `startup/interviews/*.md` analysis written |
+| `mvp-designed` | first `startup/mvp-plan.md` written |
+| `market-brief-done` | first `startup/market-brief.md` written |
+
+**The invite** — one warm, milestone-specific sentence tied to the win the founder just got, then the link, then the opt-out clause:
+
+> "Before you go — {one line tying to what they just received}. If you've got 60 seconds, here's a quick, anonymous form: `https://tally.so/r/Bz0ArK?stage={stage-tag}`. Totally optional, and just say the word if you'd rather I never bring this up again."
+
+- Link template: `https://tally.so/r/Bz0ArK?stage={stage-tag}`.
+- The `stage` value is the only thing that travels with the link, and only if the founder submits — no identity, no project content.
+- Emit it as the **final beat** of the skill's exit handoff, after the founder has the artifact in hand — never mid-workflow.
+
+**Status: live.** The form id is set below (`Bz0ArK`), so invites are active. (Guard: if the id is ever reset to the literal `{FORM_ID}` placeholder, treat the protocol as inert and do not emit any invite.)
+
+**Opt-out.** If the founder ever says "stop asking" / "don't bring this up again," set `opted_out: true` in the ledger and confirm briefly. Never ask again.
+
+**FORM_ID:** `Bz0ArK`  <!-- Live Tally form: https://tally.so/r/Bz0ArK . Reset to the literal {FORM_ID} placeholder to make invites dormant again. -->

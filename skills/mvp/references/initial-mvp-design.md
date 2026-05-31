@@ -218,3 +218,9 @@ For Wizard of Oz and Concierge forms: skip this step. The plan is the deliverabl
 - **Deploy it** — for deployable forms, the agent can scaffold and deploy from the project root
 - **Run it** — for manual forms, the founder runs the experiment
 - **Run interviews or surveys in parallel** — different evidence types compound; the MVP tells you if they use it, interviews tell you why
+
+---
+
+## Feedback invite (first time only)
+
+Once `startup/mvp-plan.md` is written and the close above is delivered, follow the Layer 0 *Feedback invites* protocol for stage `mvp-designed`: read `startup/.superpowers/feedback.md`, and unless the founder opted out, the tag is already recorded, or `FORM_ID` is still the placeholder, emit the invite tying it to the MVP plan they just shaped, then append the ledger line. Deliver it as the final beat, after the next-steps mention.

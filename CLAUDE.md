@@ -113,8 +113,10 @@ startup/                                  # All founder-facing state lives here
 │   ├── {slug}.md                         # One analysis file per interview
 │   └── transcripts/
 │       └── {slug}.md                     # Raw transcript or recollection, paired slug
-└── research/
-    └── {slug}.md                         # Raw research summaries saved after web-researcher runs
+├── research/
+│   └── {slug}.md                         # Raw research summaries saved after web-researcher runs
+└── .superpowers/
+    └── feedback.md                       # Feedback-invite ledger (opt-out flag + invited milestones; created lazily)
 ```
 
 > Note: the `surveys/` and `mvp/` skills and their hooks are present in the plugin but not yet documented in the per-system sections below. Surveys and MVP runtime artifacts (`startup/surveys/*.md`, `startup/mvp-plan.md`) are implied by the hook checks.
@@ -622,6 +624,18 @@ A bias-isolated assessment agent dispatched by the `whats-next` skill to evaluat
 - Detects pivots: when foundational core.md fields (Audience/ICP, Problem, Solution) changed substantially since the last assessment, includes an Artifact Relevance section recommending keep/reframe/archive per artifact
 - Stability rule: if nothing meaningful has changed, keep the plan unchanged
 - Returns structured recommendations (check-offs, new focus, new steps, log entry, and optionally artifact relevance) — does not write files or talk to the founder
+
+---
+
+## Feedback invites
+
+The plugin's only feedback mechanism. There is **no telemetry** — nothing is sent automatically. At four high-value milestones, the agent offers the founder an optional, anonymous Tally link, at most once per milestone, with a permanent opt-out.
+
+- **Single source of truth:** the protocol lives in `skills/using-startup-superpowers/SKILL.md` (Layer 0, always in context) — ledger location/format, the read-before-invite rule, opt-out handling, the link template + `FORM_ID`, the stage-tag list, and the copy pattern.
+- **Ledger:** `startup/.superpowers/feedback.md` — frontmatter `opted_out` (boolean) plus an append-only list of `{stage-tag} — invited {date}` lines. Presence of a tag = already offered; the "first time only" behavior falls out of this with no counting. Created lazily on first invite. No hook validates it.
+- **Milestones / stage tags:** `competitors-done` (first `competitive-landscape.md`), `first-interview-analyzed` (first `interviews/*.md`), `mvp-designed` (first `mvp-plan.md`), `market-brief-done` (first `market-brief.md`). Each milestone skill's exit handoff carries a one-line invocation of the Layer 0 protocol — the artifact-producing skill owns its invite.
+- **Link:** `https://tally.so/r/{FORM_ID}?stage={stage-tag}` — the hidden `stage` param is the only thing that travels, and only if the founder submits. Until a real `FORM_ID` replaces the placeholder in the Layer 0 protocol, invites stay dormant.
+- **No hook:** consistent with the no-telemetry stance; the ledger is a plain text file the agent reads and appends to.
 
 ---
 

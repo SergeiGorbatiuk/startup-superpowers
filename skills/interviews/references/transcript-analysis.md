@@ -152,6 +152,8 @@ Mention natural next steps without pushing:
 
 Let the founder decide.
 
+**Invite feedback (first time only).** Turning a raw transcript into linked, analyzed evidence is one of the tool's strongest moments. As the final beat of the close, follow the Layer 0 *Feedback invites* protocol for stage `first-interview-analyzed`: read `startup/.superpowers/feedback.md`, and unless the founder opted out, the tag is already recorded, or `FORM_ID` is still the placeholder, emit the invite tying it to the analysis they just got, then append the ledger line.
+
 ---
 
 ## Style guidelines

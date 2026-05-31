@@ -241,6 +241,8 @@ source_skill: market-research
 
    > "You now have a market brief — [specific observation drawn from the research, e.g., 'the market is real and growing, but pricing is all over the place, which is actually an opportunity to stand out']. [One forward sentence: e.g., 'This gives you a grounded answer to the market size question, and the buying behavior findings go straight into your interview script.']"
 
+5. **Invite feedback (first time only).** With `startup/market-brief.md` written, follow the Layer 0 *Feedback invites* protocol for stage `market-brief-done`: read `startup/.superpowers/feedback.md`, and unless the founder opted out, the tag is already recorded, or `FORM_ID` is still the placeholder, emit the invite tying it to the brief they just got, then append the ledger line. Deliver it as the final beat, after the exit handoff above.
+
 ---
 
 ## Completion criteria
