@@ -35,9 +35,16 @@ Start with a quick orientation. Only escalate to a full reassessment if the plan
 
 ### Quick orientation (default)
 
-Read `startup/plan.md` and `startup/core.md`. List the artifact directories (`hypotheses/`, `competitors/`, `interview-scripts/`, `interviews/`) to get a sense of what exists and what's changed.
+Read `startup/plan.md` and `startup/core.md`. List the artifact directories (`hypotheses/`, `competitors/`, `interview-scripts/`, `interviews/`) to get a sense of what exists and what's changed. Also read the `## Next Action` sections from `startup/hypotheses/*.md` — these are the per-assumption validation moves written by the last hypothesis assessment.
 
-Then orient the user conversationally: where they are in the plan, what the current focus is, what the logical next action looks like. If the user completed something since last time, check it off in `plan.md`. Offer to jump into whatever the current focus points to.
+Then orient the user across **two altitudes**, so the strategic and the tactical don't compete:
+
+- **Strategic (from `plan.md`):** the `## Current Focus` — the milestone-level thing the project is working toward.
+- **Tactical (from the hypothesis `## Next Action` sections):** the single sharpest concrete move right now — the smallest observable next step. Pick it with simple judgment: weigh hypothesis status, stakes, and tag (a foundational `untested` assumption with nothing behind it, or one close to flipping, usually wins). If a recent assessment flagged a `Top pick`, prefer that.
+
+Phrase it as both, e.g.: *"Strategically you're on {Current Focus}. The sharpest concrete move right now is {next action from hypothesis X}."* If the user completed something since last time, check it off in `plan.md`. Offer to jump into whatever the current focus or the next action points to.
+
+Keep this lightweight: read the `## Next Action` sections that already exist on disk — do **not** dispatch the `hypotheses-manager` just to refresh them. Those sections are refreshed during full reassessments and after interview analysis, which is where assessments belong.
 
 Quick orientation does not restructure the plan — no adding, removing, or reordering steps, no changing the Current Focus. It works with the plan as-is.
 

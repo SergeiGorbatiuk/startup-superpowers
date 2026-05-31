@@ -102,19 +102,23 @@ Dispatch the `hypotheses-manager` subagent with:
 - `slugs`: the list of hypothesis slugs the `interview-analyst` linked in this interview
 - `scope`: include instruction to also synthesize candidate new hypotheses from unlinked statements across all interviews (relevant because this interview's unlinked statements may be the one that tips a pre-existing cluster over the threshold)
 
-The subagent greps for each linked slug across `startup/interviews/*.md`, re-reads statements in context, and returns state recommendations. It also scans unlinked statements across all interview files for cross-interview patterns.
+The subagent greps for each linked slug across `startup/interviews/*.md`, re-reads statements in context, and returns state recommendations — each with a **What changed** line, reasoning, evidence pointers, and a **Next action** — plus a single cross-hypothesis **Top pick**. It also scans unlinked statements across all interview files for cross-interview patterns.
 
 Wait for the subagent to return before proceeding.
 
+Before summarizing, do the eager bookkeeping the `hypotheses` skill defines: for each evaluated hypothesis, write its `last_assessed` to today and overwrite its `## Next Action` section with the subagent's suggested next action. This is advisory and needs no per-item confirmation; route the edits through the `hypotheses` skill conventions (read before writing, touch only frontmatter and the `## Next Action` section).
+
 ### Step 4 — Summarize to the founder
 
-Write a single conversational message summarizing everything for the founder. Follow this shape, adapting tone to the content:
+Write a single conversational message summarizing everything for the founder. Lead each touched hypothesis with **what changed → the next action** — not just a status. This is the point of the whole loop: the founder should walk away knowing the next small, observable move, not just an updated label. Follow this shape, adapting tone to the content:
 
 > "Interview with {interviewee} is analyzed and saved to `startup/interviews/{slug}.md`.
 >
-> **Hypothesis state recommendations:**
-> - `{slug-1}` — recommended: {action} — {one-line reasoning}
-> - `{slug-2}` — recommended: {action} — {one-line reasoning}
+> **What this interview moved:**
+> - `{slug-1}` — {what changed: weaker/stronger/no change} → **next:** {next action} ({recommended status if a change is proposed})
+> - `{slug-2}` — {what changed} → **next:** {next action} ({recommended status if a change is proposed})
+>
+> **Sharpest move right now:** {the Top pick — `{slug}` and the one-line why}.
 >
 > **Candidate new hypotheses** (if any): `{proposed title}` — {cluster size} — {reasoning}.
 >
@@ -122,7 +126,7 @@ Write a single conversational message summarizing everything for the founder. Fo
 >
 > Want to act on any of the state recommendations or candidates? You can also refine any of them before we make changes."
 
-Do not act on recommendations yet. The founder drives state changes; you never flip a hypothesis status or create a new hypothesis file without explicit confirmation of that specific change.
+Do not act on status recommendations yet. The founder drives state changes; you never flip a hypothesis status or create a new hypothesis file without explicit confirmation of that specific change. (The `## Next Action` sections and `last_assessed`, written in the eager bookkeeping step above, are the exception — they are advisory and already persisted.)
 
 ### Step 5 — Route confirmed changes through the `hypotheses` skill
 

@@ -33,6 +33,7 @@ It is opinionated about *evidence before commitment*: discover competitors befor
 - **Seven skills, one workflow** — `/whats-next`, `/competitors`, `/market-research`, `/hypotheses`, `/interviews`, `/surveys`, `/mvp`. Use them through a guided plan or à la carte.
 - **All state on disk** — every artifact is a markdown file under `startup/` in your project. No accounts, no database, no SaaS lock-in.
 - **Bias-isolated subagents** — interview analysis, hypothesis assessment, and plan recommendations each run in their own subagent, so they reason on the files, not on your in-chat enthusiasm.
+- **Evidence → next move** — every hypothesis assessment yields the smallest observable next validation action, biased toward a real user-facing step instead of yet another research backlog.
 - **Voice-first founder input** — designed for thinking out loud. Dump unstructured thoughts; the agent organises them into structured artifacts.
 - **Obsidian-friendly graph** — all artefacts have frontmatters for filtering, and include links, e.g. hypotheses link to supporting interview statements via `[[slug]]`. Browse the evidence trail in any markdown editor.
 
@@ -158,8 +159,8 @@ When in doubt, run `/whats-next` and let the planner pick.
 | `/whats-next` | Orients you on the project, manages next steps, detects pivots | Start of every session, after finishing any milestone, when you feel lost |
 | `/competitors` | Discovers, classifies (direct/indirect), and tracks competitors | Early in validation, or after a pivot to re-map the landscape |
 | `/market-research` | Researches market size, customer segments, buying behaviour, pricing, trends | Before committing to a segment, or to sanity-check the opportunity |
-| `/hypotheses` | Captures and tracks testable assumptions (problem, solution, willingness to pay, urgency) | Before any interview, or whenever you catch yourself saying "I think users will..." |
-| `/interviews` | Drafts customer-discovery scripts and analyses transcripts against your hypotheses | Drafting a script for a new segment, or right after an interview |
+| `/hypotheses` | Captures and tracks testable assumptions (problem, solution, willingness to pay, urgency), and turns each into a concrete next validation action | Before any interview, or whenever you catch yourself saying "I think users will..." |
+| `/interviews` | Drafts customer-discovery scripts and analyses transcripts against your hypotheses — surfacing what changed and the next move | Drafting a script for a new segment, or right after an interview |
 | `/surveys` | Drafts and manages surveys (questions-only or Tally-backed) | After 5+ interviews when you want to test signals at larger scale |
 | `/mvp` | Designs the smallest testable MVP and scaffolds the codebase | Once enough hypotheses are confirmed to justify building |
 
@@ -190,6 +191,10 @@ Designed for thinking out loud. The plugin assumes you'll dump unstructured ramb
 ### Obsidian-friendly evidence graph
 
 Interview statements link back to the hypotheses they touch via `[[slug]]`. The hypothesis manager greps across all interviews to assess status — so your decisions trace back to actual customer words, not summaries of summaries.
+
+### Evidence becomes a next move, not a backlog
+
+Most validation tools quietly turn into a prettier research folder. This one doesn't stop at a status label. Every time your hypotheses are assessed, each one also gets a **next validation action** — the smallest observable move: who to put it in front of, what to show them, and what answer would actually change your roadmap. It's biased toward a real user-facing step over "do more research," tailored to the assumption type (a conversation for a problem, a prototype for a solution, a price gate for willingness-to-pay). `/whats-next` then surfaces the single sharpest move alongside your strategic focus, so you always know the next awkward thing to do.
 
 ### One question at a time
 

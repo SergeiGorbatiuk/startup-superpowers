@@ -220,7 +220,7 @@ Assessment reasoning and context.
 
 Owns the founder's journey from day zero onward. The skill (Layer 1) is a thin router:
 - **No `startup/` exists** — routes to the `initialization` reference (Layer 2) for first-time project setup, idea elaboration, and first plan creation
-- **Plan exists** — starts with a quick orientation: reads the plan, scans artifact directories, and conversationally orients the founder on where they are and what's next. Only escalates to the `lean-startup-advisor` subagent when the plan needs structural changes (milestone complete, direction questioned, artifacts contradict assumptions, or foundational fields in core.md changed — a pivot). Quick orientation can check off completed steps but does not restructure the plan.
+- **Plan exists** — starts with a quick orientation: reads the plan, scans artifact directories, reads the hypothesis `## Next Action` sections, and conversationally orients the founder across two altitudes — the strategic `## Current Focus` from `plan.md` and the single sharpest concrete move from the hypothesis next actions. (Quick orientation reads existing next actions from disk; it does not dispatch the `hypotheses-manager` to refresh them.) Only escalates to the `lean-startup-advisor` subagent when the plan needs structural changes (milestone complete, direction questioned, artifacts contradict assumptions, or foundational fields in core.md changed — a pivot). Quick orientation can check off completed steps but does not restructure the plan.
 - **Pivot detected** — when the advisor's assessment includes an Artifact Relevance section (foundational core.md fields changed), routes to the `pivot-impact` reference (Layer 2) for an artifact-by-artifact walk-through before updating the plan
 - **Plan missing** — creates a blank plan, then dispatches the subagent
 
@@ -333,6 +333,10 @@ Description of the assumption, why it matters, and what changes if wrong.
 ## Notes
 
 Additional context, founder comments, interview references.
+
+## Next Action
+
+The smallest observable next validation move — e.g., "Show three freelance designers your one-screen mockup and watch whether they try to add a client without prompting."
 ```
 
 **Frontmatter:**
@@ -340,6 +344,8 @@ Additional context, founder comments, interview references.
 - `last_assessed` — optional ISO date (`YYYY-MM-DD`) set by the main agent after each subagent-driven assessment. Absent on newly-created hypotheses; added on first assessment. The `hypotheses-manager` subagent uses it as the stability anchor — if no linked interview evidence has arrived since `last_assessed`, the subagent recommends "no change" without re-evaluating the full trail.
 
 **Obsidian tag:** On the line after H1. One of `#problem`, `#solution`, `#willingness_to_pay`, `#urgency`, `#other`.
+
+**`## Next Action`** — optional, advisory, and machine-generated. Each subagent-driven assessment produces, per hypothesis, the smallest observable next validation move; the main agent writes it here eagerly (alongside `last_assessed`), creating or overwriting the section. It is not authored by hand and has no required internal structure — a tight one-sentence directive is the norm. It always reflects the latest assessment, not an append-only log. The validation hook deliberately does **not** check for it.
 
 **Slug convention:** lowercase name, spaces and special characters replaced with hyphens. "Users track invoices in spreadsheets" → `users-track-invoices-in-spreadsheets`.
 
@@ -349,7 +355,9 @@ A PostToolUse hook (`validate-hypotheses-md.mjs`) checks that each hypothesis fi
 
 Manages the founder's testable hypotheses. The skill (Layer 1) handles:
 - Working with existing hypotheses — reviewing, refining, adding new ones, updating status
-- File conventions (frontmatter, tags, slug rules)
+- File conventions (frontmatter, tags, slug rules, the optional `## Next Action` section)
+- Dispatching the `hypotheses-manager` for state assessment, then eager bookkeeping: for each evaluated hypothesis it writes `last_assessed` and overwrites the `## Next Action` section with the subagent's suggested move — advisory, no per-item confirmation (status changes still require per-item confirmation)
+- Surfacing results conversationally as **what changed → next action** per hypothesis, plus the single `Top pick`
 - Routing to the `initial-hypotheses` reference (Layer 2) when no hypotheses exist
 
 The first-time hypothesis generation conversation lives in `skills/hypotheses/references/initial-hypotheses.md`.
@@ -537,8 +545,10 @@ A bias-isolated agent dispatched by the `interviews` skill (after a transcript i
 - For each hypothesis, greps `[[slug]]` across evidence files and re-reads the linked statements in context — does not trust any single interview's editorial summary
 - Applies weight-of-evidence thinking: counts distinct interviews (not distinct statements), discounts agreement-from-framing, requires cross-interview evidence before flipping status
 - Stability rule: if no new linked statements have arrived, keep status unchanged
+- Per hypothesis, also reports **what changed** (a one-line delta since `last_assessed`: weaker/stronger/no change) and a **next action** — the smallest observable next validation move. The four-element framework (who / smallest ask / what-would-change-the-roadmap / 10-min unblock) is employed but not enforced: emit only the parts that genuinely apply, never pad. The action biases toward putting something in front of a human, not "do more research" (the anti-backlog guardrail), and is tag-aware (`#problem`→conversation, `#solution`→prototype, `#willingness_to_pay`→gate, `#urgency`→behavioral signal). Zero-evidence hypotheses still get a "get the first signal" action.
+- Flags one cross-hypothesis **Top pick** — the single highest-leverage next move right now
 - Synthesizes candidate new hypotheses from unlinked statements only when cross-interview patterns emerge (≥2 distinct interviews with thematically aligned signal)
-- Returns structured recommendations as text — never writes files, never creates hypotheses, never talks to the founder
+- Returns structured recommendations as text — never writes files (including the `## Next Action` section, which the main agent persists), never creates hypotheses, never talks to the founder
 
 ---
 
