@@ -2,7 +2,7 @@
 
 > Validate before you build. Local-first, file-based, founder-friendly.
 
-![version](https://img.shields.io/badge/version-1.0.7-blue) ![license](https://img.shields.io/badge/license-GPL--3.0-blue) ![for Claude Code](https://img.shields.io/badge/for-Claude%20Code-orange)
+![version](https://img.shields.io/badge/version-1.0.9-blue) ![license](https://img.shields.io/badge/license-GPL--3.0-blue) ![for Claude Code](https://img.shields.io/badge/for-Claude%20Code-orange)
 
 A local-first idea-validation co-pilot for Claude Code. It guides founders through the messy early work of figuring out whether an idea has legs — competitors, market, hypotheses, interviews, surveys, and an MVP — and keeps every artifact as plain markdown in your project, yours to read, edit, commit, and share.
 
