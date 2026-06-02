@@ -157,7 +157,7 @@ When in doubt, run `/whats-next` and let the planner pick.
 | Skill | What it does | When to use |
 |---|---|---|
 | `/whats-next` | Orients you on the project, manages next steps, detects pivots | Start of every session, after finishing any milestone, when you feel lost |
-| `/competitors` | Discovers, classifies (direct/indirect, incumbent/scaleup/startup), and tracks competitors — and mines real user feedback (what users love, complain about, and wish existed) | Early in validation, or after a pivot to re-map the landscape |
+| `/competitors` | Discovers, classifies (direct/indirect, incumbent/scaleup/startup), and tracks competitors — mines real user feedback (what users love, complain about, and wish existed), and watches them over time for feature changes, pivots, deaths, and new entrants | Early in validation, after a pivot to re-map the landscape, or any time to refresh a stale landscape |
 | `/market-research` | Researches market size, customer segments, buying behaviour, pricing, trends | Before committing to a segment, or to sanity-check the opportunity |
 | `/hypotheses` | Captures and tracks testable assumptions (problem, solution, willingness to pay, urgency), and turns each into a concrete next validation action | Before any interview, or whenever you catch yourself saying "I think users will..." |
 | `/interviews` | Drafts customer-discovery scripts and analyses transcripts against your hypotheses — surfacing what changed and the next move | Drafting a script for a new segment, or right after an interview |
@@ -186,7 +186,7 @@ Interview analysis, hypothesis state assessment, and plan recommendations each r
 
 ### Competitor intelligence, not just a list
 
-`/competitors` doesn't just name who else is out there — it tells you whether each one is a funded incumbent or an early startup, and (on request) mines real user feedback from review sites and communities: what users love, what they complain about, and what they wish existed. You end up with populated profiles and concrete gaps to aim at, not a folder of links.
+`/competitors` doesn't just name who else is out there — it tells you whether each one is a funded incumbent or an early startup, and (on request) mines real user feedback from review sites and communities: what users love, what they complain about, and what they wish existed. You end up with populated profiles and concrete gaps to aim at, not a folder of links. And because competitors don't stand still — they ship features, change pricing, pivot, or quietly shut down — a **watch** pass re-checks the whole landscape on demand: it refreshes each profile, archives the ones that died, surfaces new entrants, and keeps a dated change log so you can see how the field moved since last time.
 
 ### Pivot detection
 

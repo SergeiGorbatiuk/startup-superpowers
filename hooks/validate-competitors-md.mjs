@@ -9,8 +9,9 @@
  *   1. YAML frontmatter exists with `type` and `url`
  *   2. `type` is "direct" or "indirect"
  *   3. `maturity`, if present, is "incumbent", "scaleup", "startup", or "unknown"
- *   4. An H1 heading exists (the competitor's name)
- *   5. A `## What Users Say` section, if present, only uses recognized H3
+ *   4. `last_checked`, if present, matches YYYY-MM-DD (optional field)
+ *   5. An H1 heading exists (the competitor's name)
+ *   6. A `## What Users Say` section, if present, only uses recognized H3
  *      subsections (What Users Love / Complaints / Unmet Needs / Misc).
  *      Missing subsections are fine — only unrecognized ones are nudged.
  *
@@ -99,6 +100,12 @@ if (!fmMatch) {
   ) {
     nudges.push(
       `Frontmatter has maturity: "${kvPairs.maturity}". Expected "incumbent", "scaleup", "startup", or "unknown" (the field is optional — omit it when unclear).`
+    );
+  }
+
+  if (kvPairs.last_checked && !/^\d{4}-\d{2}-\d{2}$/.test(kvPairs.last_checked)) {
+    nudges.push(
+      `Frontmatter has last_checked: "${kvPairs.last_checked}". Expected ISO date in YYYY-MM-DD format (the field is optional — set by the competitor-watch workflow).`
     );
   }
 }
