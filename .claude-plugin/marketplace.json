@@ -1,5 +1,8 @@
 {
     "name": "startup-superpowers",
+    "metadata": {
+      "description": "A local-first startup advisor that guides founders through idea idea validation, competitors research, hypotheses generation, MVP/prototype design, and more.",
+    },
     "owner": {
       "name": "Sergei Gorbatiuk"
     },
