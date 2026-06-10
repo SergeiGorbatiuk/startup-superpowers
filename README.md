@@ -17,6 +17,7 @@ A local-first idea-validation co-pilot for Claude Code. It guides founders throu
 - [🗺 The Founder Journey](#-the-founder-journey)
 - [🎯 Which Skill Should I Use?](#-which-skill-should-i-use)
 - [📚 Skills Reference](#-skills-reference)
+- [💬 Usage Examples](#-usage-examples)
 - [💡 Why Startup Superpowers?](#-why-startup-superpowers)
 - [✨ Pro Tips](#-pro-tips)
 - [🧱 Philosophy](#-philosophy)
@@ -166,6 +167,36 @@ When in doubt, run `/whats-next` and let the planner pick.
 | `/mvp` | Designs the smallest testable MVP and scaffolds the codebase | Once enough hypotheses are confirmed to justify building |
 
 All skills work both inside the guided plan (driven by `/whats-next`) and standalone à la carte.
+
+---
+
+## 💬 Usage Examples
+
+### Natural language — skill auto-activation
+
+You don't need to memorise which skill to use. Just describe what you're working on:
+
+*"I'm building an app that helps freelance designers chase unpaid invoices"* → `/whats-next` sets up the project and asks about your idea
+
+*"Who else is solving the invoice-tracking problem?"* → `/competitors` scouts and maps the competitive landscape
+
+*"I keep assuming designers hate asking clients for money — is that testable?"* → `/hypotheses` captures the assumption and generates a concrete next validation action
+
+*"I just talked to three freelancers — here's what they said"* → `/interviews` saves the transcript and analyses it against your hypotheses
+
+*"Where does my project stand and what should I do next?"* → `/whats-next` orients you and surfaces the single sharpest next move
+
+### Slash commands
+
+| Command | Example prompt |
+|---|---|
+| `/whats-next` | `"I have a new idea — let's kick things off"` or just run it with no message |
+| `/competitors` | `"Dig deeper on Bonsai — I think they're a real threat"` |
+| `/market-research` | `"How big is the freelance invoicing market in the US?"` |
+| `/hypotheses` | `"I think designers are embarrassed to ask clients for money — let's track that assumption"` |
+| `/interviews` | `"Help me write a script for a 30-minute call with a freelance designer"` |
+| `/surveys` | `"I want to test demand beyond my first five interviews"` |
+| `/mvp` | `"I have enough signal — help me design the smallest thing worth building"` |
 
 ---
 
