@@ -6,6 +6,8 @@
 
 A local-first idea-validation co-pilot for Claude Code. It guides founders through the messy early work of figuring out whether an idea has legs — competitors, market, hypotheses, interviews, surveys, and an MVP — and keeps every artifact as plain markdown in your project, yours to read, edit, commit, and share.
 
+![Plugin demo](assets/demo.gif)
+
 ---
 
 ## 📑 Table of Contents
@@ -20,7 +22,6 @@ A local-first idea-validation co-pilot for Claude Code. It guides founders throu
 - [🧱 Philosophy](#-philosophy)
 - [📄 License](#-license)
 
----
 
 ## 🧭 What is Startup Superpowers?
 
