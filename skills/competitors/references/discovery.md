@@ -200,11 +200,13 @@ source_skill: competitors
 {Full web-researcher output}
 ```
 
+**Write the competitor files immediately** (follow Step 5 format below), updating any stubs created above.
+
 Present the results as a compact summary — one sentence per competitor. Then ask:
 
-> "Does this look right? Any of these mischaracterized, or any corrections to make?"
+> "I've saved those profiles. Does this look right? Let me know if any should be removed or if you want to correct anything."
 
-Apply any corrections. Then **write the competitor files** for this set (follow Step 6 format below), updating any stubs created above.
+If the founder flags removals, delete the relevant `startup/competitors/{slug}.md` file(s). If they want corrections, rewrite the affected file(s).
 
 **Then proceed to Step 4 (expansion offer).**
 
@@ -279,11 +281,13 @@ Present as a compact summary:
 
 Walk through each briefly — one sentence on what they do.
 
+**Write the competitor files immediately** (follow Step 5 format below).
+
 Then ask:
 
-> "Does this look like the right landscape? Any of these off-base, or any obvious gaps — companies you expected to see?"
+> "I've saved those {N} competitors. Does this look like the right landscape? Anything I should remove, or any obvious gaps — companies you expected to see?"
 
-If the founder flags issues, adjust the brief and re-scout. Once confirmed, **save the scout results** (follow Step 6 format below).
+If the founder flags removals, delete the relevant `startup/competitors/{slug}.md` file(s). If they flag gaps, adjust the brief and re-scout — then save any new findings immediately too.
 
 **Then proceed to Step 4 (expansion offer).**
 
@@ -336,7 +340,13 @@ source_skill: competitors
 {Full web-researcher output}
 ```
 
-Present the new findings the same way as before. Ask the founder to confirm which to keep. If they flag more gaps, dispatch targeted follow-ups — but default to wrapping up. The goal is a useful landscape, not an exhaustive one.
+**Write the competitor files immediately** (follow Step 5 format below).
+
+Present what was added — one sentence per competitor. Then ask:
+
+> "I've added those {N} competitors. Anything look off or should be removed?"
+
+If the founder flags removals, delete the relevant `startup/competitors/{slug}.md` file(s). If they flag more gaps, dispatch targeted follow-ups — but default to wrapping up. The goal is a useful landscape, not an exhaustive one.
 
 ---
 
