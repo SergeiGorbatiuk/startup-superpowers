@@ -21,6 +21,7 @@ A local-first idea-validation co-pilot for Claude Code. It guides founders throu
 - [💡 Why Startup Superpowers?](#-why-startup-superpowers)
 - [✨ Pro Tips](#-pro-tips)
 - [🧱 Philosophy](#-philosophy)
+- [📚 Inspiration & Credits](#-inspiration--credits)
 - [📄 License](#-license)
 
 
@@ -260,6 +261,15 @@ Every conversational flow asks one focused question, never a wall of forms. This
 - **Progressive disclosure.** Skills only load when their description matches what you're doing. The plugin is large but stays out of the way until you ask.
 - **Hooks nudge, never block.** Convention checks surface gentle reminders on writes, but they never refuse to save your work.
 - **Lean startup, applied pragmatically.** The workflow follows problem-solution fit and customer discovery, biased toward evidence over assumptions — but it never lectures you about it.
+
+---
+
+## 📚 Inspiration & Credits
+
+Several frameworks and principles in this plugin are based on the work and comments of people who've written clearly about the messy early work of building a startup:
+
+- **Rob Fitzpatrick** ([robfitz.com](https://robfitz.com/))
+- **Justin Jackson** ([justinjackson.ca](https://justinjackson.ca))
 
 ---
 

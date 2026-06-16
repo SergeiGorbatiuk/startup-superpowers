@@ -72,7 +72,12 @@ If the answer is "global" or "it doesn't matter," that's fine — note it and do
 
 Once you have a solid understanding of at least ICP and problem (buyer/user distinction and solution can be rougher):
 
-1. **Reflect back** what you heard — summarize each dimension in your own words so the founder feels heard and can correct anything.
+1. **Name the first accounts.** Ask: "Quick sanity check — can you name 2–3 specific companies, or contacts at companies, that fit this ICP? Not hypothetically — ones you'd actually reach out to first."
+
+   - If they can name them: note it positively and proceed — concreteness here is a strong signal.
+   - If they can't: don't alarm them. "That's worth keeping in mind — getting into the right communities and LinkedIn networks early will help surface exactly these contacts." Then proceed.
+
+2. **Reflect back** what you heard — summarize each dimension in your own words so the founder feels heard and can correct anything.
 2. **Propose the fields** — show concretely what you'd add under `## Core`:
 
 ```markdown

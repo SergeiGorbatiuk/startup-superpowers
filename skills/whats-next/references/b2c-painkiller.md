@@ -67,7 +67,12 @@ If the answer is "global" or "it doesn't matter," that's fine — note it and do
 
 Once you have a solid understanding of at least audience and problem (solution and geography can be rougher):
 
-1. **Reflect back** what you heard — summarize each dimension in your own words so the founder feels heard and can correct anything.
+1. **Name the first five.** Ask: "Quick sanity check — can you name 3–5 specific people who have this problem? They could be people you know, or people you've found in communities or online."
+
+   - If they can name them: note it positively and proceed — it's a meaningful signal that the audience definition is grounded in reality.
+   - If they can't: don't alarm them. "That's worth keeping in mind — one of the early wins from competitor research and getting into customer communities is finding exactly these people." Then proceed.
+
+2. **Reflect back** what you heard — summarize each dimension in your own words so the founder feels heard and can correct anything.
 2. **Propose the fields** — show concretely what you'd add under `## Core`:
 
 ```markdown

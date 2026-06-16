@@ -57,6 +57,20 @@ Read before writing, propose before saving, get confirmation.
 
 ---
 
+## When the founder needs help finding people to interview
+
+Recognize this intent when the founder says things like "I don't know who to talk to", "how do I find interviewees?", "where do I find people for discovery calls?", "I'm struggling to get anyone on a call", or similar.
+
+Load the Layer 2 reference file that owns this workflow:
+
+```
+.claude/skills/interviews/references/finding-interviewees.md
+```
+
+The reference file's instructions take over from this point.
+
+---
+
 ## When no scripts exist
 
 Check prerequisites:
