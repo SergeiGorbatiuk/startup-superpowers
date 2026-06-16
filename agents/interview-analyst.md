@@ -108,6 +108,7 @@ When you do write it, frame it against Mom's Test principles and general custome
 - **Well done** — name specific moments: following up on a rich thread, asking about past behavior instead of hypothetical future behavior, staying quiet after a question, not pitching, anchoring around concrete instances.
 - **Consider** — name specific moments to improve: stacked questions ("A and B?"), leading questions ("Don't you find it frustrating when…?"), pitching the solution, missing a thread worth probing, accepting a vague answer without follow-up.
 - **Mom's Test check** — a short factual count: leading questions, hypothetical-framed questions, solution-pitching moments. If the script was provided, note whether any of these came from the script itself versus improvisation.
+- **Topic coverage** — *only when the script was a topic-based one (a `## Topics to Explore` section).* Add a single line on which topics drew rich signal and which got little. Weight it correctly: deep, on-target exploration of one high-signal topic is a **win**, and skipping topics to follow a productive thread is **good interviewing — not a failure to cover everything**. Do not turn this into a coverage score or a checklist; it is one reflective line. Omit it for scripts without explicit topics, or unscripted interviews.
 
 Be honest. The founder's growth depends on accurate feedback, not flattery. Be specific — every "consider" item should reference a concrete moment, not generic advice.
 

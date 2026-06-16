@@ -14,7 +14,9 @@
  *   4. `target_persona` is a non-empty string
  *   5. An H1 heading exists (the script title)
  *   6. All four required sections are present: `## Target Persona`,
- *      `## Opening`, `## Core Questions`, `## Closing`
+ *      `## Opening`, `## Topics to Explore`, `## Closing`
+ *   7. Legacy `## Core Questions` scripts get a non-blocking nudge
+ *      pointing to the new topic-based structure.
  *
  * All checks are advisory — the hook always exits 0. Convention
  * violations are reported to stderr so Claude sees them as gentle
@@ -119,9 +121,11 @@ if (!h1Match) {
 const REQUIRED_SECTIONS = [
   "## Target Persona",
   "## Opening",
-  "## Core Questions",
+  "## Topics to Explore",
   "## Closing",
 ];
+
+const hasLegacyCoreQuestions = /^##\s+Core Questions\s*$/m.test(content);
 
 for (const section of REQUIRED_SECTIONS) {
   const pattern = new RegExp(
@@ -129,10 +133,22 @@ for (const section of REQUIRED_SECTIONS) {
     "m"
   );
   if (!pattern.test(content)) {
+    // Suppress the redundant "missing Topics to Explore" nudge for legacy
+    // scripts — the dedicated legacy nudge below already covers them.
+    if (section === "## Topics to Explore" && hasLegacyCoreQuestions) continue;
     nudges.push(
-      `Missing required section \`${section}\`. An interview script should include Target Persona, Opening, Core Questions, and Closing.`
+      `Missing required section \`${section}\`. An interview script should include Target Persona, Opening, Topics to Explore, and Closing.`
     );
   }
+}
+
+if (hasLegacyCoreQuestions) {
+  nudges.push(
+    "This script uses the older `## Core Questions` format. The interviews " +
+      "skill now drafts topic-based scripts (`## Topics to Explore`), which " +
+      "produce more free-flowing, less survey-like interviews. Consider " +
+      "asking the interviews skill to re-create this script in the new shape."
+  );
 }
 
 // ---------- output nudges --------------------------------------------------

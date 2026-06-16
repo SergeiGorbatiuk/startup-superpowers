@@ -91,7 +91,7 @@ Dispatch the `interview-analyst` subagent with:
 - `slug`: the shared slug (same as the transcript filename, without extension)
 - `script_path`: path to the interview script under `startup/interview-scripts/` if one was used; omit otherwise
 
-The subagent reads the transcript, core.md, hypotheses, the script, and any existing interview analysis files. It writes `startup/interviews/{slug}.md` and returns a short structured summary: which hypothesis slugs were linked, how many statements were unlinked, and technique feedback highlights.
+The subagent reads the transcript, core.md, hypotheses, the script, and any existing interview analysis files. It writes `startup/interviews/{slug}.md` and returns a short structured summary: which hypothesis slugs were linked, how many statements were unlinked, and technique feedback highlights. When the script was a topic-based one (a `## Topics to Explore` section), the technique feedback will include a single line on topic coverage — weighted so that depth on one high-signal topic counts as a win, not a failure to cover them all.
 
 Wait for the subagent to return before proceeding.
 

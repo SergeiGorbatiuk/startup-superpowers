@@ -17,6 +17,8 @@ You already have:
 
 Produce **one well-scoped script** — written to a single `.md` file — that the founder can use for customer discovery interviews with their target segment. The script must be tailored to three inputs: segment, desired length, and the founder's interview experience.
 
+The script is organized around **topics to explore**, not a fixed list of questions. Each topic is a learning theme tied to the hypotheses, risks, or decisions it probes, with a few example questions underneath as *starting points* — not a sequence to march through. This keeps interviews free-flowing rather than survey-like: the founder anchors on what they're trying to learn and improvises the exact wording in the moment. (Pre-planning exact questions is fragile to wording, delivery, and sequencing, and tends to produce rigid, low-truth conversations.)
+
 ---
 
 ## The single most important rule
@@ -45,12 +47,14 @@ A single script should serve a single persona. If the founder describes two dist
 
 ### Step 2 — Agree on length
 
-Ask how long they want the interviews to be. Offer four options with short trade-off notes:
+Ask how long they want the interviews to be. Length sizes the number of **topics** (each topic carries 2–4 starting questions). Offer four options with short trade-off notes:
 
-- **15 min** — very tight, 3–4 questions, easy to land with busy people, low depth
-- **30 min** — the workhorse length, 5–7 questions, good for most discovery
-- **45 min** — room for depth and follow-ups, 7–10 questions, harder to schedule
-- **60 min** — only when the topic genuinely needs it, risks fatigue on both sides
+- **15 min** — very tight, ~2 topics, easy to land with busy people, low depth
+- **30 min** — the workhorse length, 3–4 topics, good for most discovery
+- **45 min** — room for depth and follow-ups, 4–5 topics, harder to schedule
+- **60 min** — only when the subject genuinely needs it, 5–6 topics, risks fatigue on both sides
+
+Bias toward fewer, deeper topics. Going deep on the one topic that matters beats skimming all of them.
 
 ### Step 3 — Gauge experience
 
@@ -64,20 +68,24 @@ Ask whether they've run customer discovery interviews before. Three buckets:
 
 Before drafting, announce in one short message what the script will look like given their answers. Use this matrix:
 
-- **never + 45 or 60 min** — flag that long interviews are hard to run well on a first try. Suggest dropping to 30 min. If they insist on longer, proceed — but the script will be heavily scripted throughout and include extra facilitation prompts inline.
-- **never + 15 or 30 min** — fewer questions (3–5), heavily scripted opening and closing, pre-written probes under each core question, inline reminders to let the interviewee talk.
-- **a few + any length** — standard density (5–7 for 30 min; 7–10 for 45–60), normal level of probe scaffolding, opening and closing written out but short.
-- **plenty + any length** — leaner script, more open-ended questions, lighter probe scaffolding, trust the founder to improvise.
+Experience tunes how much scaffolding sits under each topic — not the topic structure itself.
+
+- **never + 45 or 60 min** — flag that long interviews are hard to run well on a first try. Suggest dropping to 30 min. If they insist on longer, proceed — but give each topic the fuller treatment below and include extra facilitation prompts inline.
+- **never + 15 or 30 min** — fewer topics (~2–3), 3–4 starting questions per topic, heavily scripted opening and closing, inline facilitation reminders (let them finish, resist filling silence, follow the thread).
+- **a few + any length** — standard density (topic count per the length matrix), 2–3 starting questions per topic, opening and closing written out but short.
+- **plenty + any length** — leaner script, 1–2 starting questions per topic, lighter scaffolding, trust the founder to improvise within each topic.
 
 The founder can override the tailoring.
 
-### Step 5 — Map hypotheses to questions
+### Step 5 — Map hypotheses to topics
 
-Load `startup/hypotheses/*.md`. For each hypothesis, identify what kind of question would test it. Surface the mapping to the founder — e.g.:
+Load `startup/hypotheses/*.md`. Cluster related hypotheses into **topics** — a topic is the learning theme that a small group of hypotheses (or a standalone risk/decision) sits under. A topic usually probes one or more hypotheses; it does not have to be one-hypothesis-per-topic. Surface the mapping to the founder — e.g.:
 
-> "I'll use your hypothesis that designers track invoices in spreadsheets to shape a question about current workflow. Your willingness-to-pay hypothesis is better tested by observing what they already spend money on, so I'll turn that into a past-behavior question rather than asking directly."
+> "I'll fold your 'designers track invoices in spreadsheets' and 'chasing clients feels awkward' hypotheses into one topic about how invoicing actually works for them today — they're really one conversation. Your willingness-to-pay hypothesis is better tested by observing what they already spend money on, so I'll make it a topic anchored on past spending behavior rather than asking about price directly."
 
-Don't mechanically turn every hypothesis into a question. Some hypotheses (e.g. pricing specifics) are better tested by experiments than interviews — say so when it applies.
+Each topic will carry `[[hypothesis-slug]]` backlinks to the hypotheses it probes — that linkage is the "why it matters" for the topic and feeds the hypothesis evidence trail later. A topic can also be tied to a risk or decision with no matching hypothesis; in that case prose carries the "why" and backlinks may be absent.
+
+Don't mechanically turn every hypothesis into a topic. Some hypotheses (e.g. pricing specifics) are better tested by experiments than interviews — say so, and leave them off the script.
 
 If fewer than 3 hypotheses exist, work with what's there and flag that the script can be sharpened later once more hypotheses are defined.
 
@@ -85,7 +93,7 @@ If fewer than 3 hypotheses exist, work with what's there and flag that the scrip
 
 Propose **Opening** first — show the exact text. Ask for feedback. Revise once if needed.
 
-Then propose **Core Questions** — show the numbered list with probes. Ask for feedback. Revise.
+Then propose **Topics to Explore** — show each topic with its heading, its `**Why it matters:**` line (the `[[hypothesis-slug]]` backlinks plus a one-line "What we want to learn"), and its starting questions. Lead the section with the anti-rigidity blockquote (see the template in Step 8). Ask for feedback. Revise.
 
 Then propose **Closing** — show the exact text. Ask for feedback. Revise.
 
@@ -118,13 +126,26 @@ target_persona: {one-line segment descriptor}
 
 {What the founder says at the start: purpose of the call, consent to record, the "not a sales call" framing, rapport-setting.}
 
-## Core Questions
+## Topics to Explore
 
-1. {Open question about current behavior or past experience}
-   - Probe: {follow-up}
-2. {Question testing a specific hypothesis}
-   - Probe: {follow-up}
-...
+> These are topics, not a script. Let the conversation lead — go deep where it gets interesting, and don't force your way through every topic.
+
+### 1. {Topic as a learning theme, not a question}
+**Why it matters:** [[hypothesis-slug]], [[another-hypothesis-slug]]
+What we want to learn: {one line of plain intent}
+
+Starting questions (prompts, not a checklist):
+- "{Open, past-behavior question}"
+- "{Another starter}"
+- {Optional inline facilitation reminder for less-experienced founders}
+
+### 2. {Next topic}
+**Why it matters:** [[hypothesis-slug]]
+What we want to learn: {one line}
+
+Starting questions:
+- "{Starter}"
+- "{Starter}"
 
 ## Closing
 
@@ -139,7 +160,9 @@ Default `status: draft`. If the founder says the script is ready to use, write `
 
 ---
 
-## Style guidelines for the questions themselves
+## Style guidelines for the starting questions
+
+These govern the starting questions under each topic. They are examples to anchor the founder — the founder should expect to improvise the exact wording in the moment.
 
 - **Open, not leading.** "Tell me about the last time..." beats "Don't you find it frustrating when...?"
 - **Past behavior over hypothetical.** "Walk me through what you did last time" beats "would you pay for X?" — people are bad at predicting their own future behavior.
@@ -153,7 +176,8 @@ Default `status: draft`. If the founder says the script is ready to use, write `
 
 - File written to `startup/interview-scripts/{slug}.md`
 - Frontmatter includes `status`, `length_minutes`, `target_persona`
-- H1 and all four required sections present: `## Target Persona`, `## Opening`, `## Core Questions`, `## Closing`
+- H1 and all four required sections present: `## Target Persona`, `## Opening`, `## Topics to Explore`, `## Closing`
+- `## Topics to Explore` leads with the anti-rigidity blockquote, and each topic has a heading, a `**Why it matters:**` line, and starting questions
 - Founder has confirmed the final content
 
 ---

@@ -12,7 +12,7 @@ This skill covers two phases:
 1. **Script management** — drafting, refining, and managing the lifecycle of reusable interview scripts.
 2. **Transcript analysis** — after an interview has happened, extracting statements, linking them to hypotheses, reviewing the founder's interviewing technique, and recommending hypothesis state changes.
 
-An interview script is a reusable guide, not a teleprompter: it anchors the conversation around the assumptions being tested while leaving room for the founder to follow threads that open up. Most founders need one script for their primary segment; occasionally a second script for an adjacent segment.
+An interview script is a reusable guide, not a teleprompter: it anchors the conversation around the assumptions being tested while leaving room for the founder to follow threads that open up. Scripts are organized around **topics to explore** — learning themes tied to the hypotheses, risks, or decisions they probe — with a few example questions under each as starting points, not a fixed sequence. This keeps interviews free-flowing rather than survey-like. Most founders need one script for their primary segment; occasionally a second script for an adjacent segment.
 
 ## Before you start
 
@@ -45,11 +45,13 @@ When adding or updating scripts, follow the file conventions:
 - H1 heading: script title — segment + focus, e.g. "Freelance designers — invoice chasing"
 - `## Target Persona` — 2–4 sentences describing who this script is for and why
 - `## Opening` — what the founder says at the start: purpose, consent to record, framing
-- `## Core Questions` — numbered questions with optional indented probes
+- `## Topics to Explore` — the heart of the script. Leads with a short blockquote reminding the founder these are topics, not a script (depth beats coverage). Then `###` topics, each with: a learning-theme heading (not a question), a `**Why it matters:**` line carrying `[[hypothesis-slug]]` backlinks plus a one-line intent, and 2–4 starting questions framed as prompts, not a checklist
 - `## Closing` — wrap-up, referrals ask, thank-you
 - Optional `## Notes` — facilitation tips for the founder
 
 **Slug convention:** lowercase the title, replace spaces and non-alphanumeric characters with hyphens, collapse multiple hyphens. "Freelance designers — invoice chasing" → `freelance-designers-invoice-chasing`.
+
+**Legacy scripts (`## Core Questions`):** older scripts used a rigid numbered `## Core Questions` list instead of `## Topics to Explore`. The validation hook will nudge when it sees one. When you load such a script, mention that the skill now drafts topic-based scripts (which tend to produce more free-flowing, higher-truth interviews) and offer to re-create it in the new shape — clustering the existing questions into topics tied to the relevant hypotheses. Don't force it: if the founder wants to keep editing the old form, do so. This is a one-time, opt-in conversion.
 
 Read before writing, propose before saving, get confirmation.
 

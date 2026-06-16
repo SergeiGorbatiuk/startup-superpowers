@@ -2,7 +2,7 @@
   "name": "startup-superpowers",
   "displayName": "Startup Superpowers",
   "description": "Local-first startup advisor: idea validation, competitor research, hypothesis generation, MVP design",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "author": {
     "name": "Sergei Gorbatiuk"
   },

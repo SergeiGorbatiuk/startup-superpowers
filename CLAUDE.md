@@ -419,11 +419,17 @@ Who this script is for and why.
 
 What the founder says at the start — purpose, consent, framing.
 
-## Core Questions
+## Topics to Explore
 
-1. Open question about current behavior
-   - Probe: follow-up
-2. ...
+> These are topics, not a script. Let the conversation lead — go deep where it gets interesting.
+
+### 1. How invoicing works for them today
+**Why it matters:** [[users-track-invoices-in-spreadsheets]], [[chasing-clients-feels-awkward]]
+What we want to learn: where invoicing lives in their week and where it hurts.
+
+Starting questions (prompts, not a checklist):
+- "Walk me through what happened the last time a client paid late."
+- "How do you keep track of who owes you right now?"
 
 ## Closing
 
@@ -439,9 +445,11 @@ Optional facilitation tips.
 - `length_minutes` — target interview length (typically 15, 30, 45, or 60)
 - `target_persona` — one-line segment descriptor
 
+**Structure:** Scripts are organized around **topics to explore**, not a fixed question list. The `## Topics to Explore` section leads with a short anti-rigidity blockquote, then `###` topics. Each topic has a learning-theme heading (not a question), a `**Why it matters:**` line carrying `[[hypothesis-slug]]` backlinks (the machine-traceable tie into the hypothesis evidence trail) plus a one-line intent, and 2–4 starting questions framed as prompts rather than a checklist. A topic may instead be tied to a risk or decision, in which case prose carries the "why" and backlinks may be absent. This keeps interviews free-flowing rather than survey-like. Older scripts used a rigid numbered `## Core Questions` list; the hook nudges on those and the `interviews` skill offers a one-time, opt-in conversion to the topic shape.
+
 **Slug convention:** lowercase the title, replace spaces and non-alphanumeric characters with hyphens, collapse multiple hyphens.
 
-A PostToolUse hook (`validate-interview-scripts-md.mjs`) checks that each script file follows the convention (frontmatter with status/length_minutes/target_persona, H1 heading, all four required sections). It nudges on issues but never blocks writes.
+A PostToolUse hook (`validate-interview-scripts-md.mjs`) checks that each script file follows the convention (frontmatter with status/length_minutes/target_persona, H1 heading, all four required sections including `## Topics to Explore`). Legacy `## Core Questions` scripts get a non-blocking nudge pointing to the new structure. It nudges on issues but never blocks writes.
 
 ### `interviews` skill
 
@@ -453,7 +461,7 @@ The skill (Layer 1) handles:
 - Checking prerequisites — `Audience` in `core.md` and at least a few hypotheses in `startup/hypotheses/`; suggests filling those in first but does not block
 - Routing to the `initial-interview-script` reference (Layer 2) when no scripts exist
 
-The first-time guided drafting workflow — including persona confirmation, length selection, experience-based tailoring, and hypothesis-to-question mapping — lives in `skills/interviews/references/initial-interview-script.md`.
+The first-time guided drafting workflow — including persona confirmation, length selection (which sizes the number of topics), experience-based tailoring (which sizes the scaffolding under each topic), and hypothesis-to-topic mapping — lives in `skills/interviews/references/initial-interview-script.md`.
 
 ---
 
@@ -557,7 +565,7 @@ A bias-isolated agent dispatched by the `interviews` skill to analyze a single i
 - Extracts only factual, behavioral, or belief-bearing statements — throwaway color is excluded
 - Links statements to existing hypotheses via `[[slug]]` backlinks; leaves orthogonal statements unlinked as raw material for later synthesis
 - Writes exactly one file (`startup/interviews/{slug}.md`), never touches hypothesis files
-- Reviews interviewer technique against Mom's Test principles when the source contains enough of the interviewer's side
+- Reviews interviewer technique against Mom's Test principles when the source contains enough of the interviewer's side; when the script was topic-based, adds a single weighted topic-coverage line (depth on one high-signal topic is a win, not a failure to cover them all)
 - Returns a short structured summary to the main agent: linked slugs, unlinked statement count, technique highlights
 - Does not evaluate hypothesis state — that's the `hypotheses-manager`'s job
 - Does not propose new hypotheses — cross-interview synthesis belongs to the `hypotheses-manager`
@@ -668,7 +676,7 @@ Hooks are registered in `hooks/hooks.json` (referenced from `.claude-plugin/plug
 | `validate-core-md.mjs` | PostToolUse on Edit/Write | `startup/core.md` has frontmatter with `version` and `name`; has a `## Core` section with `- **Key:** Value` entries |
 | `validate-competitors-md.mjs` | PostToolUse on Edit/Write | `startup/competitors/*.md` files have frontmatter with `type` (direct/indirect) and `url`; optional `status` (active/archived); optional `maturity` (incumbent/scaleup/startup/unknown); optional `last_checked` in `YYYY-MM-DD` format; have an H1 heading; if a `## What Users Say` section is present, its H3 subsections use recognized names (What Users Love/Complaints/Unmet Needs/Misc) — missing ones are fine |
 | `validate-hypotheses-md.mjs` | PostToolUse on Edit/Write | `startup/hypotheses/*.md` files have frontmatter with `status` (untested/confirmed/invalidated/archived) and optional `last_assessed` in `YYYY-MM-DD` format; have an H1 heading; have an Obsidian tag |
-| `validate-interview-scripts-md.mjs` | PostToolUse on Edit/Write | `startup/interview-scripts/*.md` files have frontmatter with `status` (draft/ready/retired), `length_minutes`, and `target_persona`; have an H1 heading; have Target Persona / Opening / Core Questions / Closing sections |
+| `validate-interview-scripts-md.mjs` | PostToolUse on Edit/Write | `startup/interview-scripts/*.md` files have frontmatter with `status` (draft/ready/retired), `length_minutes`, and `target_persona`; have an H1 heading; have Target Persona / Opening / Topics to Explore / Closing sections; legacy `## Core Questions` scripts get a non-blocking nudge toward the topic-based structure |
 | `validate-interview-md.mjs` | PostToolUse on Edit/Write | `startup/interviews/*.md` analysis files (excluding `transcripts/`) have frontmatter with `date`, `persona`, `transcript`, `source` (transcript/recollection/pasted); have an H1 heading; have `## Summary` and `## Statements` sections (`## Technique feedback` is optional) |
 | `validate-surveys-md.mjs` | PostToolUse on Edit/Write | `startup/surveys/*.md` files have frontmatter with `status` (draft/ready/active/closed/archived), `mode` (questions-only/tally), and `date_created`; have an H1 heading; have a `## Questions` section |
 | `validate-mvp-plan-md.mjs` | PostToolUse on Edit/Write | `startup/mvp-plan.md` has frontmatter with `status` (designing/ready/live/measuring/validated/archived) and `version`; has an H1 heading; has a `## Success Criteria` section |
