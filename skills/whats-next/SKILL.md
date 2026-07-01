@@ -74,6 +74,8 @@ Read these files and collect their contents:
 - All `.md` files in `startup/competitors/` (if any)
 - All `.md` files in `startup/interview-scripts/` (if any)
 - All `.md` files in `startup/interviews/` (if any, excluding `transcripts/`)
+- `startup/mvp-plan.md` (if it exists)
+- All `.md` files in `startup/surveys/` (if any)
 
 **Step 2 — Dispatch the subagent:**
 
@@ -99,6 +101,12 @@ Assess the current state of this startup project and recommend updates to the pl
 
 ## Interview analyses (startup/interviews/)
 {for each file: filename + full contents, or "No interview analysis files yet."}
+
+## MVP plan (startup/mvp-plan.md)
+{full contents, or "No MVP plan yet."}
+
+## Surveys (startup/surveys/)
+{for each file: filename + full contents, or "No survey files yet."}
 ```
 
 **Step 3 — Present recommendations:**

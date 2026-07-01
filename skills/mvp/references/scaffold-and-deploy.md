@@ -194,9 +194,9 @@ Propose these changes before writing. Get confirmation. Write the file back.
 Share the live URL:
 > "Your MVP is live at: **{url}**"
 
-Remind the founder:
-- The URL only generates signal if it reaches the right people — execute the `## Distribution Plan` now.
-- When results come in, come back: "How's the MVP doing?" and we'll assess against the success criteria and update the hypotheses.
+Remind the founder — the MVP is a learning instrument, not the finish line:
+- The URL only generates signal if it reaches the right people — your next move is to execute the `## Distribution Plan` now, and watch the specific success criteria.
+- When results come in, come back and say "how's the MVP doing?" — we'll read them against the success criteria and decide together: **persevere**, **iterate the experiment**, or **pivot**. Or run `/whats-next` any time to re-plan around what the MVP is teaching you.
 
 ---
 

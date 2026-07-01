@@ -225,7 +225,7 @@ Assessment reasoning and context.
 
 Owns the founder's journey from day zero onward. The skill (Layer 1) is a thin router:
 - **No `startup/` exists** — routes to the `initialization` reference (Layer 2) for first-time project setup, idea elaboration, and first plan creation
-- **Plan exists** — starts with a quick orientation: reads the plan, scans artifact directories, reads the hypothesis `## Next Action` sections, and conversationally orients the founder across two altitudes — the strategic `## Current Focus` from `plan.md` and the single sharpest concrete move from the hypothesis next actions. (Quick orientation reads existing next actions from disk; it does not dispatch the `hypotheses-manager` to refresh them.) Only escalates to the `lean-startup-advisor` subagent when the plan needs structural changes (milestone complete, direction questioned, artifacts contradict assumptions, or foundational fields in core.md changed — a pivot). Quick orientation can check off completed steps but does not restructure the plan.
+- **Plan exists** — starts with a quick orientation: reads the plan, scans artifact directories, reads the hypothesis `## Next Action` sections, and conversationally orients the founder across two altitudes — the strategic `## Current Focus` from `plan.md` and the single sharpest concrete move from the hypothesis next actions. (Quick orientation reads existing next actions from disk; it does not dispatch the `hypotheses-manager` to refresh them.) Only escalates to the `lean-startup-advisor` subagent when the plan needs structural changes (milestone complete, direction questioned, artifacts contradict assumptions, or foundational fields in core.md changed — a pivot). On a full reassessment the subagent is fed the whole project state including `startup/mvp-plan.md` and `startup/surveys/`, so it can reason about post-MVP state (measure against success criteria, persevere/iterate/pivot) rather than running dry at the MVP milestone. Quick orientation can check off completed steps but does not restructure the plan.
 - **Pivot detected** — when the advisor's assessment includes an Artifact Relevance section (foundational core.md fields changed), routes to the `pivot-impact` reference (Layer 2) for an artifact-by-artifact walk-through before updating the plan
 - **Plan missing** — creates a blank plan, then dispatches the subagent
 
@@ -637,8 +637,8 @@ A bias-isolated assessment agent dispatched by the `whats-next` skill to evaluat
 **Tools:** `Read`
 
 **Key instructions in the agent definition:**
-- Reads all project state (core.md, plan.md, hypotheses, competitors) and evaluates evidence independently
-- Applies lean startup methodology pragmatically: problem-solution fit, customer discovery, build-measure-learn
+- Reads all project state (core.md, plan.md, hypotheses, competitors, mvp-plan.md, surveys) and evaluates evidence independently
+- Applies lean startup methodology pragmatically: problem-solution fit, customer discovery, build-measure-learn — including the *back half* of the loop once an MVP exists (get it in front of users, measure against the plan's success criteria, then persevere / iterate the experiment / pivot). Its milestone vocabulary extends past "synthesis + next direction" to an "MVP — measure & learn" milestone, so post-MVP reassessments still produce a concrete short-horizon next step rather than running dry
 - Assesses whether plan steps are actually done based on artifact substance, not just existence
 - Detects pivots: when foundational core.md fields (Audience/ICP, Problem, Solution) changed substantially since the last assessment, includes an Artifact Relevance section recommending keep/reframe/archive per artifact
 - Stability rule: if nothing meaningful has changed, keep the plan unchanged

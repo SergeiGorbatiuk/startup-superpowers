@@ -215,9 +215,11 @@ For Wizard of Oz and Concierge forms: skip this step. The plan is the deliverabl
 
 ## What comes next
 
-- **Deploy it** — for deployable forms, the agent can scaffold and deploy from the project root
-- **Run it** — for manual forms, the founder runs the experiment
-- **Run interviews or surveys in parallel** — different evidence types compound; the MVP tells you if they use it, interviews tell you why
+The MVP is a learning instrument, not the finish line. Close with the single concrete next move that gets signal flowing, then the re-entry path:
+
+- **Get it in front of people** — the plan only teaches you something once it reaches the right audience. For a deployable form, offer to scaffold and deploy from the project root; for a manual form, point at the `## Distribution Plan` and the count of people to reach. Name the specific success criteria to watch.
+- **Come back to assess** — when signal arrives, the founder says "how's the MVP doing?" and this skill reads results against the success criteria and decides with them: **persevere**, **iterate the experiment**, or **pivot**. Running `/whats-next` re-plans around what the MVP is teaching.
+- **Run interviews or surveys in parallel** (secondary) — different evidence types compound; the MVP tells you if they use it, interviews tell you why.
 
 ---
 

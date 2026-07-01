@@ -110,22 +110,25 @@ Validation is rarely a straight line. `/whats-next` sits at the centre — it or
 ```
                     ┌──────────────────────┐
                     │     /whats-next      │   ← always start here
-                    │   orient & re-plan   │   ← always come back
-                    └──────────┬───────────┘
-                               │
-       ┌────────────┬──────────┼──────────┬────────────┐
-       ▼            ▼          ▼          ▼            ▼
-  /competitors  /market-    /hypo-    /interviews  /surveys
-                 research   theses
-       │            │          │          │            │
-       └────────────┴──────────┼──────────┴────────────┘
-                               ▼
-                          ┌─────────┐
-                          │  /mvp   │
-                          │ design  │
-                          │ & ship  │
-                          └─────────┘
+          ┌────────►│   orient & re-plan   │   ← always come back
+          │         └──────────┬───────────┘
+          │                    │
+          │  ┌────────────┬────┴─────┬──────────┬────────────┐
+          │  ▼            ▼          ▼          ▼            ▼
+          │ /competitors /market-  /hypo-   /interviews  /surveys
+          │               research  theses
+          │  │            │          │          │            │
+          │  └────────────┴────┬─────┴──────────┴────────────┘
+          │                    ▼
+          │           ┌──────────────────────┐
+          │           │         /mvp         │
+          │           │  design → ship →     │
+          └───────────┤  measure → learn     │
+   persevere /        └──────────────────────┘
+   iterate / pivot
 ```
+
+The MVP isn't the finish line — it's a learning instrument. Once it's live you measure against its success criteria and the loop closes back to `/whats-next`: persevere, iterate the experiment, or pivot. It keeps going until you have enough signal to commit.
 
 Each skill writes to its own folder under `startup/` and links back to the others. Run `/whats-next` whenever you want to know where you are and what to do next.
 
@@ -148,7 +151,9 @@ Where are you right now?
 │
 ├─ "I want to test demand at scale" ───────────────► /surveys
 │
-└─ "I'm ready to build something testable" ────────► /mvp
+├─ "I'm ready to build something testable" ────────► /mvp
+│
+└─ "My MVP is live — what do these results mean?" ──► /mvp
 ```
 
 When in doubt, run `/whats-next` and let the planner pick.
@@ -165,7 +170,7 @@ When in doubt, run `/whats-next` and let the planner pick.
 | `/hypotheses` | Captures and tracks testable assumptions (problem, solution, willingness to pay, urgency), and turns each into a concrete next validation action | Before any interview, or whenever you catch yourself saying "I think users will..." |
 | `/interviews` | Drafts customer-discovery scripts and analyses transcripts against your hypotheses — surfacing what changed and the next move | Drafting a script for a new segment, or right after an interview |
 | `/surveys` | Drafts and manages surveys (questions-only or Tally-backed) | After 5+ interviews when you want to test signals at larger scale |
-| `/mvp` | Designs the smallest testable MVP and scaffolds the codebase | Once enough hypotheses are confirmed to justify building |
+| `/mvp` | Designs the smallest testable MVP, scaffolds the codebase, and interprets live results against your success criteria — deciding whether to persevere, iterate the experiment, or pivot | Once enough hypotheses are confirmed to justify building, and again once the MVP is live and you have results to make sense of |
 
 All skills work both inside the guided plan (driven by `/whats-next`) and standalone à la carte.
 

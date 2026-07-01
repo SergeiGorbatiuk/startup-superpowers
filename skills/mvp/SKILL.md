@@ -70,7 +70,14 @@ Archiving marks this MVP track as closed — the plan remains for reference but 
 
 Briefly confirm: "Saved to `startup/mvp-plan.md`."
 
-Mention natural next steps without pushing:
-- `status: ready` and deployable form → "Ready to scaffold and deploy — just say the word"
-- `status: live` → "When you have results, come back and we'll assess them against the success criteria"
-- Running interviews or surveys in parallel often produces richer validation than the MVP alone
+Then close with the single concrete next move, so the founder is never left wondering what to do. The MVP is a learning instrument, not the finish line — say so plainly, and name the move that gets signal flowing:
+
+- `status: ready` and deployable form → "Ready to scaffold and deploy — just say the word."
+- `status: ready` and a manual form (Wizard of Oz, concierge, manual outreach) → point at the `## Distribution Plan`: "Your next move is to run it — get it in front of {the people and count in the distribution plan} and watch for {the success criteria}."
+- `status: live` → "The plan only generates signal once it reaches the right people — execute the `## Distribution Plan` now, then watch {the success criteria}."
+
+Then tell the founder exactly how to re-enter the loop:
+- When signal arrives, come back and say "how's the MVP doing?" — we'll read it against the success criteria and decide together whether to **persevere**, **iterate the experiment**, or **pivot**.
+- Or run `/whats-next` any time to re-plan around what the MVP is teaching you.
+
+Optionally, one line: running interviews or surveys in parallel often produces richer validation than the MVP alone — the MVP tells you *if* they use it, conversations tell you *why*.
