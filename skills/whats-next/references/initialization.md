@@ -62,7 +62,7 @@ Use `AskUserQuestion` with these three options.
 **If they pick option 2 or 3:** load the materials-based onboarding workflow:
 
 ```
-.claude/skills/whats-next/references/with-progress.md
+references/with-progress.md
 ```
 
 Pass the tier (2 or 3) as context. The reference file's instructions take over from this point — do not continue with the Tier 1 steps below.
@@ -176,8 +176,8 @@ Read the `seed_description` and classify the idea:
 
 | Customer type | Reference file |
 |---|---|
-| B2C or not sure | `.claude/skills/whats-next/references/b2c-painkiller.md` |
-| B2B | `.claude/skills/whats-next/references/b2b-painkiller.md` |
+| B2C or not sure | `references/b2c-painkiller.md` |
+| B2B | `references/b2b-painkiller.md` |
 
 Read the reference file and follow the instructions within it. Pass `seed_description` and `project_name` as context so the conversation doesn't start cold.
 

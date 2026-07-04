@@ -39,7 +39,7 @@ Read before writing, propose before saving, get confirmation.
 Load the reference file for the guided first-time workflow:
 
 ```
-.claude/skills/market-research/references/initial-market-research.md
+references/initial-market-research.md
 ```
 
 The reference file's instructions take over from this point.

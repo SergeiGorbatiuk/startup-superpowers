@@ -229,7 +229,7 @@ Wait.
 If yes → load the reference file that handles Tally deployment:
 
 ```
-.claude/skills/surveys/references/tally-survey.md
+references/tally-survey.md
 ```
 
 The reference file's instructions take over from this point.

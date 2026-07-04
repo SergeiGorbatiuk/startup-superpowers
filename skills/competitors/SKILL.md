@@ -95,7 +95,7 @@ When dispatching the `web-researcher` agent for competitor research, use a `fast
 If `startup/competitors/` is empty or the situation suggests that a profound research is needed, load the reference file:
 
 ```
-.claude/skills/competitors/references/discovery.md
+references/discovery.md
 ```
 
 The reference file's instructions take over from this point.

@@ -54,7 +54,7 @@ Share a brief applicability assessment (2–3 sentences): what's looking solid, 
 If proceeding, load the reference file:
 
 ```
-.claude/skills/surveys/references/initial-survey-questions.md
+references/initial-survey-questions.md
 ```
 
 The reference file's instructions take over from this point.
@@ -69,7 +69,7 @@ Load and read the relevant files for context. Infer intent from the conversation
 - **Adding a new survey** — load `initial-survey-questions.md`
 - **Activating a questions-only survey in Tally** — load the relevant survey file to confirm the question set, then load:
   ```
-  .claude/skills/surveys/references/tally-survey.md
+  references/tally-survey.md
   ```
 - **Checking results or asking how a survey is going** — for now, fetch the Tally submission count via the Tally MCP if configured and share a quick status. Full results analysis workflow (dispatching the `survey-analyst` subagent) is coming in a later version of this skill.
 - **Archiving a survey** — read the file, set `status: archived`, propose the change, get confirmation, write back

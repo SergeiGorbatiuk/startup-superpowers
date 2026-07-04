@@ -18,13 +18,13 @@ Check whether `./startup/core.md` exists in the current working directory. Use a
 The project hasn't been initialized yet. Load the initialization workflow:
 
 ```
-.claude/skills/whats-next/references/initialization.md
+references/initialization.md
 ```
 
 The reference file's instructions take over from this point. For founders who already have materials or progress, `initialization.md` will route to:
 
 ```
-.claude/skills/whats-next/references/with-progress.md
+references/with-progress.md
 ```
 
 ---
@@ -118,7 +118,7 @@ When the subagent returns, present its assessment and recommended changes to the
 If the advisor's response includes an **Artifact Relevance** section, a pivot was detected — foundational fields in `core.md` changed substantially. Before updating the plan, load the pivot impact workflow:
 
 ```
-.claude/skills/whats-next/references/pivot-impact.md
+references/pivot-impact.md
 ```
 
 The reference file's instructions take over for the artifact walk-through. Return here for the plan update after it completes.

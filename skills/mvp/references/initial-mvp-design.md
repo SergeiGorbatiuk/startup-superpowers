@@ -193,7 +193,7 @@ For landing pages, demos, and simple apps:
 
 If yes → load:
 ```
-.claude/skills/mvp/references/scaffold-and-deploy.md
+references/scaffold-and-deploy.md
 ```
 The reference file's instructions take over from this point.
 

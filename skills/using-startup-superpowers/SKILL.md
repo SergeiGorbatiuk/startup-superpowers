@@ -45,9 +45,21 @@ Format: YAML frontmatter with `type` (direct/indirect) and `url` (competitor's w
 
 When the founder mentions a competitor or asks about the competitive landscape, read the competitors folder for context. To add or update a competitor, follow the file conventions and get confirmation before writing.
 
+## Agent role briefs
+
+Reusable subagent instructions live in `agents/*.md`. Treat those files as **portable role briefs**, not as guaranteed registered platform agents.
+
+When a workflow says to dispatch `web-researcher`, `lean-startup-advisor`, `interview-analyst`, or `hypotheses-manager`:
+
+- On harnesses that register plugin agents by name, dispatch the named agent directly.
+- On Codex, do not assume custom agents are registered from this plugin. Read the relevant role brief from `agents/{role}.md`, spawn a Codex subagent, and include the role brief content in the subagent prompt as its operating instructions.
+- Always include the task-specific brief, required inputs, files to read, tool expectations, and exact output contract. The role brief is generic; the calling skill carries the workflow-specific shape.
+- Prefer subagent output as structured text. When a Codex subagent would otherwise write founder-facing files, have it return the complete artifact markdown and let the main agent write the file. This keeps persistent state changes centralized and avoids depending on subagent write approvals.
+- Save any expensive research or analysis outputs under `startup/research/` or the workflow's normal artifact path after the subagent returns.
+
 ## Web research
 
-A `web-researcher` subagent is available for any research task that goes beyond a quick search — competitive landscape discovery, problem space validation, market signals, community discussion. Use it when the founder asks to research something or when research would meaningfully sharpen an assumption or decision.
+A `web-researcher` role brief is available for any research task that goes beyond a quick search — competitive landscape discovery, problem space validation, market signals, community discussion. Use it when the founder asks to research something or when research would meaningfully sharpen an assumption or decision.
 
 Research summaries from web-researcher runs are saved to `startup/research/` as dated `.md` files. This preserves expensive research for future reference. The calling skill is responsible for writing the file after getting the agent's output.
 
