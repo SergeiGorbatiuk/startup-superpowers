@@ -1,6 +1,15 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { spawnSync } from "node:child_process";
+import { affectedFilesFromHookInput } from "../hooks/lib/affected-files.mjs";
 
 const root = process.cwd();
 const failures = [];
@@ -66,6 +75,70 @@ assert(
   transcriptWorkflow.includes("On Codex, prefer having the subagent return the complete analysis markdown") &&
     transcriptWorkflow.includes("the main agent writes"),
   "transcript-analysis workflow must keep Codex file writes owned by the main agent"
+);
+
+const hooksConfig = JSON.parse(read("hooks/hooks.json"));
+const postToolMatchers = hooksConfig.hooks?.PostToolUse?.map((entry) => entry.matcher || "") || [];
+assert(
+  postToolMatchers.some((matcher) => matcher.includes("apply_patch")),
+  "Codex hook config must match apply_patch for file-edit validators"
+);
+
+const legacyFiles = affectedFilesFromHookInput({
+  tool_input: { file_path: "startup/core.md" },
+});
+assert(
+  legacyFiles.includes("startup/core.md"),
+  "Hook affected-file helper must keep Claude/Cursor file_path compatibility"
+);
+
+const codexFiles = affectedFilesFromHookInput({
+  tool_name: "apply_patch",
+  tool_input: {
+    command: [
+      "*** Begin Patch",
+      "*** Update File: startup/core.md",
+      "@@",
+      "-old",
+      "+new",
+      "*** End Patch",
+    ].join("\n"),
+  },
+});
+assert(
+  codexFiles.includes("startup/core.md"),
+  "Hook affected-file helper must parse Codex apply_patch file headers"
+);
+
+const hookFixtureRoot = mkdtempSync(join(tmpdir(), "startup-hook-"));
+const hookFixtureStartup = join(hookFixtureRoot, "startup");
+mkdirSync(hookFixtureStartup, { recursive: true });
+const hookFixtureCore = join(hookFixtureStartup, "core.md");
+writeFileSync(hookFixtureCore, "# Test\n", "utf8");
+
+const hookRun = spawnSync(process.execPath, [join(root, "hooks/validate-core-md.mjs")], {
+  cwd: root,
+  input: JSON.stringify({
+    tool_name: "apply_patch",
+    tool_input: {
+      command: [
+        "*** Begin Patch",
+        `*** Update File: ${hookFixtureCore}`,
+        "@@",
+        "-# Test",
+        "+# Test",
+        "*** End Patch",
+      ].join("\n"),
+    },
+  }),
+  encoding: "utf8",
+});
+
+assert(hookRun.status === 0, "validate-core-md hook must exit 0 for Codex-shaped input");
+assert(
+  hookRun.stdout.includes("Conventions check for") &&
+    hookRun.stdout.includes("missing YAML frontmatter"),
+  "validate-core-md hook must emit advisory context for Codex-shaped apply_patch input"
 );
 
 if (failures.length > 0) {

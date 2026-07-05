@@ -16,6 +16,7 @@
  */
 
 import { readFileSync } from "node:fs";
+import { affectedFilesFromHookInput } from "./lib/affected-files.mjs";
 
 let input;
 try {
@@ -24,13 +25,13 @@ try {
   process.exit(0);
 }
 
-const filePath = input.tool_input?.file_path;
-if (!filePath) process.exit(0);
+const filePaths = affectedFilesFromHookInput(input);
+if (filePaths.length === 0) process.exit(0);
 
 // Match paths within startup/ — handles both absolute and relative paths.
 // Absolute: /Users/.../project/startup/core.md → matches /startup/
 // Relative: startup/core.md → matches ^startup/
-if (!/(?:^|\/)startup\//.test(filePath)) {
+if (!filePaths.every((filePath) => /(?:^|\/)startup\//.test(filePath))) {
   process.exit(0);
 }
 

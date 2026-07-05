@@ -12,7 +12,7 @@
       ]
     },
     {
-      "matcher": "Read|Write|Edit",
+      "matcher": "Read|Write|Edit|apply_patch",
       "hooks": [
         {
           "type": "command",
@@ -24,7 +24,7 @@
   ],
   "PostToolUse": [
     {
-      "matcher": "Edit|Write",
+      "matcher": "Edit|Write|apply_patch",
       "hooks": [
         {
           "type": "command",
