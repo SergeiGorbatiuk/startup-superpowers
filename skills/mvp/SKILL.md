@@ -27,7 +27,7 @@ Read `startup/core.md` and scan `startup/hypotheses/` to understand what's been 
 Load the reference file that runs the design conversation:
 
 ```
-.claude/skills/mvp/references/initial-mvp-design.md
+references/initial-mvp-design.md
 ```
 
 The reference file's instructions take over from this point.
@@ -53,7 +53,7 @@ Discuss what's changed. Propose what the next experiment should look like. Befor
 **If the founder wants to scaffold and deploy:**
 - `status: ready` and a deployable form (landing page, demo, simple app) → load:
   ```
-  .claude/skills/mvp/references/scaffold-and-deploy.md
+  references/scaffold-and-deploy.md
   ```
 - `status: designing` → suggest finishing the design conversation first; offer to continue it
 - `status: live` → ask whether they want to redeploy or add something new; if yes, load the scaffold reference

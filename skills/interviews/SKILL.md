@@ -64,7 +64,7 @@ Recognize this intent when the founder says things like "I don't know who to tal
 Load the Layer 2 reference file that owns this workflow:
 
 ```
-.claude/skills/interviews/references/finding-interviewees.md
+references/finding-interviewees.md
 ```
 
 The reference file's instructions take over from this point.
@@ -82,7 +82,7 @@ Check prerequisites:
 - **Prerequisites met (or founder insists):** Load the reference file for the guided script-creation conversation:
 
 ```
-.claude/skills/interviews/references/initial-interview-script.md
+references/initial-interview-script.md
 ```
 
 The reference file's instructions take over from this point.
@@ -102,7 +102,7 @@ Recognize this intent when the founder:
 Load the Layer 2 reference file that owns this workflow end-to-end:
 
 ```
-.claude/skills/interviews/references/transcript-analysis.md
+references/transcript-analysis.md
 ```
 
 The reference file's instructions take over from this point, including the three input branches (file / pasted / recollection), dispatching both subagents, summarizing to the founder, and routing confirmed edits through the `hypotheses` skill.

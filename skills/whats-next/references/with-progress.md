@@ -98,17 +98,55 @@ Ask the founder to confirm or correct. Apply any corrections they give. One roun
 
 Use `AskUserQuestion`. If they pick "Something else", ask them to type a name. Store as `project_name`.
 
-**Run the init script:**
+**Create the workspace files directly:**
 
 ```bash
-npx tsx .claude/skills/whats-next/scripts/init-project.ts \
-  --name "<project_name>" \
-  --description "<seed_description>"
+mkdir -p startup/hypotheses startup/competitors startup/research
 ```
 
 For `seed_description`, pass a one-paragraph summary of the founder's idea as reconstructed from the materials — their concept in plain language, not a citation like "see landing page."
 
-If the script fails, handle the error and inform the founder.
+Write `startup/core.md` with this shape:
+
+```markdown
+---
+version: 1
+name: <project_name>
+---
+
+# <project_name>
+
+## Seed Description
+
+<seed_description>
+
+## Core
+```
+
+Write `startup/plan.md` with this shape, using today's date in `YYYY-MM-DD` format:
+
+```markdown
+---
+version: 1
+last_assessed: <today>
+---
+
+# Plan
+
+## Current Focus
+
+Define your idea — who it's for, what problem it solves, and how.
+
+## Steps
+
+- [ ] **Define the idea and target audience**
+
+## Log
+
+### <today>
+
+Initialized from existing founder materials.
+```
 
 **Write the confirmed `## Core` fields** into `startup/core.md`. Read the file first, then update only the `## Core` section — leave frontmatter and `## Seed Description` untouched.
 
@@ -160,7 +198,7 @@ Ask the founder (one question, wait for response):
 
 > "Do you want to process transcripts or notes now, or add it as a next step in your plan?"
 
-- **Now:** hand off to the interviews skill. Read `.claude/skills/interviews/SKILL.md` and follow it.
+- **Now:** hand off to the interviews skill. Read `skills/interviews/SKILL.md` and follow it.
 - **Later:** note this — you'll include "Process existing interview transcripts" as a step in the plan.
 
 ---

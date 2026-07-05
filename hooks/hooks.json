@@ -12,11 +12,11 @@
       ]
     },
     {
-      "matcher": "Read|Write|Edit",
+      "matcher": "Read|Write|Edit|apply_patch",
       "hooks": [
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/auto-approve-startup.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/auto-approve-startup.mjs\"",
           "timeout": 5
         }
       ]
@@ -24,47 +24,47 @@
   ],
   "PostToolUse": [
     {
-      "matcher": "Edit|Write",
+      "matcher": "Edit|Write|apply_patch",
       "hooks": [
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/validate-core-md.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/validate-core-md.mjs\"",
           "timeout": 15,
           "statusMessage": "Checking startup/core.md conventions..."
         },
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/validate-competitors-md.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/validate-competitors-md.mjs\"",
           "timeout": 10,
           "statusMessage": "Checking competitor file conventions..."
         },
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/validate-hypotheses-md.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/validate-hypotheses-md.mjs\"",
           "timeout": 10,
           "statusMessage": "Checking hypothesis file conventions..."
         },
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/validate-interview-scripts-md.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/validate-interview-scripts-md.mjs\"",
           "timeout": 10,
           "statusMessage": "Checking interview script conventions..."
         },
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/validate-interview-md.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/validate-interview-md.mjs\"",
           "timeout": 10,
           "statusMessage": "Checking interview analysis conventions..."
         },
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/validate-surveys-md.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/validate-surveys-md.mjs\"",
           "timeout": 10,
           "statusMessage": "Checking survey conventions..."
         },
         {
           "type": "command",
-          "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/validate-mvp-plan-md.mjs\"",
+          "command": "node \"${PLUGIN_ROOT:-$CLAUDE_PLUGIN_ROOT}/hooks/validate-mvp-plan-md.mjs\"",
           "timeout": 10,
           "statusMessage": "Checking MVP plan conventions..."
         }

@@ -1,0 +1,37 @@
+{
+  "name": "startup-superpowers",
+  "version": "1.1.0",
+  "description": "A local-first startup advisor for idea validation, competitor research, hypotheses, interviews, surveys, and MVP design.",
+  "author": {
+    "name": "Sergei Gorbatiuk",
+    "url": "https://github.com/SergeiGorbatiuk"
+  },
+  "repository": "https://github.com/SergeiGorbatiuk/startup-superpowers",
+  "license": "GPL-3.0",
+  "keywords": [
+    "startup",
+    "advisor",
+    "idea",
+    "competitors",
+    "hypotheses",
+    "interviews",
+    "surveys",
+    "mvp",
+    "prototype",
+    "validation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Startup Superpowers",
+    "shortDescription": "Local-first startup idea validation for founders.",
+    "longDescription": "Guides founders through idea validation with local markdown artifacts: competitors, market research, hypotheses, interview scripts and analysis, surveys, and MVP planning.",
+    "developerName": "Sergei Gorbatiuk",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Help me validate a startup idea",
+      "What should I do next for this startup?",
+      "Analyze this customer interview"
+    ]
+  }
+}

@@ -49,7 +49,7 @@ Check if `startup/core.md` has at minimum **Audience** and **Problem** defined u
 - **If yes (or user insists):** Load the reference file for the guided first-time conversation:
 
 ```
-.claude/skills/hypotheses/references/initial-hypotheses.md
+references/initial-hypotheses.md
 ```
 
 The reference file's instructions take over from this point.

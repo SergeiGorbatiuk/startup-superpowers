@@ -27,6 +27,7 @@
  */
 
 import { readFileSync, existsSync } from "node:fs";
+import { firstMatchingAffectedFile } from "./lib/affected-files.mjs";
 
 // ---------- entry point ----------------------------------------------------
 
@@ -37,8 +38,10 @@ try {
   process.exit(0);
 }
 
-const toolInput = input.tool_input || {};
-const filePath = toolInput.file_path;
+const filePath = firstMatchingAffectedFile(
+  input,
+  /(?:^|\/)startup\/interviews\/[^/]+\.md$/
+);
 
 // Match `startup/interviews/{slug}.md` but NOT
 // `startup/interviews/transcripts/{slug}.md`.

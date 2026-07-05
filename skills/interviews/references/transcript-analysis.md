@@ -29,6 +29,8 @@ Close the loop on a single interview: persist what was said, tie it to what was 
 
 **Two subagents do the heavy work; you orchestrate and mediate.** You do not extract statements yourself. You do not evaluate hypothesis state yourself. You do not edit hypothesis files directly. Your job is to route transcripts to `interview-analyst`, route results to `hypotheses-manager`, summarize recommendations to the founder, and — on confirmation — invoke the `hypotheses` skill to make the actual file edits.
 
+On Codex, prefer having the subagent return the complete analysis markdown instead of writing `startup/interviews/{slug}.md` itself; then the main agent writes the file. This preserves the same bias-isolated analysis while keeping persistent file writes centralized on surfaces where plugin-bundled custom agents are not registered by name.
+
 ---
 
 ## How to run the workflow
@@ -91,7 +93,7 @@ Dispatch the `interview-analyst` subagent with:
 - `slug`: the shared slug (same as the transcript filename, without extension)
 - `script_path`: path to the interview script under `startup/interview-scripts/` if one was used; omit otherwise
 
-The subagent reads the transcript, core.md, hypotheses, the script, and any existing interview analysis files. It writes `startup/interviews/{slug}.md` and returns a short structured summary: which hypothesis slugs were linked, how many statements were unlinked, and technique feedback highlights. When the script was a topic-based one (a `## Topics to Explore` section), the technique feedback will include a single line on topic coverage — weighted so that depth on one high-signal topic counts as a win, not a failure to cover them all.
+The subagent reads the transcript, core.md, hypotheses, the script, and any existing interview analysis files. On harnesses where named plugin agents can safely write, it writes `startup/interviews/{slug}.md` and returns a short structured summary: which hypothesis slugs were linked, how many statements were unlinked, and technique feedback highlights. On Codex, ask it to return the complete markdown for `startup/interviews/{slug}.md` plus the same summary; then write the file yourself before proceeding. When the script was a topic-based one (a `## Topics to Explore` section), the technique feedback will include a single line on topic coverage — weighted so that depth on one high-signal topic counts as a win, not a failure to cover them all.
 
 Wait for the subagent to return before proceeding.
 
