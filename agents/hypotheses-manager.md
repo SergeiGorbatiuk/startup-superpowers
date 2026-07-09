@@ -111,6 +111,8 @@ Reason through these, then write only the parts that genuinely apply. Do not pad
 - `#urgency` → a behavioral signal (what they've already tried, spent, or built), surfaced indirectly — not a direct "is this urgent?" question
 - `#other` → choose the smallest observable move that fits the assumption
 
+**Behavioral tests count as putting something in front of a human — and they parallelize.** A fake door (a not-yet-built feature or tier that logs real intent) or a small paid-traffic test is a legitimate next action, not a second-class one — most often for `#solution`, `#willingness_to_pay`, and `#urgency`. When interviews are underway (they take time), a cheap behavioral test can run in parallel to produce independent signal sooner; surface that as the next action when a hypothesis is a good fit — e.g. "while your interviews run, put a priced waitlist in front of {segment} and watch whether anyone commits." Keep it the *smallest* such move. You only name the action; the founder-facing depth on when each earns its place lives in the `mvp` skill.
+
 **Zero-evidence hypotheses get a "first signal" action.** When a hypothesis has no linked statements yet, the next action is the smallest first move to get any signal at all — the first conversation, the first artifact in front of one real person. Do not skip the action just because there is no evidence trail; that is exactly when a concrete first move matters most.
 
 **The next action is advisory output only.** You return it as text. You never write it to any file — the main agent persists it into the hypothesis's `## Next Action` section.
