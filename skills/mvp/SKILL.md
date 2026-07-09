@@ -1,6 +1,6 @@
 ---
 name: mvp
-description: Guides the founder through designing and optionally building the simplest MVP or prototype that validates their current hypotheses. Use when the founder wants to build something to test assumptions, discusses what to build next, wants to interpret results from a live MVP, or is deciding whether the current approach is still right. Also use when a founder proposes something to build — the skill will check whether the proposed form is the simplest thing that generates honest signal.
+description: Guides the founder through designing and optionally building the simplest MVP or prototype that validates their current hypotheses. Use when the founder wants to build something to test assumptions, discusses what to build next, wants to interpret results from a live MVP, or is deciding whether the current approach is still right. Also use when a founder proposes something to build — the skill will check whether the proposed form is the simplest thing that generates honest signal. Also use when the founder wants cheap behavioral demand signal — a fake door (a not-yet-built feature or tier that logs real intent) or a small paid-traffic experiment to reach people they cannot reach by hand.
 ---
 
 # MVP / Prototype
@@ -63,6 +63,17 @@ Read the existing hypotheses. Brief honest check (2–3 sentences): is the propo
 
 **If the founder wants to archive:**
 Archiving marks this MVP track as closed — the plan remains for reference but is no longer the active experiment. Read the file. Set `status: archived`, `last_updated: today`. Add a final log entry summarising the experiment outcome. Propose changes, get confirmation, write back.
+
+---
+
+## Fake-door and paid-traffic knowledge
+
+Two validation techniques are available as knowledge the skill draws on when the situation fits — not workflows to run through. They are contextual and often unique per case. They compose (the classic smoke test is a fake door plus paid traffic) but neither implies the other — use both, one, or neither.
+
+- **Fake door** — a not-yet-built feature, tier, or button that logs real intent; a lighter landing-page form. Load `references/fake-door.md` when a fake door is a live option (the founder is choosing or proposing a form, or you spot a fit). It carries the judgment for when a fake door still earns its place now that building is cheap, plus the honest-reveal rules.
+- **Paid traffic** — buying a small slice of cold audience when the founder can't reach enough of the right people by hand. Load `references/paid-traffic.md` when reach is the bottleneck on an experiment. It applies to any deployable form, fake-doored or real, and covers contextual channel choice, small-budget segment-splitting, live benchmark research, and the honest automation ceiling.
+
+Either technique's results are recorded in the existing `startup/mvp-plan.md` (`## Hypotheses Being Tested` backlinks, `## Distribution Plan`, `## Experiments Log`) — no separate artifact.
 
 ---
 
