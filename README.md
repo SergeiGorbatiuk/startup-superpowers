@@ -50,20 +50,29 @@ Pick the instructions for your client:
 
 ### Claude Code CLI
 
+
+1. Add the marketplace (one-time, global)
 ```bash
-# 1. Add the marketplace (one-time, global)
 /plugin marketplace add SergeiGorbatiuk/startup-superpowers
+```
 
-# 2. Create a workspace folder for your idea (in your shell)
+2. Create a workspace folder for your idea (in your shell)
+```bash
 ! mkdir my-new-idea && cd my-new-idea
+```
 
-# 3. Install the plugin for this project (local scope recommended)
+3. Install the plugin for this project (local scope recommended)
+```bash
 /plugin install startup-superpowers@startup-superpowers
+```
 
-# 4. Apply changes
+4. Apply changes
+```bash
 /reload-plugins
+```
 
-# 5. Kick things off
+5. Kick things off
+```bash
 /whats-next
 ```
 
