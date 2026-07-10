@@ -4,7 +4,9 @@ This reference file handles the technical build and deployment of an MVP. It rea
 
 It is loaded by the `mvp` skill when the founder wants to deploy a landing page, clickable demo, or simple web app. It is **not** a skill and should not be invoked independently.
 
-**This reference only applies to deployable MVP forms** — landing page, clickable demo, simple web app, or whatever else the honest experiment calls for. Wizard of Oz and Concierge MVPs are manual by design and do not use this reference.
+**This reference only applies to deployable MVP forms** — landing page, fake door, clickable demo, simple web app, or whatever else the honest experiment calls for. Wizard of Oz and Concierge MVPs are manual by design and do not use this reference.
+
+A **fake door** builds on the landing-page path: the page carries the not-yet-built feature/tier as a real-looking CTA, the CTA click is the tracked event (Step 3's click/conversion instrumentation), and it leads to an honest "coming soon / early access" reveal page instead of a real product. See `references/fake-door.md` for the judgment on when a fake door earns its place and the honest-reveal rules.
 
 ---
 
