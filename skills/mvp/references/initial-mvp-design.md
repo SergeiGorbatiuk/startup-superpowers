@@ -45,15 +45,18 @@ These are not rules to read aloud. They are the lens through which you evaluate 
 - **Building is cheap; audience isn't.** The binding constraint on MVP signal today is whether the experiment reaches people who matter. A beautifully deployed thing seen by the wrong 14 people validates nothing. The old question "what will we build?" has been largely eclipsed by "who will we put this in front of, and how?"
 - **Watch for vanity prototypes.** The old failure mode was "I built for six months and nobody wanted it." The new failure mode is "I deployed in two hours and nobody saw it." Polish without distribution is no better than a doc that never ships. If the founder can't name a concrete distribution plan, the MVP is premature regardless of form.
 
-## Five MVP forms
+## MVP forms
 
 | Form | Best for | Deployable? |
 |---|---|---|
 | Landing page | Validating interest, messaging, willingness to sign up | Yes |
+| Fake door | Testing interest in a feature/tier that isn't built — the click is the signal | Yes |
 | Wizard of Oz | Validating the outcome without building the mechanism | No |
 | Concierge MVP | Validating the full experience manually for a few people | No |
 | Clickable demo | Validating UX flow without a real backend | Yes |
 | Simple web app | When value can only be demonstrated with working software | Yes |
+
+A **fake door** is a lighter landing-page variant, but its bar is higher than it used to be: now that building a thin real slice is cheap, a fake door only earns its place when the real thing is genuinely expensive/complex/risky/slow to build, or when you want signal before committing even that cheap build. When it's a live option, load `references/fake-door.md` for the judgment and the honest-reveal rules before proposing it.
 
 ---
 

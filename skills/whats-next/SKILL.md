@@ -44,6 +44,8 @@ Then orient the user across **two altitudes**, so the strategic and the tactical
 
 Phrase it as both, e.g.: *"Strategically you're on {Current Focus}. The sharpest concrete move right now is {next action from hypothesis X}."* If the user completed something since last time, check it off in `plan.md`. Offer to jump into whatever the current focus or the next action points to.
 
+If the sharpest move is stalled on slow feedback — interviews scheduled but not yet done, and a `#solution`, `#willingness_to_pay`, or `#urgency` hypothesis is waiting on them — consider surfacing a cheap parallel behavioral test (a fake door or a small paid-traffic run) as the concrete move, and point the founder at the `mvp` skill to shape it. Offer it; never force it. This is a conversational nudge, not a plan change.
+
 Keep this lightweight: read the `## Next Action` sections that already exist on disk — do **not** dispatch the `hypotheses-manager` just to refresh them. Those sections are refreshed during full reassessments and after interview analysis, which is where assessments belong.
 
 Quick orientation does not restructure the plan — no adding, removing, or reordering steps, no changing the Current Focus. It works with the plan as-is.

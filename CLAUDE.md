@@ -93,7 +93,9 @@ The repo root is the plugin. The target project — where a founder actually wor
         ├── SKILL.md                      # MVP skill (Layer 1)
         └── references/
             ├── initial-mvp-design.md     # Layer 2: first-time MVP design
-            └── scaffold-and-deploy.md    # Layer 2: scaffold + deploy workflow
+            ├── scaffold-and-deploy.md    # Layer 2: scaffold + deploy workflow
+            ├── fake-door.md              # Layer 2 (knowledge): when/how to use a fake door
+            └── paid-traffic.md           # Layer 2 (knowledge): small paid-traffic experiments
 ```
 
 **Runtime (target project):**
@@ -121,7 +123,7 @@ startup/                                  # All founder-facing state lives here
     └── feedback.md                       # Feedback-invite ledger (opt-out flag + invited milestones; created lazily)
 ```
 
-> Note: the `surveys/` and `mvp/` skills and their hooks are present in the plugin but not yet documented in the per-system sections below. Surveys and MVP runtime artifacts (`startup/surveys/*.md`, `startup/mvp-plan.md`) are implied by the hook checks.
+> Note: the `surveys/` and `mvp/` skills and their hooks are present in the plugin but not yet documented in the per-system sections below. Surveys and MVP runtime artifacts (`startup/surveys/*.md`, `startup/mvp-plan.md`) are implied by the hook checks. The `mvp` skill also carries two Layer 2 *knowledge* references — `fake-door.md` and `paid-traffic.md` — that the agent draws on contextually (not workflows). Awareness of these behavioral techniques is seeded in the Layer 0 `using-startup-superpowers` skill and in the `hypotheses-manager` next-action logic, so the agent can suggest them proactively; their results reuse `startup/mvp-plan.md`.
 
 ---
 

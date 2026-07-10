@@ -37,6 +37,10 @@ Format: YAML frontmatter with `status` (untested/confirmed/invalidated), an H1 t
 
 When the founder mentions a new assumption or risk in conversation, suggest capturing it as a hypothesis. Read the hypotheses folder before any conversation about validation, interviews, or pivots. To update a hypothesis, read the file first, propose the change, get confirmation, then write it back.
 
+## Behavioral validation techniques
+
+Beyond interviews and surveys, two cheap behavioral tests are part of the toolkit: a **fake door** (a not-yet-built feature or tier that logs real intent) and a **small paid-traffic experiment** (buying a little cold audience when the founder can't reach the right people by hand). They are contextual and often unique per case — use both, one, or neither. When a hypothesis looks like a good candidate (often `#willingness_to_pay`, `#urgency`, or `#solution`, especially while slower interview feedback is still in flight), suggest one. The `mvp` skill carries the depth: when each earns its place, the honest automation ceiling, and how to run it.
+
 ## Competitors
 
 Competitors are tracked as individual `.md` files in `startup/competitors/`.
