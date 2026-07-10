@@ -4,6 +4,10 @@ This reference is *knowledge*, not a workflow. The `mvp` skill loads it when a f
 
 A fake door is a button, tier, feature, or link that isn't built — placed in front of real people to measure interest by counting who acts on it. The click is the signal: behavior, not stated opinion. "Would you use this?" is an opinion; clicking "Start free trial" for a thing that doesn't exist yet is behavior.
 
+## Not the same as Wizard of Oz
+
+They both feel "fake," but they fake different things and answer different questions. A fake door delivers *nothing* — it measures **demand** (does anyone even want this?) via the click, before you build anything. A Wizard of Oz delivers the *real outcome by hand* — the user gets a working experience while a human does manually what the product would automate — so it measures **whether the solution delivers**, not whether it's wanted. Use the fake door first to see if anyone wants it, then Wizard of Oz to deliver it manually to those who did. (In the form table, this is why a fake door is deployable and a Wizard of Oz is not.)
+
 ## The bar is higher than it used to be
 
 The old case for a fake door was "faking it is cheaper than building it." That case has largely collapsed. Building a thin real slice — a working form, auth, a basic flow — is now an afternoon, not a month. So a fake door has to earn its place. Reach for it only when at least one of these holds:
