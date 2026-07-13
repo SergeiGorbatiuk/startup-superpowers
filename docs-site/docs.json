@@ -4,9 +4,9 @@
   "name": "Startup Superpowers",
   "description": "A local-first idea-validation co-pilot for Claude Code",
   "colors": {
-    "primary": "#D97706",
-    "light": "#F59E0B",
-    "dark": "#B45309"
+    "primary": "#036666",
+    "light": "#99E2B4",
+    "dark": "#024C4C"
   },
   "logo": {
     "light": "/images/icon.png",
