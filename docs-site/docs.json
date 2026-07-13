@@ -1,0 +1,39 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Startup Superpowers",
+  "description": "A local-first idea-validation co-pilot for Claude Code",
+  "colors": {
+    "primary": "#D97706",
+    "light": "#F59E0B",
+    "dark": "#B45309"
+  },
+  "logo": {
+    "light": "/images/icon.png",
+    "dark": "/images/icon.png"
+  },
+  "favicon": "/images/icon.png",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Skills",
+        "pages": [
+          "skills/overview"
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/SergeiGorbatiuk/startup-superpowers"
+    }
+  }
+}

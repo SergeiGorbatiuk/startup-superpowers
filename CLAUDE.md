@@ -660,6 +660,12 @@ The plugin's only feedback mechanism. There is **no telemetry** — nothing is s
 
 ---
 
+## Documentation site (`docs-site/`)
+
+Public product guide, built with [Mintlify](https://mintlify.com) and deployed from this repo: `docs-site/docs.json` is the site config (name, colors, logo, navigation) and the `.mdx` files are the pages. The Mintlify GitHub app watches `main` and redeploys on push — no CI or build artifacts in the repo. Preview locally with `cd docs-site && npx mint dev`; check links with `npx mint broken-links`.
+
+Current pages: `introduction`, `installation`, `quickstart`, `skills/overview` (per-skill deep-dive pages not yet written). When a change alters founder-facing behavior — install steps, skill set, journey flow, artifact conventions a founder sees — update the corresponding `docs-site/` page in the same PR. New pages must be added to the `navigation` block in `docs.json` or they won't appear on the site.
+
 ## Hooks
 
 Hooks are registered in `hooks/hooks.json` (referenced from `.claude-plugin/plugin.json` via the `hooks` field). The Cursor variant lives at `hooks/hooks-cursor.json`.

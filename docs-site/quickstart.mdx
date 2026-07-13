@@ -1,0 +1,53 @@
+---
+title: "Quickstart"
+description: "Your first session — from raw idea to a validation plan"
+---
+
+This guide walks you through your first session. All you need is an installed plugin ([Installation](/installation)) and an idea — even a fuzzy one.
+
+## Your first session
+
+<Steps>
+  <Step title="Run /whats-next">
+    In your idea's workspace folder, run:
+    ```bash
+    /whats-next
+    ```
+    This is the plugin's home base. On first run it notices there's no project yet and starts the setup conversation.
+  </Step>
+  <Step title="Describe your idea">
+    Tell the agent what you're building — a sentence or a rambling voice-note-style paragraph, both work. It will ask follow-up questions **one at a time** to pin down the essentials: who it's for, what problem it solves, how it solves it.
+
+    <Tip>
+    Use voice mode and think out loud. In the CLI, activate it once via `/voice` and then long-press space to speak. Don't worry about structure — the more you dump, the better the agent can organise it.
+    </Tip>
+
+    Already made progress before installing the plugin — notes, interviews, a landing page? Say so: the setup flow has a materials-based onboarding path that ingests what you have instead of starting from zero.
+  </Step>
+  <Step title="Review what it writes">
+    The agent proposes before it writes. When you confirm, it creates the `startup/` folder in your project:
+
+    ```
+    startup/
+    ├── core.md    # Your project definition — audience, problem, solution
+    └── plan.md    # Current focus, next steps, and an assessment log
+    ```
+
+    Both are plain markdown — open them, edit them, commit them to git.
+  </Step>
+  <Step title="Follow the plan">
+    `plan.md` now holds your current focus and a checklist of next steps — typically starting with discovering competitors and drafting your first hypotheses. Each step maps to a skill, and the agent will route you to the right one.
+  </Step>
+</Steps>
+
+## After the first session
+
+Come back to `/whats-next` whenever you want to know where you stand — it re-orients you, surfaces the sharpest next move, and updates the plan as evidence comes in. From there the typical journey runs:
+
+1. **`/competitors`** — map who else is solving this problem
+2. **`/hypotheses`** — write down what you're assuming is true
+3. **`/interviews`** — test those assumptions in real conversations
+4. **`/surveys`** — test signals at larger scale
+5. **`/mvp`** — build the smallest thing that generates honest signal
+
+Validation is rarely a straight line, and every skill also works standalone — see the [Skills overview](/skills/overview) for what each one does and when to reach for it.
