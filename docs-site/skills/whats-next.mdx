@@ -1,0 +1,58 @@
+---
+title: "whats-next"
+description: "Tells you where your project stands and names the single sharpest thing to do next"
+---
+
+`/whats-next` is the plugin's home base. It sets up a brand-new project, orients you whenever you return, escalates to a full reassessment when something meaningful shifted, and catches pivots before they silently invalidate your work.
+
+## When to reach for it
+
+- You have a new idea and nothing set up yet
+- You're returning to a project and need a reminder of where things stand
+- You just finished a milestone and wonder what's next
+- You're questioning the direction ("is this still right?")
+- Something fundamental about the idea changed
+
+## First run: setting up your project
+
+With no `startup/` folder present, `/whats-next` starts the setup conversation. It first asks how far along you are, then routes accordingly:
+
+- **"It's all in my head"** — a guided idea-elaboration conversation, one question at a time. B2C ideas pin down Audience, Problem, Solution, and Geography (with a "can you name 3–5 specific people who have this problem?" sanity check); B2B ideas work through the ICP, the buyer-vs-user distinction, and business-pain framing (with a "name 2–3 real target accounts" check).
+- **"I have a landing page / pitch deck / one-pager"** — share URLs or paste text; the advisor reads your materials, infers the core fields, and proposes them for your review instead of interrogating you.
+- **"I've already done discovery or built something"** — same as above, plus intake of competitors you already know and any interviews you've already run.
+
+You end with a scaffolded workspace, a confirmed [core.md](/concepts/plan#core-md--the-project-definition) (including a "How It Reads" outsider-facing pitch), and a first plan of 2–3 concrete steps.
+
+## Every other run: orientation
+
+Once a plan exists, `/whats-next` defaults to a quick orientation. It reads your plan, scans what's changed in your artifacts, checks off completed steps, and answers at two altitudes:
+
+- **Strategic** — your plan's Current Focus: the milestone that matters now.
+- **Tactical** — the single sharpest concrete move, drawn from your hypotheses' next actions: who to put something in front of, and what to show them.
+
+Orientation never restructures the plan. If you're stalled waiting on something slow (interviews scheduled but not happening), it may suggest a cheap parallel test — a [fake door or small paid-traffic run](/skills/mvp#fake-doors-and-paid-traffic) — as an option, never a demand.
+
+## Full reassessment
+
+When a milestone completes, results contradict the plan, or you ask to rethink direction, your entire project state goes to an independent advisor pass — every file, including MVP results and surveys — which reasons from evidence alone (see [How the advisor works](/concepts/advisor#bias-isolated-analysis)). Its recommendations are walked through with you conversationally, then the plan is updated: steps checked off, a new Current Focus if warranted, new steps, and a dated log entry.
+
+This is also how the loop closes after your MVP is live: the reassessment measures results against your success criteria and lands on **persevere, iterate the experiment, or pivot**.
+
+## Pivot detection
+
+If foundational fields changed — different audience, reframed problem, new solution shape — the reassessment flags it, and `/whats-next` walks your artifacts one at a time with a **keep / reframe / archive** proposal for each hypothesis, competitor, and interview script. Everything is confirmed before changing; archiving is reversible; interview evidence is never archived. It's framed as sharpening the toolkit, not cleanup — and it ends by naming the gaps the new direction creates.
+
+## What it writes
+
+| File | What's in it |
+|---|---|
+| `startup/core.md` | Project definition: Seed Description, Core fields, How It Reads |
+| `startup/plan.md` | Current Focus, Steps checklist, dated Log |
+
+Details of both formats: [Your plan](/concepts/plan).
+
+## Good to know
+
+- Plans deliberately stay short — the next 1–2 milestones, not a roadmap to launch. Overwhelm is a failure mode.
+- Quick orientation reads existing next actions from disk; hypothesis assessments refresh during full reassessments and after interview analysis, not on every orientation.
+- The advisor only ever looks at your current working directory — never parent folders or anything outside the project.

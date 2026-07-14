@@ -1,0 +1,62 @@
+---
+title: "The evidence graph"
+description: "How hypotheses, interviews, surveys, and experiments link into one traceable trail of evidence"
+---
+
+The plugin's core discipline is simple: **decisions trace back to evidence, and evidence traces back to actual customer words.** The mechanism behind it is equally simple — Obsidian-style `[[slug]]` links between markdown files.
+
+## Hypotheses are the hub
+
+Every assumption your idea depends on becomes a file in `startup/hypotheses/` — a testable statement with a status (`untested`, `confirmed`, `invalidated`, or `archived`) and a type tag:
+
+| Tag | What it claims | How it's best tested |
+|---|---|---|
+| `#problem` | The pain is real | Customer conversations |
+| `#solution` | Your approach actually helps | A lightweight prototype or demo |
+| `#willingness_to_pay` | People will pay for it | A pricing gate — waitlist, pre-order, payment link |
+| `#urgency` | It hurts *now*, not "someday" | Behavioral signals: what people already tried, spent, worked around |
+
+The tag isn't decoration — it drives what kind of validation move the plugin suggests for each bet.
+
+## Everything links back
+
+As evidence accumulates, other artifacts point at hypotheses by slug:
+
+- **Interview statements.** Each analyzed interview yields statements like `- "I track every invoice in a spreadsheet but forget to update it." #problem [[users-track-invoices-in-spreadsheets]]` — a real quote, tagged, linked to the bets it bears on.
+- **Interview script topics** carry `**Why it matters:** [[hypothesis-slug]]` lines, so every conversation topic exists *because* of a specific assumption.
+- **Survey questions** each carry a `Tests: [[hypothesis-slug]]` line.
+- **The MVP plan** lists the hypotheses the experiment tests and what a positive result looks like for each.
+
+A statement that doesn't fit any hypothesis stays unlinked on purpose — it's raw material. When the same unlinked theme shows up across multiple interviews, the plugin proposes it as a *new* hypothesis.
+
+## How evidence becomes a verdict
+
+When you ask how your hypotheses are doing (or right after an interview is analyzed), an independent assessment pass searches for every `[[slug]]` mention across your interview files and re-reads those statements *in context* — it doesn't trust any single interview's summary. It weighs evidence the way you'd want a skeptical co-founder to:
+
+- Counts **distinct interviews**, not repeated statements from one enthusiastic person
+- Discounts agreement that your own question framing produced
+- Requires cross-interview support before flipping a status
+
+What comes back, per hypothesis: **what changed** since the last assessment, and a **next action** — the smallest observable next validation move, biased toward putting something in front of a real human rather than "do more research." One cross-hypothesis **Top pick** names the single sharpest move right now. Status changes always need your explicit confirmation; the advisory next actions are written eagerly so your hypothesis files double as a live dashboard.
+
+<Note>
+The `## Next Action` section in each hypothesis file is machine-maintained and overwritten on every assessment — it always reflects the latest read, not a history. The history lives in your interviews and the plan's log.
+</Note>
+
+## Browsing the graph
+
+Because links are plain `[[slug]]` text in plain markdown, the graph is yours to explore with free tools:
+
+- Open `startup/` as an **Obsidian vault** — hypotheses, interviews, and scripts appear as a connected graph, and frontmatter fields (status, tags, dates) are filterable with Dataview.
+- Or stay in the terminal: `grep -rl "users-track-invoices" startup/interviews/` lists every interview bearing on that hypothesis.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="hypotheses skill" icon="flask" href="/skills/hypotheses">
+    Surfacing, tracking, and assessing your assumptions.
+  </Card>
+  <Card title="interviews skill" icon="comments" href="/skills/interviews">
+    Where the evidence comes from.
+  </Card>
+</CardGroup>

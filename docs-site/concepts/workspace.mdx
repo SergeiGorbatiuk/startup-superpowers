@@ -1,0 +1,67 @@
+---
+title: "The startup/ workspace"
+description: "Every artifact is a plain markdown file in your project — yours to read, edit, commit, and share"
+---
+
+Everything the plugin knows about your idea lives in one folder: `startup/`, created in your project root the first time you run `/whats-next`. There is no account, no database, and no SaaS behind it — if you delete the folder, the plugin forgets everything; if you commit it to git, your whole validation history travels with the repo.
+
+## The layout
+
+```
+startup/
+├── core.md                    # Your project definition — the single source of truth
+├── plan.md                    # Current focus, next steps, assessment log
+├── market-research.md         # Full market research (created by /market-research)
+├── market-brief.md            # Condensed one-page market brief, advisor/investor-ready
+├── competitive-landscape.md   # Competitor map: table + positioning paragraph
+├── competitor-watch.md        # Rolling digest of what changed at each watch pass
+├── mvp-plan.md                # MVP experiment plan, success criteria, results log
+├── competitors/
+│   └── {slug}.md              # One file per competitor
+├── hypotheses/
+│   └── {slug}.md              # One file per testable assumption
+├── interview-scripts/
+│   └── {slug}.md              # One file per discovery script
+├── interviews/
+│   ├── {slug}.md              # One analysis per interview
+│   └── transcripts/
+│       └── {slug}.md          # The raw transcript or recollection, paired by slug
+├── surveys/
+│   └── {slug}.md              # One file per survey
+└── research/
+    └── {slug}.md              # Raw web-research summaries, kept so nothing runs twice
+```
+
+Files appear as you go — a fresh project starts with just `core.md` and `plan.md`, and each skill creates its own artifacts when you first use it. A missing file simply means "not there yet," never an error.
+
+## Who writes what
+
+Each skill owns its corner of the workspace: `/competitors` manages `competitors/` and the landscape files, `/hypotheses` manages `hypotheses/`, `/interviews` manages scripts, transcripts, and analyses, and so on. Two rules hold everywhere:
+
+- **The plan is only ever changed by `/whats-next`.** Other skills report progress; the planner decides what it means for your direction.
+- **The advisor proposes before it writes.** You'll always see what's about to be saved and confirm it first (with one documented exception — the [competitor watch pass](/skills/competitors#watch-keeping-the-landscape-current), which batches its updates and recaps them instead).
+
+If you build an MVP with the plugin, its code lands in your project root *next to* `startup/`, never inside it — the workspace stays pure state, the code stays a normal codebase.
+
+## It's just markdown
+
+Every artifact has YAML frontmatter (status fields, dates, types) and a readable body. That buys you:
+
+- **Grep-ability** — `grep -r "willingness_to_pay" startup/` works, and the plugin itself uses the same trick to trace evidence.
+- **Obsidian as a free UI** — open `startup/` as a vault and the [[backlinks]] between interviews and hypotheses become a browsable graph. See [The evidence graph](/concepts/evidence-graph).
+- **Human-readable diffs** — commit `startup/` to git and you can watch your thinking evolve over time, decision by decision.
+
+<Tip>
+Commit `startup/` to git. The artifacts are designed to produce clean, reviewable diffs — your validation work deserves version control as much as your code does.
+</Tip>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Your plan" icon="map" href="/concepts/plan">
+    How core.md and plan.md steer everything else.
+  </Card>
+  <Card title="The evidence graph" icon="diagram-project" href="/concepts/evidence-graph">
+    How artifacts link together into a traceable evidence trail.
+  </Card>
+</CardGroup>

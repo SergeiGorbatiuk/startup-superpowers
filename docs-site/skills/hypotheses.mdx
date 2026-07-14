@@ -1,0 +1,59 @@
+---
+title: "hypotheses"
+description: "Turn the assumptions your idea is quietly betting on into a live, evidence-backed scorecard"
+---
+
+`/hypotheses` makes your bets explicit. Every idea silently assumes things — that the pain is real, that people will pay, that it hurts *now* — and this skill turns those into short testable statements, then keeps score as evidence arrives.
+
+## When to reach for it
+
+- "What am I actually assuming is true here?"
+- You catch yourself saying "I think users will…"
+- Prepping for interviews (scripts are built around hypotheses)
+- "How are my hypotheses looking? Anything ready to confirm?"
+- Retiring bets that no longer apply after a pivot
+
+## First-time generation
+
+Rather than asking "so, what's your biggest assumption?" (which makes everyone freeze), the advisor does the pattern-recognition itself: it reads your idea, names an assumption baked into it, and asks you to react — one bet at a time, working toward a starter set of 3–4. It then opens the floor ("anything that keeps you up at night about this idea?"), checks the set for blind spots — most founders under-specify willingness-to-pay and urgency — and offers an optional web-research pass to sharpen specific bets.
+
+You confirm the whole set in one go, and the exit handoff names each bet's type, how it's best tested, and **which single bet is highest-stakes** — the one to test first.
+
+Each hypothesis gets a type tag that drives how it should be validated — `#problem` via conversations, `#solution` via a prototype, `#willingness_to_pay` via a pricing gate, `#urgency` via behavioral signals. See [The evidence graph](/concepts/evidence-graph#hypotheses-are-the-hub) for the full table.
+
+## State assessment: how are my bets doing?
+
+The skill's core capability. Whenever you ask for a health check (and automatically after each interview is analyzed), a [bias-isolated assessment](/concepts/advisor#bias-isolated-analysis) re-reads every statement linked to each hypothesis across all your interviews and weighs the evidence — distinct interviews counted, framing-induced agreement discounted, cross-interview support required before any status flips.
+
+What you get back, per hypothesis: **what changed → next action** — a one-line delta since the last assessment plus the smallest observable next validation move ("show three freelance designers the one-screen mockup and watch whether they try to add a client unprompted"). Plus one cross-hypothesis **Top pick**: the sharpest move on the board right now. When unlinked statements from different interviews rhyme, the assessment also proposes brand-new hypotheses you didn't know you were testing.
+
+Status changes and new hypotheses need your per-item confirmation. The advisory bookkeeping (`last_assessed`, `## Next Action`) is written automatically so your hypothesis folder stays a live dashboard.
+
+## Everyday management
+
+Refining a statement, re-tagging, adding a bet mid-conversation, reviewing the set grouped by status, updating status manually, archiving after a pivot (reversible, with a reason noted) — all handled inline, always propose-before-write.
+
+## What it writes
+
+| File | What's in it |
+|---|---|
+| `startup/hypotheses/{slug}.md` | One file per bet: status frontmatter, the statement as an H1, a type tag, why it matters, notes, and the machine-maintained Next Action |
+| `startup/research/…` | Output of any hypothesis research passes |
+
+## Good to know
+
+- Good hypotheses are testable, specific, and consequential — "people have this problem" gets pushed back on until it names who, what, and what changes if it's wrong.
+- `## Next Action` is overwritten on every assessment — it's the latest read, not a history.
+- Works best once `core.md` has at least an Audience and a Problem; the skill will suggest firming those up first, but won't refuse.
+- Assessment deliberately doesn't happen in your chat — the whole point is that it can't be swayed by your enthusiasm.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The evidence graph" icon="diagram-project" href="/concepts/evidence-graph">
+    How statements, tags, and backlinks add up to a verdict.
+  </Card>
+  <Card title="interviews skill" icon="comments" href="/skills/interviews">
+    Where hypothesis evidence comes from.
+  </Card>
+</CardGroup>

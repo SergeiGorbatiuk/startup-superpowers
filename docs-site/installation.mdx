@@ -1,0 +1,84 @@
+---
+title: "Installation"
+description: "Install Startup Superpowers in Claude Code CLI or the Claude Desktop app"
+---
+
+<Tip>
+It is recommended to have a new repository/folder per idea you want to explore — the idea can grow into an MVP, and the prototype's code will live naturally in that workspace. The plugin keeps its artifacts in the `startup/` subdirectory once initialised.
+</Tip>
+
+Pick the instructions for your client:
+
+<Tabs>
+  <Tab title="Claude Code CLI">
+    <Steps>
+      <Step title="Add the marketplace (one-time, global)">
+        ```bash
+        /plugin marketplace add SergeiGorbatiuk/startup-superpowers
+        ```
+      </Step>
+      <Step title="Create a workspace folder for your idea">
+        In your shell (the `!` prefix runs shell commands from inside Claude Code):
+        ```bash
+        ! mkdir my-new-idea && cd my-new-idea
+        ```
+      </Step>
+      <Step title="Install the plugin for this project">
+        Local scope recommended:
+        ```bash
+        /plugin install startup-superpowers@startup-superpowers
+        ```
+      </Step>
+      <Step title="Apply changes">
+        ```bash
+        /reload-plugins
+        ```
+      </Step>
+      <Step title="Kick things off">
+        ```bash
+        /whats-next
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Claude Desktop App">
+    <Warning>
+    Only work in the **Code** tab of the app.
+    </Warning>
+
+    <Steps>
+      <Step title="Add the marketplace (one-time)">
+        1. Open the `Code` tab.
+        2. Click the "+" icon by the chat input → "Plugins" → "Manage Plugins".
+        3. Under "Personal Plugins" click "+" (Add plugin) → "Create Plugin" → "Add Marketplace".
+        4. In the URL field paste `SergeiGorbatiuk/startup-superpowers`, then click "Sync".
+
+        <Note>
+        On certain app versions the interface does not clearly indicate success or failure of this step. To verify: click "+" under "Personal Plugins" again, then "Browse plugins". You should see `startup-superpowers` in the "Code" tab of the Directory window.
+        </Note>
+      </Step>
+      <Step title="Create a workspace folder for your idea">
+        In your shell, file manager, or however you usually do it:
+        ```bash
+        mkdir my-new-idea
+        cd my-new-idea
+        ```
+        Then open this folder in the Desktop app.
+      </Step>
+      <Step title="Install the plugin for this project">
+        1. In the `Code` tab, click the "+" icon by the chat input → "Plugins" → "Add plugin".
+        2. In the window that opens, navigate to the "Code" tab — you should find the "Startup superpowers" plugin there. If you can't find it, go back to step 1 and verify the marketplace installation.
+        3. Click the "+" to install globally, or click the card and choose "Install for this project" from the dropdown (recommended).
+      </Step>
+      <Step title="Kick things off">
+        Run `/whats-next` in the chat.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+On first run the agent will ask about your idea and set everything up. After that, `/whats-next` is your home base — run it any time you want to know where your project stands and what to focus on next.
+
+<Card title="Next: Quickstart" icon="rocket" href="/quickstart">
+  Walk through your first session step by step.
+</Card>

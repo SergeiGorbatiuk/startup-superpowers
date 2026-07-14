@@ -1,0 +1,66 @@
+---
+title: "mvp"
+description: "Design, ship, and learn from the smallest experiment that produces honest signal"
+---
+
+`/mvp` exists to stop you from over-building. It designs the minimum experiment that tests your riskiest assumptions, optionally scaffolds and deploys it, and — once results are in — gives you a frank read on what they mean. The MVP here is a learning instrument, not a product launch.
+
+## When to reach for it
+
+- Enough hypotheses are confirmed to justify building something
+- You're about to build something specific — and want a check that it's the simplest honest test
+- You want cheap behavioral demand signal before building anything
+- Your MVP is live and you're staring at results
+
+## Designing the experiment
+
+One question at a time, the design conversation works through: what's validated versus what's the riskiest untested bet, **how you'll get it in front of people** (settled *before* what to build — no distribution plan means the MVP is premature, whatever its form), the simplest form that tests the bet, what's explicitly out of scope, which hypotheses the experiment tests, and **measurable success criteria** calibrated to the audience you can actually reach.
+
+Forms range from a landing page, fake door, or clickable demo to Wizard of Oz, concierge, or a simple web app — and no-code routes (Tally, Notion, Figma) are first-class when they fit. The output is a build-ready `mvp-plan.md`.
+
+## Scaffold and deploy
+
+For deployable forms, say go and the skill builds it: generates the UI, wires up instrumentation tied to your success criteria — signups, clicks, whatever the plan says counts — and deploys to a live URL. The code lands in your project root next to `startup/`, a normal codebase you own.
+
+<Note>
+Deployment uses external services (Vercel for hosting; optionally Supabase for data and v0 for UI generation) connected via MCP. The skill checks what's configured up front, hands you the exact setup commands if something's missing, and stops rather than half-deploying.
+</Note>
+
+## Fake doors and paid traffic
+
+Two techniques the advisor draws on when they fit — including suggesting them proactively when you're stalled waiting on slow feedback:
+
+- **Fake door** — market the thing before it exists; the click is the signal. It measures *demand* through behavior rather than opinion. Used honestly: a graceful "coming soon" reveal, never a silent charge. And the bar is real — now that building a thin working slice is cheap, a fake door earns its place only when the real thing is genuinely expensive, risky, or slow to build.
+- **Small paid-traffic runs** — for when you can't reach enough of the right people by hand. Small budgets are split into labelled micro-experiments to learn *who* converts, benchmarks are researched live rather than recalled, and you always own the ad account, the billing, and the "go live" click.
+
+Both record their results in the same `mvp-plan.md` — they're experiments in the same loop.
+
+## Measure and learn
+
+Once results exist, the skill reads them against your success criteria and gives a frank verdict per hypothesis: **confirmed, contradicted, or inconclusive** — including the distinction that saves founders from wrong turns: "the hypothesis is probably wrong" is not the same as "the experiment reached the wrong audience or ran too short."
+
+Confirmed and contradicted results route into your [hypothesis scorecard](/skills/hypotheses); the experiment gets a dated log entry; and the loop closes back through [`/whats-next`](/skills/whats-next): **persevere, iterate the experiment, or pivot**.
+
+## What it writes
+
+| File | What's in it |
+|---|---|
+| `startup/mvp-plan.md` | What you're building and why this form, hypotheses being tested (with what a positive result looks like), success criteria, distribution plan, stack & live URL once deployed, and a dated experiments log |
+
+## Good to know
+
+- The skill's core stance: building is cheap now — **audience is the scarce thing**. Expect pushback if there's no distribution plan, and expect "simpler" as the first response to most build proposals.
+- Success criteria are set before building, and instrumentation measures only them — no vanity metrics.
+- Willingness-to-pay is validated by taking real payment manually (a Stripe payment link or invoice), not by building a billing system.
+- Wizard of Oz and concierge MVPs are manual by design — they skip the deploy step entirely.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="whats-next skill" icon="compass" href="/skills/whats-next">
+    Where post-MVP results turn into persevere / iterate / pivot.
+  </Card>
+  <Card title="hypotheses skill" icon="flask" href="/skills/hypotheses">
+    The bets your experiment exists to test.
+  </Card>
+</CardGroup>
