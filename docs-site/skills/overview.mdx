@@ -32,33 +32,41 @@ The MVP isn't the finish line — it's a learning instrument. Once it's live you
 
 | Where are you right now? | Skill |
 |---|---|
-| "I have an idea but don't know where to start" | `/whats-next` |
-| "Who else is doing this?" | `/competitors` |
-| "Is the market big / right / worth it?" | `/market-research` |
-| "What am I actually assuming is true?" | `/hypotheses` |
-| "I need to talk to customers" | `/interviews` |
-| "I want to test demand at scale" | `/surveys` |
-| "I'm ready to build something testable" | `/mvp` |
-| "My MVP is live — what do these results mean?" | `/mvp` |
+| "I have an idea but don't know where to start" | [`/whats-next`](/skills/whats-next) |
+| "Who else is doing this?" | [`/competitors`](/skills/competitors) |
+| "Is the market big / right / worth it?" | [`/market-research`](/skills/market-research) |
+| "What am I actually assuming is true?" | [`/hypotheses`](/skills/hypotheses) |
+| "I need to talk to customers" | [`/interviews`](/skills/interviews) |
+| "I want to test demand at scale" | [`/surveys`](/skills/surveys) |
+| "I'm ready to build something testable" | [`/mvp`](/skills/mvp) |
+| "My MVP is live — what do these results mean?" | [`/mvp`](/skills/mvp) |
 
-When in doubt, run `/whats-next` and let the planner pick.
+When in doubt, run `/whats-next` and let the planner pick. You don't need to memorise the commands, either — skills auto-activate from natural language. *"Who else is solving the invoice-tracking problem?"* routes to `/competitors` on its own.
 
-## Skills reference
+## The seven skills
 
-| Skill | What it does | When to use |
-|---|---|---|
-| `/whats-next` | Orients you on the project, manages next steps, detects pivots | Start of every session, after finishing any milestone, when you feel lost |
-| `/competitors` | Discovers, classifies (direct/indirect, incumbent/scaleup/startup), and tracks competitors — mines real user feedback and watches the landscape over time | Early in validation, after a pivot, or any time to refresh a stale landscape |
-| `/market-research` | Researches market size, customer segments, buying behaviour, pricing, trends | Before committing to a segment, or to sanity-check the opportunity |
-| `/hypotheses` | Captures and tracks testable assumptions (problem, solution, willingness to pay, urgency), and turns each into a concrete next validation action | Before any interview, or whenever you catch yourself saying "I think users will..." |
-| `/interviews` | Drafts customer-discovery scripts and analyses transcripts against your hypotheses — surfacing what changed and the next move | Drafting a script for a new segment, or right after an interview |
-| `/surveys` | Drafts and manages surveys (questions-only or Tally-backed) | After 5+ interviews when you want to test signals at larger scale |
-| `/mvp` | Designs the smallest testable MVP, scaffolds the codebase, and interprets live results against your success criteria | Once enough hypotheses are confirmed to justify building, and again once the MVP is live |
+<CardGroup cols={2}>
+  <Card title="whats-next" icon="compass" href="/skills/whats-next">
+    Sets up your project, orients you every session, detects pivots, and names the sharpest next move.
+  </Card>
+  <Card title="competitors" icon="chess" href="/skills/competitors">
+    Discovers and classifies competitors, mines what their users say, and watches the landscape over time.
+  </Card>
+  <Card title="market-research" icon="chart-line" href="/skills/market-research">
+    Market reality, buyer behavior, pricing norms, and trends — distilled into a shareable one-page brief.
+  </Card>
+  <Card title="hypotheses" icon="flask" href="/skills/hypotheses">
+    Turns your assumptions into testable bets and keeps an evidence-backed scorecard as results come in.
+  </Card>
+  <Card title="interviews" icon="comments" href="/skills/interviews">
+    Drafts topic-based discovery scripts, helps you find interviewees, and turns conversations into linked evidence.
+  </Card>
+  <Card title="surveys" icon="square-poll-vertical" href="/skills/surveys">
+    Bias-checked question sets tied to your hypotheses — paste anywhere, or deploy live as a Tally form.
+  </Card>
+  <Card title="mvp" icon="rocket" href="/skills/mvp">
+    Designs the smallest honest experiment, optionally ships it, and reads the results with you.
+  </Card>
+</CardGroup>
 
-All skills work both inside the guided plan (driven by `/whats-next`) and standalone à la carte.
-
-You don't need to memorise the commands, either — skills auto-activate from natural language. *"Who else is solving the invoice-tracking problem?"* routes to `/competitors` on its own.
-
-<Note>
-Per-skill deep-dive pages are coming — this overview is the starting point.
-</Note>
+All skills work both inside the guided plan (driven by `/whats-next`) and standalone à la carte. The behaviors they share — one question at a time, propose-before-write, bias-isolated analysis — are covered in [How the advisor works](/concepts/advisor).

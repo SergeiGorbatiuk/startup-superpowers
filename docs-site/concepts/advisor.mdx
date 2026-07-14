@@ -1,0 +1,51 @@
+---
+title: "How the advisor works"
+description: "The conversational rules, the bias-isolated analysis passes, and the privacy stance behind every skill"
+---
+
+A few behaviors hold across every skill. Knowing them makes the plugin predictable — and explains the moments where it deliberately slows down.
+
+## One question at a time
+
+Every conversational flow asks exactly one focused question, never a wall of forms. This is a hard rule in the plugin's design: single questions keep you thinking instead of pattern-matching your way through a questionnaire. Expect idea elaboration, script drafting, and survey design to feel like a real conversation with a co-founder, not an intake form.
+
+## Propose before write
+
+The advisor always shows you what it's about to save and gets your confirmation first. Status changes to hypotheses are confirmed *per item*. The one deliberate exception: the [competitor watch pass](/skills/competitors#watch-keeping-the-landscape-current) applies its batch of updates directly and gives you a recap to review, because confirming twenty small refreshes one by one helps no one.
+
+## Bias-isolated analysis
+
+The moments that require judgment — analyzing an interview, assessing hypothesis states, reassessing your plan — don't happen in your chat. They run as separate analysis passes that read **only the files** and reason from evidence alone.
+
+Why that matters: if you just spent ten minutes excitedly pitching your new angle, an analyst living in that same conversation would inherit your enthusiasm. The isolated pass can't be swayed by it — it sees what customers actually said, not how you feel about it. When one of these passes runs you'll wait a moment longer, and it's worth it: the verdict is closer to what a skeptical outsider would conclude.
+
+## Research runs on the live web
+
+Competitor discovery, market research, and hypothesis research dispatch a background researcher that searches the real web and reads the actual pages — review sites, communities, directories — rather than answering from memory. Consequences worth knowing:
+
+- Findings carry **confidence flags**, and single-source claims are marked as such.
+- Every research run is saved to `startup/research/` with a dated filename, so expensive work is never repeated and you can always check what a conclusion was based on.
+- Results are only as good as the public web — a stealth competitor with no footprint won't be found, and that absence is reported honestly rather than padded.
+
+## Voice input is a first-class citizen
+
+The plugin assumes you'll think out loud. Dump long, unstructured voice notes — the messier the better — and the advisor organizes them into artifacts. It also assumes transcription garbles proper nouns: when a competitor name or technical term looks misheard, it asks you to spell it rather than guessing.
+
+## Nudges, never blocks
+
+The plugin has opinions — interviews before surveys, distribution before building, hypotheses before scripts — and it will tell you when you're skipping a step. But prerequisites are soft: it challenges once, and if you push back, it helps you do the thing you asked for. Convention checks on files work the same way — a gentle note if something's off, never a refusal to save your work.
+
+## Privacy: no telemetry, ever
+
+The plugin doesn't phone home. Nothing about you, your idea, or your files is sent anywhere automatically. The entire feedback mechanism is this: at four milestones (first competitor landscape, first interview analyzed, first MVP plan, first market brief), the advisor may offer an optional, anonymous feedback link — each offered at most once, ever. Saying "stop asking" turns all future offers off for good. The only thing the link carries is a milestone tag, and only if you choose to submit.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The startup/ workspace" icon="folder-open" href="/concepts/workspace">
+    Where everything the advisor writes ends up.
+  </Card>
+  <Card title="The evidence graph" icon="diagram-project" href="/concepts/evidence-graph">
+    What the bias-isolated assessments actually read.
+  </Card>
+</CardGroup>

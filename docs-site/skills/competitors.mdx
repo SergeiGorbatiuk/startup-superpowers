@@ -1,0 +1,78 @@
+---
+title: "competitors"
+description: "Build and maintain a living map of who else is solving your problem — and what their users say about them"
+---
+
+`/competitors` builds a competitive landscape you can act on: who's out there, how mature they are, where the gaps sit — then keeps it current as the field moves. Competitors are treated as validation, not threat: an empty landscape is usually a warning sign, and the gaps are the point.
+
+## When to reach for it
+
+- "Who else is doing this?" — first-time discovery
+- "I know a few competitors — flesh them out and find more"
+- "Dig deeper on X — I think they're a real threat"
+- "What do users actually think of X?" — review mining
+- "What changed since we last looked?" — the watch pass
+- "This one pivoted away, archive it"
+
+## Discovery: mapping the landscape
+
+The first-time flow starts with a short brief — do you already know competitors, what to focus on (pricing, integrations, segments), anything to exclude — asked one question at a time. Then it researches in two deliberate phases:
+
+1. **Scout** — a fast pass for the top 2–3 direct and 2–3 indirect players, enough to confirm the direction is right. While research runs in the background, the conversation continues — typically about what makes your approach different, captured *before* external findings can anchor your thinking.
+2. **Expand (optional)** — after you've confirmed the scout results, a deeper search for up to five more. Explicitly flagged as more time and tokens; you can always defer.
+
+You review one-line summaries, confirm or correct, and the skill writes individual competitor profiles plus a landscape map. Each competitor is classified **direct** (same core problem, same audience) or **indirect** (adjacent tool or partial substitute), and by **maturity** — incumbent, scaleup, or startup — inferred from funding, age, and market presence.
+
+## User feedback: what real users say
+
+Offered as an opt-in pass after discovery, or ad-hoc for a single competitor. It mines review sites (G2, Capterra, Trustpilot), app stores, Reddit, and niche communities for *recurring* themes — one-off rants don't make the cut — and writes a `## What Users Say` section into each profile:
+
+- **What Users Love** — table stakes you'll be measured against
+- **Complaints** — openings for differentiation
+- **Unmet Needs** — gaps users wish existed; interview and positioning gold
+
+It's heavier than discovery (more sources per competitor), which is why it's opt-in.
+
+## Watch: keeping the landscape current
+
+Competitors ship features, change pricing, pivot, and quietly die. When you ask to re-check the landscape, the watch pass researches *what changed* for each competitor since its last check — plus a scan for new entrants — and applies everything in one batch:
+
+- Changed profiles refreshed in place, with a dated `## Change Log` line
+- Dead competitors archived (with the reason), new entrants added as full profiles
+- The landscape map re-synced, and a dated entry (Changed / New / Gone / No change) prepended to the rolling digest in `competitor-watch.md`
+
+<Note>
+Watch is the one flow that applies updates **without per-item confirmation** — you get a conversational recap instead, and the digest is your review surface. You can narrow scope up front ("just the direct ones", "skip the new-entrant scan").
+</Note>
+
+The plugin runs locally with no background jobs, so a watch pass happens when you ask for it — a natural habit is running one before any big decision or investor conversation.
+
+## What it writes
+
+| File | What's in it |
+|---|---|
+| `startup/competitors/{slug}.md` | One profile per competitor: type, URL, maturity, description, core features, your differentiation notes, plus machine-maintained What Users Say and Change Log sections |
+| `startup/competitive-landscape.md` | The map: a table (competitor, type, maturity, what they do, what they miss) plus a positioning paragraph |
+| `startup/competitor-watch.md` | Rolling dated digest of every watch pass |
+| `startup/research/…` | Raw research output from every pass, kept for reference |
+
+Frontmatter fields (`type`, `maturity`, `status`, `last_checked`) are Obsidian/Dataview-queryable.
+
+## Good to know
+
+- Research runs on the live web with confidence flags; single-source claims are marked. Early-stage competitors often have thin public footprints — that absence is reported as signal, not padded over.
+- Works best after your idea is defined in `core.md` — research quality follows project-definition quality. If the project isn't initialized, it will point you to `/whats-next` first.
+- `## What Users Say` and `## Change Log` are machine-maintained — hand-edits there get overwritten on the next pass. Your space is `## Notes`.
+- Archiving is reversible; removing a competitor during review actually deletes the file.
+- If your existing profiles are thin stubs, the skill notices and offers to fill them before doing anything else.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="market-research skill" icon="chart-line" href="/skills/market-research">
+    The market those competitors live in.
+  </Card>
+  <Card title="How the advisor works" icon="scale-balanced" href="/concepts/advisor">
+    Why research is dispatched, saved, and confidence-flagged.
+  </Card>
+</CardGroup>

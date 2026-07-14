@@ -24,9 +24,25 @@
         ]
       },
       {
+        "group": "Core Concepts",
+        "pages": [
+          "concepts/workspace",
+          "concepts/plan",
+          "concepts/evidence-graph",
+          "concepts/advisor"
+        ]
+      },
+      {
         "group": "Skills",
         "pages": [
-          "skills/overview"
+          "skills/overview",
+          "skills/whats-next",
+          "skills/competitors",
+          "skills/market-research",
+          "skills/hypotheses",
+          "skills/interviews",
+          "skills/surveys",
+          "skills/mvp"
         ]
       }
     ]

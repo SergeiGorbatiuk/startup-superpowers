@@ -1,0 +1,61 @@
+---
+title: "market-research"
+description: "A grounded, one-page picture of the market you're entering — real, named, and priced, or not"
+---
+
+`/market-research` answers "what's the market opportunity?" with evidence instead of a hand-wavy TAM slide: is the market real and named, who's in it, how buyers decide, and what people actually pay.
+
+## When to reach for it
+
+- "How big is this market — is it even real?"
+- "Who are the buyers and how do they make decisions?"
+- "What do people typically pay for something like this?"
+- "What are the tailwinds and headwinds in this space?"
+- "The research is getting stale — refresh it"
+
+## First-time research
+
+The initial run frames its output up front — a one-page market brief you could show an advisor or investor — and asks one scope question (segments, geographies, or pricing models to focus on or skip; "just go broad" is a fine answer). It detects whether your idea is **B2B or B2C** from your project definition and researches accordingly:
+
+- **B2B** leans on analyst coverage, G2/Capterra category data, and buying-process signals — who evaluates, who signs, what the criteria are.
+- **B2C** leans on communities first — Reddit, app stores, social — where community size and activity are themselves market signals.
+
+Four dimensions get covered either way: market reality & size, buyer behavior, pricing norms, and trends. Findings come back as a short narrative, not a data dump, with an explicit "does this match your intuition?" beat — your pushback isn't discarded; it's logged as Open Questions to test later.
+
+<Note>
+The goal is deliberately not a precise TAM figure. "The category has analyst coverage and established players" and "no formal sizing exists, but an active community suggests demand" are both honest, useful answers — and the file tells you which kind you got.
+</Note>
+
+## Working with existing research
+
+Once the file exists, the skill handles the rest inline:
+
+- **Answer questions** from what's already researched — and offer a targeted top-up if a dimension is thin
+- **Update sections** as you learn (propose → confirm → write, with `last_updated` bumped)
+- **Refresh** when things feel stale — full or targeted re-run
+- **Connect to hypotheses** — surface which findings support or challenge your current bets
+
+## What it writes
+
+| File | What's in it |
+|---|---|
+| `startup/market-research.md` | The full living file: Market Overview, Customer Segments, Buying Behavior, Pricing Landscape, Trends, Key Sources, Open Questions |
+| `startup/market-brief.md` | The condensed one-pager: The Market / Who's In It / What They Pay / Tailwinds — advisor/investor-ready |
+| `startup/research/…` | Raw research output, kept for reference |
+
+## Good to know
+
+- Pricing data is sometimes inferred from competitor pricing rather than explicit category data — the file flags which kind you're looking at.
+- **Open Questions** is where your contradicting intuition lands. It's not a failure bucket — it's your future interview questions.
+- Findings feed forward deliberately: pricing norms shape willingness-to-pay hypotheses, buyer behavior shapes interview scripts, and a sharper segment triggers an offer to update your core Audience field.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="competitors skill" icon="chess" href="/skills/competitors">
+    The named players inside this market.
+  </Card>
+  <Card title="hypotheses skill" icon="flask" href="/skills/hypotheses">
+    Where market findings become testable bets.
+  </Card>
+</CardGroup>

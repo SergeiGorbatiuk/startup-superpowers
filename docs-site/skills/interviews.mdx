@@ -1,0 +1,66 @@
+---
+title: "interviews"
+description: "The full customer-discovery loop: scripts tailored to your segment, and analysis that turns conversations into evidence"
+---
+
+`/interviews` owns the discovery-interview lifecycle end to end — drafting a script around your actual hypotheses, helping you find people to talk to, then turning what they said into linked evidence that moves your bets.
+
+## When to reach for it
+
+- "Help me prep for discovery calls" / drafting a first script
+- "I don't know who to talk to"
+- Refining questions after a few interviews, or drafting a script for a second segment
+- "I just talked to someone — here's what they said" (file, paste, or memory)
+- "How did I do as an interviewer?"
+
+## Drafting your first script
+
+A guided conversation, one question at a time: confirm the target persona (one script = one persona — a second segment gets its own script later), pick a length (15/30/45/60 minutes — which sizes the number of topics, biased toward fewer-and-deeper), and say how much interviewing you've done (which tunes how much supporting scaffolding each topic gets). The advisor then maps your hypotheses into conversation topics and drafts section by section — opening, topics, closing — showing exact text and revising as you react.
+
+The result is deliberately **not a questionnaire**. Scripts are organized around *topics to explore* — learning themes with a "why it matters" line linking the hypotheses at stake, and a few starting questions framed as prompts. The point is a free-flowing conversation that goes deep where it gets interesting, not a checklist read off a teleprompter.
+
+<Note>
+Question style follows Mom's Test principles throughout: open not leading, past behavior over hypotheticals, one idea per question, and no pitching. Some bets (like pricing) get flagged as better tested by experiments than by asking — and are left out of the script on purpose.
+</Note>
+
+## Finding people to talk to
+
+Can't name anyone to interview? The skill treats that as signal worth acting on, and walks you through building a prospect list of 10–20 people you can actually reach — people you've worked with, follow, or have seen complain publicly — then writing short, specific, honest emails with a low ask (a 20-minute call). Goal: 3–5 conversations scheduled. Non-responses are information, not something to chase.
+
+## Analyzing an interview
+
+Bring what you have — a transcript file, pasted text, or just your recollection of the call — and the skill runs the loop-closer:
+
+1. Your raw material is saved as a transcript (with an intake question about who you *actually* talked to — divergence from who you targeted is itself signal).
+2. A [bias-isolated analysis](/concepts/advisor#bias-isolated-analysis) extracts the statements that matter — factual, behavioral, or belief-bearing quotes, each tagged and linked to the hypotheses it bears on — and reviews your interviewing technique against Mom's Test principles.
+3. A second independent pass reassesses your hypotheses across *all* interviews to date.
+4. You get one summary: **what changed → next action** per touched hypothesis, the sharpest next move, any candidate new hypotheses that emerged, and 1–3 concrete technique notes ("you jumped past her 'overkill' comment without probing").
+
+Status changes and new hypotheses are confirmed per item before anything is written.
+
+## What it writes
+
+| File | What's in it |
+|---|---|
+| `startup/interview-scripts/{slug}.md` | The script: persona, opening, topics to explore (with hypothesis links), closing |
+| `startup/interviews/transcripts/{slug}.md` | Your raw material, verbatim — transcript, paste, or recollection |
+| `startup/interviews/{slug}.md` | The analysis: summary, tagged statements with `[[hypothesis]]` links, technique feedback |
+
+## Good to know
+
+- Prerequisites are soft: scripts work best with an Audience defined and ≥3 hypotheses to build around — the skill suggests both, blocks on neither.
+- Recollection-based analyses are fully supported but yield weaker technique feedback — your own questions weren't captured.
+- Statements that don't fit any hypothesis stay unlinked deliberately; when the same theme recurs across interviews, it comes back as a proposed new hypothesis.
+- Topic coverage is weighted honestly: going deep on one high-signal topic is a win, not a failure to cover all five.
+- Older rigid question-list scripts get a one-time offer to convert to the topic format — opt-in, never forced.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="hypotheses skill" icon="flask" href="/skills/hypotheses">
+    The bets your script topics exist to test.
+  </Card>
+  <Card title="surveys skill" icon="square-poll-vertical" href="/skills/surveys">
+    Scaling patterns you've heard in interviews.
+  </Card>
+</CardGroup>

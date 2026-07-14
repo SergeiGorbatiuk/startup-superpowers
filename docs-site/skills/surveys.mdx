@@ -1,0 +1,60 @@
+---
+title: "surveys"
+description: "Quantitative signal at scale — honest question sets, optionally deployed live as a Tally form"
+---
+
+`/surveys` helps you test signals beyond your first handful of interviews: a short, bias-checked question set tied to specific hypotheses, a realistic distribution plan, and — if you want a live link — a deployed Tally form.
+
+## When to reach for it
+
+- You've done a few interviews and want to confirm the pattern at scale
+- You need to prioritize among competing hypotheses
+- You can reach a targeted audience you can't interview one-on-one
+- "Is a survey even the right tool right now?"
+
+## First, an honest applicability check
+
+Before building anything, the skill gives you a frank 2–3 sentence read on whether now is the moment. Good signs: interviews already done, untested hypotheses, a concrete channel to reach respondents. Caution signs it will raise — but not block on: no interviews yet (surveys *confirm* patterns; they rarely discover them), no distribution channel (a great survey nobody sees is wasted effort), or an idea still in flux. You decide; it helps either way.
+
+## Drafting the questions
+
+One question at a time, the flow settles: which hypotheses to test (capped at 4–5, prioritizing problem and willingness-to-pay bets), where the survey will actually be posted — vague answers like "social media" get challenged until there's a concrete community — and what respondents get out of it. The question budget follows the audience: 3–7 questions for cold audiences, up to 10 for warm ones.
+
+Every question passes a silent bias check before you ever see it: anything leading, compound, solution-hinting, or asking about future intentions instead of past behavior gets rewritten first. A final open-ended question has to be *earned* — the advisor presents the tradeoff instead of adding one by default.
+
+You end with a question set you can paste into any tool — or deploy directly:
+
+## Going live with Tally
+
+Say "deploy this" and the skill turns your question set into a live [Tally](https://tally.so) form and hands back a shareable link, updating the survey file with the form ID and URL. Afterwards, "how's my survey going?" fetches the current submission count.
+
+<Note>
+Deployment needs the Tally MCP connected once (an API key from Tally's settings plus one `claude mcp add` command — the skill gives you the exact steps and verifies before proceeding). Without it, questions-only mode is fully functional.
+</Note>
+
+<Warning>
+Results *analysis* — mapping responses back to hypotheses and proposing status changes — isn't built yet. Today the plugin reports submission counts; reading the results against your bets is a planned update.
+</Warning>
+
+## What it writes
+
+| File | What's in it |
+|---|---|
+| `startup/surveys/{slug}.md` | Purpose, target audience with a realistic response goal, distribution plan, and the numbered questions — each with its type and a `Tests: [[hypothesis]]` link. Tally deployments add the form ID and URL |
+
+## Good to know
+
+- Response goals are sized by channel reality: cold audiences convert around 5–10%, warm ones 20–30% — the goal in the file reflects that math, not wishful thinking.
+- Yes/no questions are avoided for core hypothesis tests — they collapse the nuance you're trying to measure.
+- Strongest signal comes from triangulating: surveys tell you *what*, interviews tell you *why*.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="interviews skill" icon="comments" href="/skills/interviews">
+    Do these first — surveys confirm what conversations discover.
+  </Card>
+  <Card title="The evidence graph" icon="diagram-project" href="/concepts/evidence-graph">
+    How survey questions tie into the same evidence trail.
+  </Card>
+</CardGroup>
