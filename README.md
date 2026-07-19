@@ -2,7 +2,7 @@
 
 > Validate before you build. Local-first, file-based, founder-friendly.
 
-![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSergeiGorbatiuk%2Fstartup-superpowers%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=blue) ![license](https://img.shields.io/badge/license-GPL--3.0-blue) ![for Claude Code](https://img.shields.io/badge/for-Claude%20Code-orange) [![docs](https://img.shields.io/badge/docs-startupsuperpowers.io-036666)](https://docs.startupsuperpowers.io)
+![version](https://img.shields.io/badge/version-1.1.0-blue) ![license](https://img.shields.io/badge/license-GPL--3.0-blue) ![for Claude Code](https://img.shields.io/badge/for-Claude%20Code-orange) [![docs](https://img.shields.io/badge/docs-startupsuperpowers.io-036666)](https://docs.startupsuperpowers.io)
 
 A local-first idea-validation co-pilot for Claude Code. It guides founders through the messy early work of figuring out whether an idea has legs — competitors, market, hypotheses, interviews, surveys, and an MVP — and keeps every artifact as plain markdown in your project, yours to read, edit, commit, and share.
 
